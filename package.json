@@ -2,20 +2,20 @@
   "name": "goit-js-collective-project",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://goitacademy.github.io/goit-js-collective-project",
+  "homepage": "https://dmytro-lys.github.io/goit-js-collective-project",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-js-collective-project/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/goit-js-collective-project.git"
+    "url": "git+https://github.com/Dmytro-Lys/goit-js-collective-project.git"
   },
   "keywords": [],
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/goit-js-collective-project/issues"
+    "url": "https://github.com/Dmytro-Lys/goit-js-collective-project/issues"
   },
   "dependencies": {
     "audit": "^0.0.6",
