@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "audit": "^0.0.6",
+    "lodash": "^4.17.21",
     "modern-normalize": "^1.1.0"
   },
   "devDependencies": {

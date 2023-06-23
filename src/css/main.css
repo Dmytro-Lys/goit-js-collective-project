@@ -1,2 +1,16 @@
-@import url('./common.css');
-@import url('./hero.css');
+/* base styles */
+@import url('./base/common.css');
+@import url('./base/reset.css');
+/* layout styles */
+@import url('./layout/header.css');
+@import url('./layout/hero.css');
+@import url('./layout/all-categories.css');
+@import url('./layout/filter.css');
+@import url('./layout/pagination.css');
+@import url('./layout/popular.css');
+@import url('./layout/favorites-hero.css');
+/* modal window styles */
+@import url('./modal/modal-mob-menu.css');
+@import url('./modal/modal-order.css');
+@import url('./modal/modal-rating.css');
+@import url('./modal/modal-recipe.css');
