@@ -1,1 +1,1 @@
-{"mappings":"","sources":["src/favorites.js"],"sourcesContent":["// import './js/localctorage';"],"names":[],"version":3,"file":"favorites.11709459.js.map"}
+{"mappings":"","sources":["src/favorites.js","src/js/favorites-gallary.js","src/js/pagination.js"],"sourcesContent":["import './js/favorites-gallary';\nimport './js/pagination';","",""],"names":[],"version":3,"file":"favorites.11709459.js.map"}
