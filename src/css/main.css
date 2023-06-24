@@ -1,11 +1,11 @@
 /* base styles */
 @import url('./base/common.css');
-@import url('./base/reset.css');
 /* layout styles */
 @import url('./layout/header.css');
 @import url('./layout/hero.css');
 @import url('./layout/all-categories.css');
 @import url('./layout/filter.css');
+@import url('./layout/recipes.css');
 @import url('./layout/pagination.css');
 @import url('./layout/popular.css');
 @import url('./layout/favorites-hero.css');
