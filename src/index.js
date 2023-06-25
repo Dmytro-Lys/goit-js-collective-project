@@ -7,3 +7,4 @@ import './js/popular';
 import './js/modal/modal-recipe';
 import './js/modal/modal-rating';
 import './js/modal/modal-order';
+import './js/service/change-color-theme';
