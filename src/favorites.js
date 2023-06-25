@@ -1,1 +1,2 @@
-// import './js/localctorage';
+import './js/favorites-gallary';
+import './js/pagination';
