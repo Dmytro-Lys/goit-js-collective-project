@@ -1,0 +1,37 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.favorites-hero {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 335px;
+  height: 516px;
+  border-radius: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .favorites-hero-section {
+    padding-bottom: 32px;
+  }
+  .favorites-hero {
+    max-width: 704px;
+    height: 356px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .favorites-hero {
+    max-width: 1080px;
+  }
+}
