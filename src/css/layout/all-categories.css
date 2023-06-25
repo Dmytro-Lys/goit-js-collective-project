@@ -36,7 +36,9 @@
     }
 }
 
-button {
+
+
+.dishes {
     border: none;
     background-color: transparent;
     color: rgba(5, 5, 5, 0.30);
@@ -46,9 +48,9 @@ button {
     transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-button:hover {
+.dishes:hover {
     color: var(--lt-green);
-    display: inline-block;
+
 
 }
 
@@ -93,12 +95,12 @@ button:hover {
     font-weight: 500;
     color: rgba(5, 5, 5, 0.50);
     background-color: transparent;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .all-ctg-btn:hover {
     background-color: var(--lt-green);
     color: var(--back-cl);
-    transition: var(--trans-hv);
     border: 1px solid var(--lt-green);
 
 }
@@ -113,6 +115,7 @@ button:hover {
     gap: 24px;
     margin-top: 30px;
     padding-right: 150px;
+
 
 }
 
