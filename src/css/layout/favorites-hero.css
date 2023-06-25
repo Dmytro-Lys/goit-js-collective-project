@@ -1,0 +1,43 @@
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.favorites-hero {
+  padding-bottom: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 335px;
+  height: 516px;
+  border-radius: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .favorites-hero {
+    max-width: 704px;
+    height: 356px;
+    padding-bottom: 64px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .favorites-hero {
+    max-width: 1080px;
+  }
+}
+
+.favorites-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
