@@ -1,2 +1,0 @@
-const e=document.querySelectorAll(".category-btn"),n=document.querySelector(".favorites-hero");function t(){let e=window.innerWidth||document.documentElement.clientWidth;e<768?n.classList.add("invisible"):n.classList.remove("invisible")}window.addEventListener("DOMContentLoaded",function(){0===localStorage.length&&e.forEach(e=>{e.classList.add("invisible")})}),window.addEventListener("load",t),window.addEventListener("resize",t);
-//# sourceMappingURL=favorites.d1f771e2.js.map
