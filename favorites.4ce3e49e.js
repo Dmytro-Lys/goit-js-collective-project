@@ -1,0 +1,2 @@
+!function(){var e=document.querySelectorAll(".category-btn"),n=document.querySelector(".favorites-hero");function t(){768>(window.innerWidth||document.documentElement.clientWidth)?n.classList.add("invisible"):n.classList.remove("invisible")}window.addEventListener("DOMContentLoaded",function(){0===localStorage.length&&e.forEach(function(e){e.classList.add("invisible")})}),window.addEventListener("load",t),window.addEventListener("resize",t)}();
+//# sourceMappingURL=favorites.4ce3e49e.js.map
