@@ -13,7 +13,6 @@
 }
 
 .favorites-hero {
-  padding-bottom: 40px;
   margin-right: auto;
   margin-left: auto;
   max-width: 335px;
@@ -22,22 +21,17 @@
 }
 
 @media screen and (min-width: 768px) {
+  .favorites-hero-section {
+    padding-bottom: 32px;
+  }
   .favorites-hero {
     max-width: 704px;
     height: 356px;
-    padding-bottom: 64px;
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1280px) {
   .favorites-hero {
     max-width: 1080px;
   }
-}
-
-.favorites-hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
 }
