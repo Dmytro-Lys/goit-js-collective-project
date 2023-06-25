@@ -32,8 +32,12 @@ import { getAllData } from "./service/api";
 // }
 
 import axios from 'axios';
-import 'flickity/dist/flickity.min.css';
-import Flickity from 'flickity';
+import $ from 'jquery';
+import slick from 'slick-carousel';
+import 'slick-carousel/slick/slick-theme.css';
+import 'slick-carousel/slick/slick.css';
+// import 'flickity/dist/flickity.min.css';
+// import Flickity from 'flickity';
 
 
 axios.get('https://tasty-treats-backend.p.goit.global/api/events')
@@ -65,6 +69,13 @@ function renderPopularEvents(recipes) {
     
     `).join('');
     hero.innerHTML += recipeHTML;
+  $(".hero-slider").slick({
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 3,
+  slidesToScroll: 3
+});
 //    const flkty = new Flickity('.hero-slider', {
 //   cellAlign: 'left',
 //   groupCells: true,
