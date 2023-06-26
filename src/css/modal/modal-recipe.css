@@ -1,0 +1,174 @@
+.modal{
+outline: 1px solid tomato;
+
+min-width: 320px;
+ min-height: 586px;
+  position: absolute; 
+ /* top: 50%; */
+ left: 50%;
+  transform: translate(-50%, -50%); 
+border-radius: 15px;
+    background: #FFF;
+    padding-top: 40px;
+        padding-left: 20px;
+        padding-bottom: 40px;
+        padding-right: 20px;
+}
+/* .modal {
+    min-width: 320px;
+    min-height: 586px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-top: 72px;
+    padding-left: 24px;
+    padding-bottom: 24px;
+    padding-right: 24px;
+
+    border-radius: 4px;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14),
+        0px 1px 3px rgba(0, 0, 0, 0.12),
+        0px 2px 1px rgba(0, 0, 0, 0.2);
+    ;
+    background-color: #FCFCFC;
+} */
+
+
+
+/* video */
+.media{
+    width: 295px;
+    height: 295px;
+margin-bottom: 20px;
+    border-radius: 8px;
+    
+}
+.video{
+width: 295px;
+    height: 295px;
+    flex-shrink: 0;
+    border-radius: 8px;
+  
+        
+}
+/* name */
+.name-reciepe{
+    padding-bottom: 14px;
+    text-transform: uppercase;
+    color: var (--main-cl);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+/* rating ans time */
+.rating-time{
+    display: flex;
+    gap: 16px;
+    padding-bottom: 33px;
+    color: rgba(5, 5, 5, 0.50);
+        font-size: 14px;
+       
+        font-weight: 500;
+        line-height: 1.28;
+} 
+/* ingredients */
+.ingredients{
+   
+    padding-bottom: 40px;
+}
+.ingredient-name{
+    color: #050505;
+        font-size: 14px;
+       
+        line-height: 1.28;
+}
+.ingredient-measure{
+    color: rgba(5, 5, 5, 0.50);
+        font-size: 14px;
+      
+        line-height: 1.28;
+}
+
+/* tags */
+.tags{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 24px;
+    
+}
+.tags-name{
+    border-radius: 35px;
+        border: 1px solid rgba(5, 5, 5, 0.20);
+        padding: 8px 16px;
+            justify-content: center;
+            align-items: center;
+    color: #050505;
+        font-size: 12px;
+        font-family: Inter;
+        font-weight: 500;
+        line-height: 1.16;
+}
+
+
+/* instruction */
+
+.instructions{
+    width: 295px;
+
+    color: rgba(5, 5, 5, 0.80);
+    font-weight: 300;
+        font-size: 14px;
+        padding-bottom: 40px;
+}
+/* buttons */
+.modal-btn{
+    display: flex;
+flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+       
+}
+
+.btn-favorite{
+display: block;
+padding: 12px 24px;
+border: none;
+background-color: #9BB537;
+border-radius: 15px;
+color:var(--back-cl);
+font-weight: 500;
+font-size: 14px;
+cursor: pointer;
+
+ 
+   
+}
+
+.rating-btn{
+    
+display: block;
+    padding: 12px 24px;
+border: 1px solid var(--lt-green);
+    background-color: transparent;
+    border-radius: 15px;
+    color: var(--main-cl);
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 0;
+}
+
+/*  --main-cl: #050505;
+ --back-cl: #f8f8f8;
+ --lt-green: #9bb537;
+ --inactive-el-cl: rgba(5, 5, 5, 0.5);
+ --inactive-list-cl: rgba(5, 5, 5, 0.3);
+ --border-cl: rgba(5, 5, 5, 0.2);
+ --star-cl: #eea10c;
+ --trans-hv: 250ms cubic-bezier(0.4, 0, 0.2, 1); */
