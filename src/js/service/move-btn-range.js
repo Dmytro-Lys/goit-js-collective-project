@@ -1,10 +1,14 @@
-const ellipseIcon = document.querySelector('.ellipse-icon');
-const rectangleIcon = document.querySelector('.rectangle-icon');
-const buttonRange = document.querySelector('.btn-range');
+const ellipseIcons = document.querySelectorAll('.ellipse-icon');
+const buttonRanges = document.querySelectorAll('.btn-range');
 
-buttonRange.addEventListener('click', moveRange);
+buttonRanges.forEach(function (button) {
+  button.addEventListener('click', moveRange);
+});
 
-function moveRange() {
+function moveRange(event) {
+  const button = event.currentTarget;
+  const ellipseIcon = button.querySelector('.ellipse-icon');
+
   const isMovedRight = ellipseIcon.classList.contains('move-right');
 
   if (isMovedRight) {
