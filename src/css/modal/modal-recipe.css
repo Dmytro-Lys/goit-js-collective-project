@@ -89,6 +89,12 @@ width: 295px;
       
         line-height: 1.28;
 }
+.ingredient-list{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    
+}
 
 /* tags */
 .tags{
@@ -110,7 +116,9 @@ width: 295px;
         font-weight: 500;
         line-height: 1.16;
 }
-
+.svg-star{
+    color: red;
+}
 
 /* instruction */
 

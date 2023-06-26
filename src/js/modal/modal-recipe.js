@@ -22,9 +22,7 @@ async function getReciepeById(id) {
     'beforeend',
     createIngredientList(reciepe.ingredients)
   );
-
   refs.tags.insertAdjacentHTML('beforeend', createTagList(reciepe.tags));
-
   refs.instructions.textContent = reciepe.instructions;
   console.log(reciepe);
 }
@@ -33,7 +31,8 @@ getReciepeById('6462a8f74c3d0ddd28897fbc');
 function createIngredientList(ingredientsArray) {
   let markup = '';
   for (const ingredient of ingredientsArray) {
-    markup += `<li><span class="ingredient-name">${ingredient.name}</span> <span class="ingredient-measure">${ingredient.measure}</span></li>`;
+    markup += `<li class="ingredient-list"><span class="ingredient-name">${ingredient.name}</span> <span class="ingredient-measure">${ingredient.measure}</span>
+    </li>`;
   }
   return markup;
 }
@@ -41,7 +40,8 @@ function createIngredientList(ingredientsArray) {
 function createTagList(tagsArray) {
   let markup = '';
   for (const tag of tagsArray) {
-    markup += `<li><span class="tags-name">#${tag}</span></li>`;
+    markup += `<li><span class="tags-name">#${tag}</span> 
+    </li>`;
   }
   return markup;
 }
