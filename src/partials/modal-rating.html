@@ -1,1 +1,57 @@
 <!-- modal rating -->
+<div class="backdrop " data-modal>
+    <div class="rating-modal">
+      <button type="button" class="order-modal-close-btn" data-modal-close>
+        <svg width="12" height="12">
+          <use href="/src/images/svg-sprite.svg#icon-close-black"></use>
+        </svg>
+      </button>
+      <form class="modal-form">
+        <b class="rating-modal-form-title"
+          >Rating</b
+        >
+        <label class="modal-form-field">
+              <span class="rating-modal-form-icon">
+                <svg width="18" height="24">
+                  <use href="/src/images/svg-sprite.svg#icon-star"></use>
+                </svg>
+                <svg width="18" height="24">
+                    <use href="/src/images/svg-sprite.svg#icon-star"></use>
+                  </svg>
+                  <svg width="18" height="24">
+                    <use href="/src/images/svg-sprite.svg#icon-star"></use>
+                  </svg>
+                  <svg width="18" height="24">
+                    <use href="/src/images/svg-sprite.svg#icon-star"></use>
+                  </svg>
+                  <svg width="18" height="24">
+                    <use href="/src/images/svg-sprite.svg#icon-star"></use>
+                  </svg>
+              </span>
+          </label>
+
+        <label class="modal-form-field">
+            <textarea
+              name="user_comments"
+              class="modal-form-comment"
+              placeholder="Text input"
+            ></textarea>
+          </label>
+
+        <label class="modal-form-field">
+          <span class="modal-form-input-wrapper">
+            <input
+              type="text"
+              name="user_email"
+              class="modal-form-input"
+              required
+              placeholder="Enter email"
+            />
+          </span>
+        </label>
+       
+        <span class="modal-form-submit-btn-box">
+            <button type="submit" class="modal-form-submit-btn">Send</button>
+          </span>
+        </form>
+      </div>
