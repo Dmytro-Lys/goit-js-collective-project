@@ -1,1 +1,70 @@
 <!-- modal order now -->
+<div class="backdrop is-hidden" data-modal>
+    <div class="order-modal">
+      <button type="button" class="order-modal-close-btn" data-modal-close>
+        <svg width="12" height="12">
+          <use href="/src/images/svg-sprite.svg#icon-close-black"></use>
+        </svg>
+      </button>
+      <form class="modal-form">
+        <b class="modal-form-title"
+          >ORDER NOW</b
+        >
+        <label class="modal-form-field">
+          <span class="modal-form-field-desc">Name</span>
+          <span class="modal-form-input-wrapper">
+            <input
+              type="text"
+              name="user_name"
+              class="modal-form-input"
+              required
+              pattern="^[a-zA-Z]+$"
+              minlength="2"
+            />
+            <span class="modal-form-icon">
+              
+            </span>
+          </span>
+        </label>
+        <label class="modal-form-field">
+          <span class="modal-form-field-desc">Phone</span>
+          <span class="modal-form-input-wrapper">
+            <input
+              type="tel"
+              name="user_phone_number"
+              class="modal-form-input"
+              required
+              pattern="[0-9]+"
+            />
+            <span class="modal-form-icon">
+              
+            </span>
+          </span>
+        </label>
+        <label class="modal-form-field">
+          <span class="modal-form-field-desc">Email</span>
+          <span class="modal-form-input-wrapper">
+            <input
+              type="text"
+              name="user_email"
+              class="modal-form-input"
+              required
+            />
+            <span class="modal-form-icon">
+             
+            </span>
+          </span>
+        </label>
+        <label class="modal-form-field">
+          <span class="modal-form-field-desc">Comment</span>
+          <textarea
+            name="user_comments"
+            class="modal-form-comment"
+            placeholder="Text input"
+          ></textarea>
+        </label>
+        <span class="modal-form-submit-btn-box">
+            <button type="submit" class="modal-form-submit-btn">Send</button>
+          </span>
+        </form>
+      </div>

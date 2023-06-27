@@ -1,6 +1,9 @@
 .navigation {
   display: none;
 }
+.btn-range.header-range {
+  display: none;
+}
 
 .logo {
   color: var(--main-cl);
@@ -56,6 +59,10 @@
   .navigation {
     display: block;
   }
+  .btn-range.header-range {
+    display: block;
+  }
+
   .burger-btn {
     display: none;
   }

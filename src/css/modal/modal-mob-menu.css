@@ -1,5 +1,4 @@
 /* Mobile menu window ================= */
-
 .menu {
   background-color: var(--lt-green);
   position: fixed;
@@ -50,4 +49,10 @@
 .menu__nav-item-favorites {
   color: var(--back-cl);
   font-size: 12px;
+}
+
+.btn-range.menu-range {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
 }
