@@ -1,3 +1,141 @@
-/* h1 {
-    color:aquamarine;
+body {
+  overflow-x: hidden;
+}
+.hero-section {
+  margin-top: 166px;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: row;
+}
+.hero-title {
+  padding-bottom: 16px;
+  width: 446px;
+  margin-right: 32px;
+  font-size: 36px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  line-height: 120%;
+  text-transform: uppercase;
+}
+.hero-title-span {
+  color: #9bb537;
+  font-weight: 500;
+  font-style: italic;
+}
+.hero-txt {
+  font-size: 16px;
+  line-height: calc(24 / 16);
+  width: 408px;
+  padding-bottom: 32px;
+  font-family: 'Inter', sans-serif;
+}
+.hero-btn {
+  display: inline-flex;
+  padding: 14px 28px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 15px;
+  border: 1px solid #9bb537;
+  width: 127px;
+  height: 45px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  background-color: white;
+}
+
+/* .container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
 } */
+.hero-slider-item {
+  height: 468px;
+  width: 871px;
+  gap: 16px;
+}
+.masterclass {
+  position: relative;
+  width: 137px;
+  height: 442px;
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid rgba(155, 181, 55, 0.3);
+}
+.hero-image {
+  width: 182px;
+  height: 456px;
+  object-fit: cover;
+}
+.card-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 351px;
+  height: 442px;
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid rgba(155, 181, 55, 0.3);
+  background: #050505;
+}
+.topic-hero {
+  width: 262px;
+  height: 262px;
+  object-fit: cover;
+}
+.preview-image-hero {
+  padding-top: 67px;
+}
+.topic-name-hero {
+  color: rgba(248, 248, 248, 0.6);
+  text-align: center;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  line-height: 18px;
+  text-transform: uppercase;
+  margin-top: 32px;
+  margin-bottom: 8px;
+  display: block;
+}
+.topic-country {
+  color: rgba(248, 248, 248, 0.2);
+  text-align: center;
+  font-size: 12px;
+  font-family: 'Inter', sans-serif;
+  line-height: 14px;
+  display: block;
+}
+.cook-hero-div {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 351px;
+  height: 442px;
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid rgba(155, 181, 55, 0.3);
+  background: #050505;
+}
+.cook-image-hero {
+  width: 663px;
+  height: 663px;
+  object-fit: cover;
+}
+/* for slick */
+.draggable {
+  width: 871px;
+  height: 468px;
+}
+.slick-dots {
+  /* Стилі для точок навігації */
+  color: #9bb537;
+  text-align: center;
+  font-size: 25px;
+  font-family: Poppins;
+  font-weight: 600;
+  line-height: 18px;
+  letter-spacing: 2px;
+}
