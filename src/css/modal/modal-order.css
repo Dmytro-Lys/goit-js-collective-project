@@ -15,7 +15,7 @@
     pointer-events: none;
   }
   
-  .modal {
+  .order-modal {
     width: 392px;
     height: 586px;
     border-radius: 15px;
@@ -27,17 +27,18 @@
     padding: 72px 24px 24px;
   }
   @media screen and (max-width: 400px) {
-    .modal {
+    .order-modal {
       width: 90%;
     }
   }
   @media screen and (min-width: 768px) {
-    .modal {
+    .order-modal {
       width: 408px;
     }
   }
   
-  .modal-close-btn {
+  .order-modal-close-btn {
+    
     position: absolute;
     top: 24px;
     right: 24px;
@@ -47,9 +48,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--back-cl);
-    border: rgba(0, 0, 0, 0.1) 1px solid;
-    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    fill:black;
   }
   
   
@@ -71,6 +72,7 @@
     border-radius: 15px;
     padding-left: 38px;
     transition: border-color var(--trans-hv);
+    background-color: var(--back-cl);
   }
   .modal-form-input:focus {
     outline: none;
