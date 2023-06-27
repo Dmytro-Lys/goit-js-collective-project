@@ -1,3 +1,6 @@
+body {
+  overflow-x: hidden;
+}
 .hero-section {
   margin-top: 166px;
   font-family: 'Inter', sans-serif;
@@ -47,62 +50,43 @@
   margin: 0 auto;
   padding: 20px;
 } */
-
-.hero-slider {
-  display: flex;
-  flex-wrap: nowrap;
-  overflow-x: auto;
+.hero-slider-item {
+  height: 468px;
+  width: 871px;
   gap: 16px;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  margin-right: 0;
-}
-
-.hero-image {
-  width: 182px;
-  height: 442px;
-  object-fit: cover;
-  margin-right: 0;
-  border-radius: 15px;
-  border: 1px solid rgba(155, 181, 55, 0.3);
-  display: block;
-}
-.slick-list {
 }
 .masterclass {
-  width: 182px;
-  margin: 0;
-  display: flex;
-}
-.topic-hero {
-  width: 304px;
-  height: 271px;
-}
-.cook-hero-div {
+  position: relative;
+  width: 137px;
+  height: 442px;
+  overflow: hidden;
   border-radius: 15px;
   border: 1px solid rgba(155, 181, 55, 0.3);
-  background: #050505;
 }
-.cook-image-hero {
-  width: 351px;
-  height: 442px;
-}
-.draggable {
-  width: 800px;
-  height: 468px;
-}
-.slick-slide {
-  width: 351px;
+.hero-image {
+  width: 182px;
+  height: 456px;
+  object-fit: cover;
 }
 .card-wrap {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 351px;
   height: 442px;
+  overflow: hidden;
   border-radius: 15px;
   border: 1px solid rgba(155, 181, 55, 0.3);
   background: #050505;
+}
+.topic-hero {
+  width: 262px;
+  height: 262px;
+  object-fit: cover;
+}
+.preview-image-hero {
+  padding-top: 67px;
 }
 .topic-name-hero {
   color: rgba(248, 248, 248, 0.6);
@@ -114,6 +98,7 @@
   text-transform: uppercase;
   margin-top: 32px;
   margin-bottom: 8px;
+  display: block;
 }
 .topic-country {
   color: rgba(248, 248, 248, 0.2);
@@ -121,11 +106,30 @@
   font-size: 12px;
   font-family: 'Inter', sans-serif;
   line-height: 14px;
+  display: block;
 }
-.preview-image-hero {
-  padding-top: 67px;
+.cook-hero-div {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  width: 351px;
+  height: 442px;
+  overflow: hidden;
+  border-radius: 15px;
+  border: 1px solid rgba(155, 181, 55, 0.3);
+  background: #050505;
 }
-.slick-slider .slick-dots {
+.cook-image-hero {
+  width: 663px;
+  height: 663px;
+  object-fit: cover;
+}
+/* for slick */
+.draggable {
+  width: 871px;
+  height: 468px;
+}
+.slick-dots {
   /* Стилі для точок навігації */
   color: #9bb537;
   text-align: center;

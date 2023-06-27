@@ -6,8 +6,6 @@ import slick from 'slick-carousel';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 
-
-
 axios.get('https://tasty-treats-backend.p.goit.global/api/events')
   .then(response => {
     const recipes = response.data; 
@@ -21,7 +19,7 @@ const hero = document.querySelector('.hero-slider');
 
 function renderPopularEvents(recipes) {
     const recipeHTML = recipes.map(recipe => `
-      
+      <div class="hero-slider-item">
         <div class="masterclass">
             <img src="${recipe.cook.imgUrl}" alt="Cook Image" class="hero-image">
         </div>
@@ -32,20 +30,24 @@ function renderPopularEvents(recipes) {
         </div>
         <div class="cook-hero-div">
              <img src="${recipe.topic.imgUrl}" alt="Cook Image" class="cook-image-hero">
-             </div>
-            
+        </div>
+      </div>    
     
     `).join('');
     hero.innerHTML += recipeHTML;
   $(".hero-slider").slick({
-  dots: true,
+      dots: true,
+      arrows: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 3,
-  slidesToScroll: 3
-});
-
+  slidesToShow: 1,
+  slidesToScroll: 1
+  });
+    fixSlick();
 }
-
+function fixSlick() {
+    const heroItem = document.querySelectorAll('.hero-slider-item');
+    heroItem.forEach( element =>  element.style.display = "flex" )
+ }
   
 
