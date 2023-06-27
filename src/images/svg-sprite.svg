@@ -1,16 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
   <defs>
     <symbol id="icon-burger-menu" viewBox="0 0 31 32">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.939" d="M27.151 13.414H3.878M27.151 8.242H3.878M27.151 18.586H3.878M27.151 23.758H3.878"/>
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.939"
+        d="M27.151 13.414H3.878M27.151 8.242H3.878M27.151 18.586H3.878M27.151 23.758H3.878" />
     </symbol>
-    
-<symbol id="icon-x" viewBox="0 0 32 32">
-<path fill="none" stroke="#f8f8f8" style="stroke: var(--color1, #f8f8f8)" stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M24 8l-16 16M8 8l16 16"></path>
-</symbol>
+
+    <symbol id="icon-x" viewBox="0 0 32 32">
+      <path fill="none" stroke="#f8f8f8" style="stroke: var(--color1, #f8f8f8)" stroke-linejoin="round"
+        stroke-linecap="round" stroke-miterlimit="4" stroke-width="2" d="M24 8l-16 16M8 8l16 16"></path>
+    </symbol>
 
 
-<symbol id="icon-basket" viewBox="0 0 31 32">
-<path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.92" d="M6.4 18.56h16.814c1.297 0 1.946 0 2.46-0.242 0.46-0.219 0.834-0.556 1.092-0.972l0.006-0.011c0.297-0.486 0.369-1.13 0.512-2.419l0.749-6.739c0.045-0.393 0.067-0.589 0.003-0.742-0.057-0.135-0.155-0.244-0.278-0.313l-0.003-0.002c-0.145-0.079-0.342-0.079-0.739-0.079h-21.256M2.56 3.2h1.597c0.339 0 0.508 0 0.64 0.064 0.118 0.058 0.213 0.148 0.276 0.258l0.002 0.003c0.073 0.128 0.083 0.297 0.105 0.635l1.16 18.56c0.022 0.338 0.032 0.507 0.105 0.635 0.064 0.113 0.159 0.203 0.273 0.259l0.004 0.002c0.133 0.064 0.302 0.064 0.64 0.064h16.959M9.6 28.16h0.013M21.12 28.16h0.013M10.24 28.16c0 0.353-0.287 0.64-0.64 0.64s-0.64-0.287-0.64-0.64v0c0-0.353 0.287-0.64 0.64-0.64s0.64 0.287 0.64 0.64v0zM21.76 28.16c0 0.353-0.287 0.64-0.64 0.64s-0.64-0.287-0.64-0.64v0c0-0.353 0.287-0.64 0.64-0.64s0.64 0.287 0.64 0.64v0z"></path>
-</symbol>
+    <symbol id="icon-basket" viewBox="0 0 31 32">
+      <path stroke-linejoin="round" stroke-linecap="round" stroke-miterlimit="4" stroke-width="1.92"
+        d="M6.4 18.56h16.814c1.297 0 1.946 0 2.46-0.242 0.46-0.219 0.834-0.556 1.092-0.972l0.006-0.011c0.297-0.486 0.369-1.13 0.512-2.419l0.749-6.739c0.045-0.393 0.067-0.589 0.003-0.742-0.057-0.135-0.155-0.244-0.278-0.313l-0.003-0.002c-0.145-0.079-0.342-0.079-0.739-0.079h-21.256M2.56 3.2h1.597c0.339 0 0.508 0 0.64 0.064 0.118 0.058 0.213 0.148 0.276 0.258l0.002 0.003c0.073 0.128 0.083 0.297 0.105 0.635l1.16 18.56c0.022 0.338 0.032 0.507 0.105 0.635 0.064 0.113 0.159 0.203 0.273 0.259l0.004 0.002c0.133 0.064 0.302 0.064 0.64 0.064h16.959M9.6 28.16h0.013M21.12 28.16h0.013M10.24 28.16c0 0.353-0.287 0.64-0.64 0.64s-0.64-0.287-0.64-0.64v0c0-0.353 0.287-0.64 0.64-0.64s0.64 0.287 0.64 0.64v0zM21.76 28.16c0 0.353-0.287 0.64-0.64 0.64s-0.64-0.287-0.64-0.64v0c0-0.353 0.287-0.64 0.64-0.64s0.64 0.287 0.64 0.64v0z">
+      </path>
+    </symbol>
+
+    <symbol id="card-heart" viewBox="0 0 22 20">
+      <path stroke="#F8F8F8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M19.103 3.226a5.042 5.042 0 0 0-7.131 0L11 4.197l-.972-.971a5.043 5.043 0 0 0-7.131 7.132l.971.971L11 18.461l7.132-7.132.971-.972a5.042 5.042 0 0 0 0-7.131v0Z"
+        opacity=".5" />
+    </symbol>
   </defs>
 </svg>
