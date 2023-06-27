@@ -1,0 +1,17 @@
+{{#each this}}
+<li class="card" style="background-image: linear-gradient(
+    rgba(5, 5, 5, 0.6),
+    rgba(5, 5, 5, 0)
+    ),
+    url({{preview}});">
+    <svg class="heart-svg" width="22" height="22">
+          <use href="/src/images/svg-sprite.svg#card-heart"></use>
+    </svg>
+    <h2 class="card-title">{{title}}</h2>
+    <p class="card-text">{{description}}</p>
+    <div class="rating-and-btn">
+        <p class="rating">{{rating}}</p>
+        <button class="see-recipe-btn">See recipe</button>
+    </div>
+</li>
+{{/each}}
