@@ -1,29 +1,48 @@
 <header>
-  <div class="container">
-    <nav>
-      <li><a href="./index.html">Home</a></li>
-      <li><a href="./favorites.html">Favorites</a></li>
+  <div class="container header-box">
+    <nav class="navigation">
+      <ul class="navigation-list">
+        <li class="navigation-list-home">
+          <a href="./index.html">Home</a>
+        </li>
+        <li class="navigation-list-favorites">
+          <a href="./favorites.html">Favorites</a>
+        </li>
+      </ul>
     </nav>
+
     <a href="./index.html" class="logo">
       <span class="first-part-logo">tasty</span>treats.
     </a>
-    <button class="btn-basket" type="button">
-      <a href="tel:+380730000000" class="header-basket">
-        <svg class="icon-basket" width="24" height="24">
-          <use href="/src/images/svg-sprite.svg#icon-basket-1"></use>
-        </svg>
-      </a>
-    </button>
 
-    <button
-      type="button"
-      class="burger-btn js-open-menu"
-      aria-expanded="false"
-      aria-controls="mobile-menu"
-    >
-      <svg class="mobile-menu-open-icon" width="32" height="32">
-        <use href="/src/images/svg-sprite.svg#icon-burger-menu"></use>
-      </svg>
-    </button>
+    <div class="heder-icons-wrap">
+      <button class="btn-basket" type="button" data-modal-open>
+        <a href="tel:+380730000000" class="header-basket">
+          <svg class="icon-basket">
+            <use href="/src/images/svg-sprite.svg#icon-basket"></use>
+          </svg>
+        </a>
+      </button>
+
+      <button
+        type="button"
+        class="burger-btn js-open-menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="mobile-menu-open-icon">
+          <use href="/src/images/svg-sprite.svg#icon-burger-menu"></use>
+        </svg>
+      </button>
+
+      <button type="button" class="btn-range header-range">
+        <svg class="rectangle-icon" width="46" height="20">
+          <use href="/src/images/svg-sprite.svg#rectangle"></use>
+        </svg>
+        <svg class="ellipse-icon" width="19" height="19">
+          <use href="/src/images/svg-sprite.svg#ellipse"></use>
+        </svg>
+      </button>
+    </div>
   </div>
 </header>
