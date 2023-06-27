@@ -1,21 +1,51 @@
-const ellipseIcons = document.querySelectorAll('.ellipse-icon');
-const buttonRanges = document.querySelectorAll('.btn-range');
+const buttonRange = document.querySelectorAll('.btn-range');
 
-buttonRanges.forEach(function (button) {
-  button.addEventListener('click', moveRange);
+const isMovedRight = localStorage.getItem('isMovedRight') === 'true';
+
+setRangeState(isMovedRight);
+
+buttonRange.forEach(function (button) {
+  button.addEventListener('click', toggleRangeState);
 });
 
-function moveRange(event) {
-  const button = event.currentTarget;
-  const ellipseIcon = button.querySelector('.ellipse-icon');
+const currentTheme = localStorage.getItem('theme');
 
-  const isMovedRight = ellipseIcon.classList.contains('move-right');
+setTheme(currentTheme);
 
-  if (isMovedRight) {
-    ellipseIcon.classList.remove('move-right');
-    ellipseIcon.classList.add('move-left');
+function toggleRangeState() {
+  let isMovedRight = localStorage.getItem('isMovedRight') === 'true';
+  const newRangeState = !isMovedRight;
+  localStorage.setItem('isMovedRight', newRangeState);
+  setRangeState(newRangeState);
+  setTheme(newRangeState ? 'dark' : 'light');
+}
+
+function setRangeState(isMovedRight) {
+  const ellipseIcons = document.querySelectorAll('.ellipse-icon');
+  ellipseIcons.forEach(function (ellipseIcon) {
+    if (isMovedRight) {
+      ellipseIcon.classList.add('move-right');
+    } else {
+      ellipseIcon.classList.remove('move-right');
+    }
+  });
+}
+
+function setTheme(theme) {
+  // Update the theme
+  if (theme === 'dark') {
+    localStorage.setItem('theme', 'dark');
+    document.body.classList.add('dark-theme');
   } else {
-    ellipseIcon.classList.remove('move-left');
-    ellipseIcon.classList.add('move-right');
+    localStorage.setItem('theme', 'light');
+    document.body.classList.remove('dark-theme');
   }
+}
+
+if (localStorage.getItem('isMovedRight') === null) {
+  localStorage.setItem('isMovedRight', 'false');
+}
+
+if (localStorage.getItem('theme') === null) {
+  localStorage.setItem('theme', 'light');
 }
