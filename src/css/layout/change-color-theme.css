@@ -1,19 +1,19 @@
 .dark-theme {
   background-color: var(--main-cl);
-  color: #ffffff;
+  color: var(--white);
 }
 .dark-theme .logo {
-  color: #ffffff;
+  color: var(--white);
 }
 .dark-theme .burger-btn {
-  stroke: #ffffff;
+  stroke: var(--white);
 }
 .dark-theme .icon-basket {
   fill: var(--main-cl);
-  stroke: #ffffff;
+  stroke: var(--white);
 }
 .dark-theme .menu {
-  background-color: black;
+  background-color: var(--main-cl);
 }
 .dark-theme .menu__nav-item-home {
   color: var(--lt-green);
@@ -21,6 +21,51 @@
 .dark-theme .rectangle-icon {
   fill: var(--lt-green);
 }
-.dark-theme .navigation-list-favorites {
-  color: #ffffff;
+
+.dark-theme .dishes {
+  color: #ffffff4d;
+}
+.dark-theme .dishes:hover {
+  color: var(--lt-green);
+}
+.dark-theme .modal {
+  background-color: var(--main-cl);
+}
+.dark-theme .all-ctg-btn,
+.dark-theme .navigation-list-favorites,
+.dark-theme .ingredient-measure,
+.dark-theme #rating,
+.dark-theme #time {
+  color: #ffffff80;
+}
+
+.dark-theme .tags-name {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.dark-theme .instructions {
+  color: rgba(255, 255, 255, 0.8);
+}
+.dark-theme .ingredient-name,
+.dark-theme .rating-btn,
+.dark-theme .no-favorites-desc,
+.dark-theme .modal-form-title {
+  color: var(--white);
+}
+
+.dark-theme .order-modal {
+  background-color: var(--main-cl);
+}
+
+.dark-theme .modal-form-field-desc {
+  color: #ffffff80;
+}
+.dark-theme .modal-form-input,
+.dark-theme .modal-form-comment {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--main-cl);
+}
+.dark-theme .modal-form-submit-btn {
+  background-color: var(--lt-green);
+  color: var(--white);
 }
