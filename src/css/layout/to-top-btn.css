@@ -7,13 +7,13 @@ html {
     position: fixed;
     bottom: 16px;
     right: 32px;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
+    font-size: 20px;
     color: var(--lt-green);
     text-decoration: none;
     opacity: 0;
@@ -21,6 +21,26 @@ html {
     transition: all .4s;
 }
 
+@media screen and (min-width:1280px) {
+    .to-top {
+        background: var(--inactive-el-cl);
+        position: fixed;
+        bottom: 16px;
+        right: 32px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 32px;
+        color: var(--lt-green);
+        text-decoration: none;
+        opacity: 0;
+        pointer-events: none;
+        transition: all .4s;
+    }
+}
 
 .to-top.active {
     bottom: 32px;
