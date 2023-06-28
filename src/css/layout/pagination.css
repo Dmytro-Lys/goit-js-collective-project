@@ -30,11 +30,19 @@ button.current-page {
     width: 40px;
     border: 1px solid rgba(5, 5, 5, 0.3);
     border-radius: 50%;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.pagination-btn:hover {
+    background-color: #1E1E1E;
+    color: var(--back-cl);
+    
+
 }
 
 .side-btn:disabled {
     pointer-events: none;
     background-color: var(--main-cl);
+    color: rgba(248, 248, 248, 0.5);
 }
 
 @media screen and (min-width: 768px) {
