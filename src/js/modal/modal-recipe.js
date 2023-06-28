@@ -1,5 +1,7 @@
 import { getRecipe } from '../service/api.js';
+
 const refs = {
+  modal: document.querySelector('[data-modal]'),
   name: document.getElementById('name-reciepe'),
   rating: document.getElementById('rating'),
   time: document.getElementById('time'),
@@ -7,6 +9,8 @@ const refs = {
   ingredients: document.getElementById('ingredients'),
   tags: document.getElementById('tags'),
   instructions: document.getElementById('instructions'),
+  closeModalBtn: document.querySelector('[data-modal-close]'),
+  addButton: document.getElementById('add-favorite'),
 };
 
 async function getReciepeById(id) {
@@ -31,7 +35,11 @@ getReciepeById('6462a8f74c3d0ddd28897fbc');
 function createIngredientList(ingredientsArray) {
   let markup = '';
   for (const ingredient of ingredientsArray) {
-    markup += `<li class="ingredient-list"><span class="ingredient-name">${ingredient.name}</span> <span class="ingredient-measure">${ingredient.measure}</span>
+    markup += `<li class="ingredient">
+    <div class="ingredient-list">
+    <span class="ingredient-name">${ingredient.name}</span> <span class="ingredient-measure">${ingredient.measure}</span>
+    </div>
+     
     </li>`;
   }
   return markup;
@@ -40,7 +48,8 @@ function createIngredientList(ingredientsArray) {
 function createTagList(tagsArray) {
   let markup = '';
   for (const tag of tagsArray) {
-    markup += `<li><span class="tags-name">#${tag}</span> 
+    markup += `<li><span class="tags-name">#${tag}</span>
+     
     </li>`;
   }
   return markup;
@@ -56,3 +65,10 @@ function createIngredientMedia(youtubeLink, imageLink, alt) {
     )}"></iframe>`;
   }
 }
+
+(() => {
+  refs.closeModalBtn.addEventListener('click', toggleModal);
+  function toggleModal() {
+    refs.modal.classList.toggle('is-hidden');
+  }
+})();
