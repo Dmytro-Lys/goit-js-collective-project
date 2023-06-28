@@ -1,4 +1,4 @@
-import { saveData, loadData,  addFavorit, loadFavorit } from './service/localstorage.js'
+import { saveData, loadData,  addFavorit, loadFavorit, loadFavoritCategories, loadFavoritFilter } from './service/localstorage.js'
 
 const categoryBtns = document.querySelectorAll('.category-btn');
 const heroImage = document.querySelector('.favorites-hero');
@@ -37,9 +37,18 @@ hideHeroImageLess768();
 window.addEventListener("load", hideHeroImageLess768);
 window.addEventListener("resize", hideHeroImageLess768);
 
+function categoriesMarkup() {
+    const favCategories = loadFavoritCategories();
+    
+    favCategories.forEach(function(name) {
+        const buttonEls = '<li><button class="category-btn"> ' + name + '</button></li>';
+      favBtnList.insertAdjacentHTML('beforeend', buttonEls);
+    }); 
+}
 
+categoriesMarkup();
 
-function markup() {
+function hideDafaultPageContent() {
     const savedData = loadData();
     if (savedData) {
            noFavoritesEl.style.display = "none" 
@@ -47,23 +56,27 @@ function markup() {
     else {
         noFavoritesEl.style.display = "flex" 
     }
-cardRender();
 }
-markup();
+hideDafaultPageContent();
 
-function cardRender(loadData) {
-    const markup = loadData.map(({ preview, title, description, rating }) => `<li class=".card_favorites",
-    url(${preview});">
-    <svg class="heart-svg" width="22" height="22">
-          <use href="/src/images/svg-sprite.svg#card-heart"></use>
-    </svg>
-    <h2 class="card-title">${title}</h2>
-    <p class="card-text">${description}</p>
-    <div class="rating-and-btn">
-        <p class="rating">${rating}</p>
-        <button class="see-recipe-btn">See recipe</button>
-    </div>
-</li>`
-    ).join('');
-    favCardsList.insertAdjacentHTML('beforeend', markup);
-}
+
+
+
+
+
+// function cardRender(loadData) {
+//     const markup = loadData.map(({ preview, title, description, rating }) => `<li class=".card_favorites",
+//     url(${preview});">
+//     <svg class="heart-svg" width="22" height="22">
+//           <use href="/src/images/svg-sprite.svg#card-heart"></use>
+//     </svg>
+//     <h2 class="card-title">${title}</h2>
+//     <p class="card-text">${description}</p>
+//     <div class="rating-and-btn">
+//         <p class="rating">${rating}</p>
+//         <button class="see-recipe-btn">See recipe</button>
+//     </div>
+// </li>`
+//     ).join('');
+//     favCardsList.insertAdjacentHTML('beforeend', markup);
+// }
