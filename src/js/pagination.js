@@ -18,6 +18,13 @@ const refs = {
     rightBtns: document.querySelector('.right-btns')
 }
 
+const OPTIONS = {
+    category: null,
+    title: null,
+    page: 1,
+    limit: 9
+}
+checkResol()
 blockLeftBtns();
 
 
@@ -36,7 +43,7 @@ function pageIncrease(event) {
 
     getFilterRecipes({
         page: Number.parseInt(`${refs.currentPage.textContent}`),
-        limit: '9'
+        limit: OPTIONS.limit
     }).then(respone => {
         // console.log(respone)
         renderCards(respone.results)
@@ -55,7 +62,7 @@ function returnToStart(event) {
 
         getFilterRecipes({
             page: '1',
-            limit: '9'
+            limit: OPTIONS.limit
         }).then(respone => {
             // console.log(respone)
             renderCards(respone.results)
@@ -72,7 +79,7 @@ function returnToStart(event) {
 
             getFilterRecipes({
                 page: Number.parseInt(`${refs.currentPage.textContent}`),
-                limit: '9'
+                limit: OPTIONS.limit
             }).then(respone => {
                 // console.log(respone)
                 renderCards(respone.results)
@@ -98,7 +105,7 @@ function switchToNextPage(event) {
 
         getFilterRecipes({
             page: maxPages,
-            limit: '9'
+            limit: OPTIONS.limit
         }).then(respone => {
             // console.log(respone)
             renderCards(respone.results)
@@ -115,7 +122,7 @@ function switchToNextPage(event) {
             blockLeftClear()
             getFilterRecipes({
                 page: Number.parseInt(`${refs.currentPage.textContent}`),
-                limit: '9'
+                limit: OPTIONS.limit
             }).then(respone => {
                 // console.log(respone)
                 renderCards(respone.results)
@@ -177,11 +184,45 @@ function blockLeftClear() {
  
 
 
+function checkResol() {
+    if (screen.width >= 1280) {
+        console.log('1280')
+        OPTIONS.limit = 9;
+        return
+    }
+    if (screen.width >= 768 && screen.width < 1280) {
+        console.log('800')
+        OPTIONS.limit = 8;
+        return
+    }
+    if (screen.width >= 375 && screen.width < 768) {
+        console.log('400')
+        OPTIONS.limit = 6;
+        return
+    }
+}
+
+function allCategoriesSearch({category, title}) {
+    OPTIONS.category = category;
+    OPTIONS.title = title;
+    refs.currentPage.textContent = '1';
+    setOptions()
+    getFilterRecipes(OPTIONS).then(respone => {
+    // console.log(respone)
+    maxPages = respone.totalPages;
+    renderCards(respone.results)
+})
+}
+
+
+
 getFilterRecipes({
     page: '1',
-    limit: '9'
+    limit: OPTIONS.limit
 }).then(respone => {
     // console.log(respone)
     maxPages = respone.totalPages;
     renderCards(respone.results)
 })
+
+export {allCategoriesSearch}

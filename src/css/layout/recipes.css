@@ -80,6 +80,8 @@
         color: #F8F8F8;
         text-overflow: ellipsis;
         whitespace: nowrap;
+        font-size: 12px;
+        line-height: 16px;
 
 }
 
