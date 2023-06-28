@@ -1,0 +1,103 @@
+.dark-theme {
+  background-color: #161616;
+  color: var(--white);
+}
+.dark-theme .logo {
+  color: var(--white);
+}
+.dark-theme .burger-btn {
+  stroke: var(--white);
+}
+.dark-theme .icon-basket {
+  fill: #161616;
+  stroke: var(--white);
+}
+.dark-theme .menu {
+  background-color: var(--main-cl);
+}
+.dark-theme .menu__nav-item-home {
+  color: var(--lt-green);
+}
+.dark-theme .rectangle-icon {
+  fill: var(--lt-green);
+}
+
+.dark-theme .dishes {
+  color: #ffffff4d;
+}
+.dark-theme .dishes:hover {
+  color: var(--lt-green);
+}
+.dark-theme .modal {
+  background-color: var(--main-cl);
+}
+.dark-theme .all-ctg-btn,
+.dark-theme .navigation-list-favorites,
+.dark-theme .ingredient-measure,
+.dark-theme #rating,
+.dark-theme #time {
+  color: #ffffff80;
+}
+.dark-theme .all-ctg-btn {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.dark-theme .tags-name {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.dark-theme .instructions {
+  color: rgba(255, 255, 255, 0.8);
+}
+.dark-theme .ingredient-name,
+.dark-theme .rating-btn,
+.dark-theme .no-favorites-desc,
+.dark-theme .modal-form-title {
+  color: var(--white);
+}
+
+.dark-theme .order-modal {
+  background-color: var(--main-cl);
+}
+
+.dark-theme .modal-form-field-desc {
+  color: #ffffff80;
+}
+.dark-theme .modal-form-input,
+.dark-theme .modal-form-comment {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: var(--main-cl);
+}
+.dark-theme .modal-form-submit-btn {
+  background-color: var(--lt-green);
+  color: var(--white);
+}
+.dark-theme .hero-btn {
+  background-color: #161616;
+  border-color: #9bb537;
+  color: var(--white);
+}
+
+.dark-theme .slick-dots li button:before {
+  color: var(--white);
+}
+.dark-theme .slick-dots li button:focus:before {
+  color: var(--lt-green);
+}
+
+.dark-theme .paragraph-title {
+  color: #ffffffcc;
+}
+
+.dark-theme .current-page,
+.dark-theme .mid-skip,
+.dark-theme .next-page {
+  background-color: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: var(--white);
+}
+
+.dark-theme .lil-rigth-skip,
+.dark-theme .big-rigth-skip {
+  background-color: var(--lt-green);
+  color: var(--main-cl);
+}

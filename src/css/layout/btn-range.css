@@ -1,0 +1,31 @@
+.btn-range {
+  position: relative;
+  padding: 0;
+  border-radius: 20px;
+  border: none;
+  background-color: inherit;
+  box-shadow: 6px 4px 8px 2px rgba(95, 92, 92, 0.2);
+}
+.rectangle-icon,
+.ellipse-icon {
+  display: block;
+}
+.rectangle-icon {
+  fill: #cecdcd;
+}
+.ellipse-icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: var(--back-cl);
+  transform: translateX(0);
+  transition: transform 0.5s ease;
+}
+
+.ellipse-icon.move-right {
+  transform: translateX(27px);
+}
+
+.ellipse-icon.move-left {
+  transform: translateX(0);
+}

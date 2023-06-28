@@ -40,7 +40,14 @@
                 <button class="see-recipe-btn" data-id="{{_id}}">See recipe</button>
             </div>
         </div>
-        
+    <svg class="heart-svg" width="22" height="22">
+          <use href="/src/images/svg-sprite.svg#card-heart"></use>
+    </svg>
+    <h2 class="card-title">{{title}}</h2>
+    <p class="card-text">{{description}}</p>
+    <div class="rating-and-btn">
+        <p class="rating">{{rating}}</p>
+        <button class="see-recipe-btn" data-id="{{_id}}">See recipe</button>
     </div>
 </li>
 {{/each}}
