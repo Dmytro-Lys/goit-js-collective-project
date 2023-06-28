@@ -102,7 +102,8 @@
     padding: 8px 16px;
     border: 1px solid rgba(33, 33, 33, 0.2);
     border-radius: 15px;
-    transition: border-color var(--trans-hv);
+    transition: var(--trans-hv);
+    background-color: var(--back-cl);
   }
   .modal-form-comment::placeholder {
     color: rgba(117, 117, 117, 0.5);
@@ -132,10 +133,16 @@
     letter-spacing: 0.04em;
     color: var(--main-cl);
     min-width: 169px;
-    padding: 16px 32px;
+    padding: 14px 32px;
+  }
+  @media screen and (min-width: 768px) {
+    .modal-form-submit-btn  {
+      width: 360px;
+    }
   }
   .modal-form-submit-btn:hover,
   .modal-form-submit-btn:focus {
     background-color: var(--lt-green);
     transition: var(--trans-hv);
+    color: white;
   }

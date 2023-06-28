@@ -13,9 +13,10 @@ async function getFilterRecipes(filter) {
     return res.data;
 }
 
-function getFilterArguments({ category, time, area, ingredients, page, limit }) {
+function getFilterArguments({ category, title, time, area, ingredients, page, limit }) {
   return `?page=${page||1}&limit=${limit||6}`.concat(
     category ? `&category=${category}` : "",
+    title ? `&title=${title}` : "",
     time ? `&time=${time}` : "",
     area ? `&area=${area}` : "",
     ingredients ? `&ingredients=${ingredients}` : "")
