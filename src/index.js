@@ -8,3 +8,4 @@ import './js/modal/modal-recipe';
 import './js/modal/modal-rating';
 import './js/modal/modal-order';
 import './js/jquery/backToTapBtn';
+import './js/service/move-btn-range';

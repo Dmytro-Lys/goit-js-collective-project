@@ -1,0 +1,143 @@
+.div-population{
+    display: inline-flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 40px;
+}
+
+@media screen and (min-width: 768px) {
+    .div-population{
+        gap: 32px;
+    }
+}
+
+.title-population{
+    width: 230px;
+    height: 28px;
+    font-size: 18px;
+    font-weight: 600;
+line-height: 24px;
+text-transform: uppercase;
+}
+
+@media screen and (min-width: 1200px){
+.title-population{
+    font-size: 24px;
+    line-height: 28px;
+}
+}
+
+.li-population{
+    display: flex;
+align-items: flex-start;    
+}
+
+.li-population.last-element {
+    padding-bottom: 80px;
+  }
+
+  @media screen and (min-width:768px) {
+  
+    .li-population.last-element {
+        padding-bottom: 0px;
+      }
+}
+
+
+.div-a-population{
+    display: flex;
+   
+    justify-content: center;
+    padding-bottom: 24px;
+
+}
+
+@media screen and (min-width: 768px) {
+    .div-a-population{
+        padding-bottom: 16px;
+    }
+    
+}
+
+.img-population{
+width: 64px;
+height: 64px;
+border-radius: 5px;
+}
+
+.text-container-population{
+    margin-left: 16px;
+    width: 155px;
+}
+
+@media screen and (min-width: 768px){
+    .text-container-population{
+        margin-left: 8px;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .text-container-population{
+        margin-left: 16px;
+    }
+}
+.title-dishes{
+    font-size: 14px;
+font-weight: 600;
+line-height: 18px;
+text-transform: uppercase;
+
+display: -webkit-box; 
+-webkit-box-orient: vertical; 
+overflow: hidden; 
+-webkit-line-clamp: 1;
+}
+
+@media screen and (min-width: 768px){
+    .title-dishes{
+max-width: 120px;
+max-height: 18px;
+
+overflow: hidden;
+line-height: 18px;
+text-transform: uppercase;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .title-dishes{
+        max-width: 136px;
+    }
+}
+
+
+
+.paragraph-title{
+ overflow: hidden;
+color: var( --inactive-el-cl);
+text-overflow: ellipsis;
+font-size: 10px;
+line-height: 14px;
+overflow: hidden;
+text-overflow: ellipsis;
+
+width: 255px;
+display: -webkit-box;
+-webkit-box-orient: vertical; 
+-webkit-line-clamp: 2;
+}
+
+@media screen and (min-width: 768px) {
+    .paragraph-title{
+        max-width: 120px;
+        -webkit-line-clamp: 3;
+    }
+}
+
+@media screen and (min-width: 1200px){
+    .paragraph-title{
+        max-width: 155px;
+    }
+}
+
+

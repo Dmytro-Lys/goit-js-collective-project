@@ -1,14 +1,51 @@
-<!-- mdoal recipe -->
-<section>
-  <div class="container modal">
-    <h2 id="name-reciepe"></h2>
-    <div id="rating"></div>
-    <div id="time"></div>
+<!-- modal recipe -->
+<section class="backdrop is-hidden" data-modal>
+  <div class="modal" id="modal">
+    <button type="button" class="modal__close js-close-modal" data-modal-close>
+      <svg class="modal_x" width="20" height="20">
+        <use href="/src/images/svg-sprite.svg#icon-black-x"></use>
+      </svg>
+    </button>
 
-    <div id="ingredients"></div>
-    <div class="tags" id="tags"></div>
-    <p id="instructions"></p>
+    <div class="main-info">
+      <div class="media" id="media"></div>
+      <div>
+        <h2 class="name-reciepe" id="name-reciepe"></h2>
+
+        <div class="rating-time">
+          <div class="rating">
+            <div id="rating"></div>
+            <svg class="icon-star" width="18" height="18">
+              <use href="/src/images/svg-sprite.svg#icon-Star"></use>
+            </svg>
+            <svg class="icon-star" width="18" height="18">
+              <use href="/src/images/svg-sprite.svg#icon-Star"></use>
+            </svg>
+            <svg class="icon-star" width="18" height="18">
+              <use href="/src/images/svg-sprite.svg#icon-Star"></use>
+            </svg>
+            <svg class="icon-star" width="18" height="18">
+              <use href="/src/images/svg-sprite.svg#icon-Star"></use>
+            </svg>
+            <svg class="icon-star" width="18" height="18">
+              <use href="/src/images/svg-sprite.svg#icon-Star"></use>
+            </svg>
+          </div>
+          <div id="time"></div>
+        </div>
+        <ul class="ingredients" id="ingredients"></ul>
+        <button type="button" class="load-more-btn">Load more</button>
+      </div>
+    </div>
+
+    <ul class="tags" id="tags"></ul>
+    <p class="instructions" id="instructions"></p>
+
+    <div class="modal-btn">
+      <button type="button" class="btn-favorite" id="add-favorite">
+        Add to favorite
+      </button>
+      <button type="button" class="rating-btn" id="rate">Give a rating</button>
+    </div>
   </div>
-  <button type="button" class="add-favorite" id="add"></button>
-  <button type="button" class="rate" id="rate"></button>
 </section>
