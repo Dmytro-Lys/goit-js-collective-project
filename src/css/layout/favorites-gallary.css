@@ -102,10 +102,3 @@
     width: 224px;
   }
 }
-
-@media screen and (min-width: 768px) {
-  .card_favorites {
-    height: 287px;
-    width: 258px;
-  }
-}

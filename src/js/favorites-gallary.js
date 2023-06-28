@@ -5,7 +5,8 @@ const heroImage = document.querySelector('.favorites-hero');
 const categoriesDiv = document.querySelector('.categories');
 const favBtnList = document.querySelector('.categories-list');
 const noFavoritesEl = document.querySelector('.no-favorites');
-const savedData = loadData('cardData');
+const favCardsList = document.querySelector('.favorites-cards');
+
 
 window.addEventListener('DOMContentLoaded', hideCategories);
 
@@ -39,13 +40,30 @@ window.addEventListener("resize", hideHeroImageLess768);
 
 
 function markup() {
-    const noFavoritesEl = document.querySelector('.no-favorites'); 
-    const savedData = localStorage.getItem('cardData');
+    const savedData = loadData();
     if (savedData) {
            noFavoritesEl.style.display = "none" 
     }
     else {
         noFavoritesEl.style.display = "flex" 
     }
+cardRender();
 }
 markup();
+
+function cardRender(loadData) {
+    const markup = loadData.map(({ preview, title, description, rating }) => `<li class=".card_favorites",
+    url(${preview});">
+    <svg class="heart-svg" width="22" height="22">
+          <use href="/src/images/svg-sprite.svg#card-heart"></use>
+    </svg>
+    <h2 class="card-title">${title}</h2>
+    <p class="card-text">${description}</p>
+    <div class="rating-and-btn">
+        <p class="rating">${rating}</p>
+        <button class="see-recipe-btn">See recipe</button>
+    </div>
+</li>`
+    ).join('');
+    favCardsList.insertAdjacentHTML('beforeend', markup);
+}
