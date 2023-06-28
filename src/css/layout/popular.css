@@ -114,7 +114,7 @@ text-transform: uppercase;
 
 .paragraph-title{
  overflow: hidden;
-color: rgba(5, 5, 5, 0.80);
+color: var( --inactive-el-cl);
 text-overflow: ellipsis;
 font-size: 10px;
 line-height: 14px;
