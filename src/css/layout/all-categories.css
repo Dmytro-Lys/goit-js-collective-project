@@ -10,9 +10,13 @@
   } */
 
 
+.invisibles {
+    display: none;
+}
 
 .scrollable-content {
-    overflow-x: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     height: 270px;
     padding-right: 0px;
 
@@ -20,7 +24,8 @@
 
 @media screen and (min-width: 768px) {
     .scrollable-content {
-        overflow-x: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
         height: 435px;
         padding-right: 0px;
 
@@ -29,7 +34,8 @@
 
 @media screen and (min-width: 1280px) {
     .scrollable-content {
-        overflow-x: scroll;
+        overflow-y: scroll;
+        overflow-x: hidden;
         height: 435px;
         padding-right: 0px;
 

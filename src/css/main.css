@@ -9,6 +9,7 @@
 @import url('./layout/pagination.css');
 @import url('./layout/popular.css');
 @import url('./layout/favorites-hero.css');
+@import url("./layout/to-top-btn.css");
 @import url('./layout/favorites-gallary.css');
 /* modal window styles */
 @import url('./modal/modal-mob-menu.css');
