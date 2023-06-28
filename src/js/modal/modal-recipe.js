@@ -22,20 +22,14 @@ async function getReciepeById(id) {
   refs.rating.textContent = reciepe.rating;
   refs.time.textContent = `${reciepe.time} min`;
   refs.addButton.setAttribute('data-recipe-id', id);
-  refs.media.insertAdjacentHTML(
-    'beforeend',
-    createIngredientMedia(reciepe.youtube, reciepe.thumb, reciepe.title)
-  );
-  refs.ingredients.insertAdjacentHTML(
-    'beforeend',
-    createIngredientList(reciepe.ingredients)
-  );
-  refs.tags.insertAdjacentHTML('beforeend', createTagList(reciepe.tags));
+  refs.media.innerHTML = createIngredientMedia(reciepe.youtube, reciepe.thumb, reciepe.title);
+  refs.ingredients.innerHTML =  createIngredientList(reciepe.ingredients);
+  refs.tags.innerHTML = createTagList(reciepe.tags);
   refs.instructions.textContent = reciepe.instructions;
   toggleModal()
   console.log(reciepe);
 }
-// getReciepeById('6462a8f74c3d0ddd28897fbc');
+
 
 function createIngredientList(ingredientsArray) {
   let markup = '';
