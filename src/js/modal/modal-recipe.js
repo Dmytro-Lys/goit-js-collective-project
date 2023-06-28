@@ -32,9 +32,10 @@ async function getReciepeById(id) {
   );
   refs.tags.insertAdjacentHTML('beforeend', createTagList(reciepe.tags));
   refs.instructions.textContent = reciepe.instructions;
+  toggleModal()
   console.log(reciepe);
 }
-getReciepeById('6462a8f74c3d0ddd28897fbc');
+// getReciepeById('6462a8f74c3d0ddd28897fbc');
 
 function createIngredientList(ingredientsArray) {
   let markup = '';
@@ -77,12 +78,12 @@ function openModal(event) {
   }
 }
 
-(() => {
+
   refs.closeModalBtn.addEventListener('click', toggleModal);
   function toggleModal() {
     refs.modal.classList.toggle('is-hidden');
   }
-})();
+
 
 refs.addButton.addEventListener('click', fetchRecipes);
 async function fetchRecipes() {
