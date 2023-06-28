@@ -12,21 +12,26 @@
   overflow: hidden;
 }
 
+.favorites-hero-section {
+  padding-bottom: 40px;
+}
+
 .favorites-hero {
   margin-right: auto;
   margin-left: auto;
   max-width: 335px;
-  height: 516px;
+  /* height: 516px; */
   border-radius: 15px;
+  /* background-color: #f8f8f8; */
 }
 
 @media screen and (min-width: 768px) {
   .favorites-hero-section {
-    padding-bottom: 32px;
+    padding-bottom: 64px;
   }
   .favorites-hero {
     max-width: 704px;
-    height: 356px;
+    /* height: 356px; */
   }
 }
 

@@ -18,22 +18,23 @@
   color: #050505;
   text-align: center;
   font-size: 14px;
-  font-family: Inter;
-  line-height: 18px;
+  line-height: 1.29;
 }
 
 .categories {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  gap: 12px;
+  margin-bottom: 24px;
 }
 
 .category-btn {
   color: rgba(5, 5, 5, 0.3);
   font-size: 14px;
-  font-family: Inter;
   font-weight: 500;
-  line-height: 18px;
+  line-height: 1.29;
   max-height: 46px;
   min-width: 132px;
   padding: 14px 18px;
@@ -47,11 +48,31 @@
   background: #9bb537;
   border: none;
 }
+
+.card_favorites {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 335px;
+  height: 335px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: linear-gradient(
+    1deg,
+    rgba(5, 5, 5, 0.6) 0%,
+    rgba(5, 5, 5, 0) 100%
+  );
+}
 @media screen and (max-width: 767px) {
   .no-favorites {
-    height: 100vh;
+    padding-top: 285px;
+  }
+  .card_favorites {
+    margin-bottom: 24px;
   }
 }
+
 @media screen and (min-width: 768px) {
   .favorites-hero-icon {
     width: 97px;
@@ -63,14 +84,28 @@
   }
   .no-favorites-desc {
     font-size: 16px;
-    line-height: 24px;
-    font-family: Inter;
+    line-height: 1.5;
     max-width: 481px;
   }
+  .categories {
+    margin-bottom: 32px;
+  }
+
   .category-btn {
     font-size: 16px;
-    line-height: 20px;
+    line-height: 1.25;
     max-height: 48px;
     min-width: 145px;
+  }
+  .card_favorites {
+    height: 264px;
+    width: 224px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card_favorites {
+    height: 287px;
+    width: 258px;
   }
 }
