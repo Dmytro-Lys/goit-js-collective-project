@@ -1,7 +1,9 @@
 .cards-list {
     display: flex;
     flex-wrap: wrap;
-    gap: 16px;
+    
+    row-gap: 24px;
+    justify-content: center;
 }
 
 
@@ -13,17 +15,104 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    flex-basis: calc((100% - 32px) / 3);
-    height: 287px;
-    width: 250px;
+    height: 335px;
+    width: 335px;
 }
-
+.card-info {
+    height: 335px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 16px;
+    /* padding-top: auto; */
+}
 .heart-svg {
-    height: 10px;
-    width: 10px;
+    display: flex;
+    margin-left: auto;
+    height: 22px;
+    width: 22px;
+    /* margin-bottom: 176px; */
 }
 
 .rating-and-btn {
     display: flex;
+    justify-content: space-between;
+}
+.stars-icons {
+    display: flex;
 }
 
+.see-recipe-btn {
+    background-color: var(--lt-green);
+    border: 1px solid #9BB537;
+    border-radius: 8px;
+    color: var(--back-cl);
+    padding: 8px 14px;
+    font-weight: 500;
+    font-size: 12px;
+    transition: var(--trans-hv);
+}
+.see-recipe-btn:hover {
+    background-color: #1E1E1E;
+}
+
+.rating-section {
+    display: flex;
+    align-items: center;
+}
+
+.card-title {
+    /* display: flex; */
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    text-transform: uppercase;
+    /* overflow: hidden;
+        color: #F8F8F8;
+        text-overflow: ellipsis;
+        whitespace: nowrap; */
+}
+.card-text {
+    margin-bottom: 16px;
+    height: 32px;
+    overflow: hidden;
+        color: #F8F8F8;
+        text-overflow: ellipsis;
+        whitespace: nowrap;
+
+}
+
+.xzxzxz {
+}
+
+
+@media screen and (min-width: 768px) {
+    .cards-list {
+        gap: 16px;
+        row-gap: 16px;
+    }
+    .card {
+         width: 240px;
+        height: 264px; 
+        /* flex-basis: calc((100% - 16px) / 2); */
+    }
+    .card-info {
+        height: 264px;
+    }
+}
+
+
+@media screen and (min-width:1280px ) {
+    .cards-list {
+        row-gap: 32px;
+    }
+    .card {
+        width: 250px;
+        /* flex-basis: calc((100% - 32px) / 3); */
+        height: 287px;
+    }
+    .card-info {
+        height: 287px;
+    }
+}
