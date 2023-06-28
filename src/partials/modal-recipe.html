@@ -1,7 +1,11 @@
 <!-- modal recipe -->
-<section class="backdrop is-hidden" data-modal>
-  <div class="modal" id="modal">
-    <button type="button" class="modal__close js-close-modal" data-modal-close>
+<section class="backdrop" data-modal-reciepe>
+  <div class="modal_reciepe" id="modal">
+    <button
+      type="button"
+      class="modal__close js-close-modal"
+      data-modal-close-btn
+    >
       <svg class="modal_x" width="20" height="20">
         <use href="/src/images/svg-sprite.svg#icon-black-x"></use>
       </svg>
@@ -34,7 +38,7 @@
           <div id="time"></div>
         </div>
         <ul class="ingredients" id="ingredients"></ul>
-        <button type="button" class="load-more-btn">Load more</button>
+        <!-- <button type="button" class="load-more-btn">Load more</button> -->
       </div>
     </div>
 

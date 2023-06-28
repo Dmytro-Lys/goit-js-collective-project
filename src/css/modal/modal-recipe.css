@@ -1,12 +1,12 @@
-.modal{
+.modal_reciepe{
 outline: 1px solid tomato;
 
 min-width: 320px;
-min-height: 585px;
- position: absolute; 
-/* top: 0; */
-left: 50%;
-transform: translate(-50%, -50%); 
+    min-height: 586px;
+    position: absolute;
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
 
 border-radius: 15px;
 background: #FFF;
@@ -16,9 +16,9 @@ padding-bottom: 40px;
 padding-right: 20px;
 }
 @media screen and (min-width: 768px){
-.modal{
+.modal_reciepe{
 width: 685px;
-    height: 681px;
+    height: auto;
     padding-top: 32px;
         padding-left: 32px;
         padding-bottom: 32px;
@@ -26,23 +26,10 @@ width: 685px;
 }
  .main-info{
     display: flex;
+    margin-bottom: 24px;
  }
 }
-/* .backdrop{
-position: fixed;
-top: 0;
-left: 0;
-z-index: 100;
-width: 100%;
-height: 100%;
-background-color: rgba(46,47,66,0.4);
-transition: opacity var(--trans-hv),visibility var(--trans-hv);
-}
-.backdrop.is-hidden{
-opacity:0;
-visibility: hidden;
-pointer-event:none;
-} */
+
 
 .modal__close{
     width: 20px;
@@ -74,6 +61,7 @@ margin-bottom: 20px;
     margin-right: 32px;
     width: 332px;
         height: 300px;
+        margin-bottom: 0;
 }
 }
 .video{
@@ -129,15 +117,19 @@ align-items: center;
 padding-bottom: 40px;
 
 }
-@media screen and (min-width: 768px){
+ @media screen and (min-width: 768px){
 .ingredients{
-    width: 238px;
-   ;
-}
-}
+overflow-x: hidden;
+overflow-y: scroll;
+    height: 204px;
+    padding-right: 0px; 
+   
+ }
+}  
 .ingredient{
     border-bottom:1px solid #0505051A;
     margin-bottom: 14px;
+    padding-right: 20px;
 }
 
 .ingredient-name{
@@ -161,24 +153,7 @@ padding-bottom: 40px;
     padding-bottom: 6px;
     }
 
-        .load-more-btn{
-            display: none;
-        }
-@media screen and (min-width: 768px){
-.load-more-btn{
-    display: block;
-    justify-content: center;
-        padding: 8px 16px;
-        border: 1px solid var(--lt-green);
-        background-color: transparent;
-        border-radius: 15px;
-        color: var(--main-cl);
-        font-weight: 500;
-        font-size: 14px;
-        cursor: pointer;
-        margin: 0;
-}
-}
+    
 
 /* tags */
 .tags{
@@ -190,7 +165,7 @@ padding-bottom: 40px;
 
 @media screen and (min-width: 768px){
 .tags{
-padding-bottom: 36px;
+padding-bottom: 32px;
 }
 }
 .tags-name{
