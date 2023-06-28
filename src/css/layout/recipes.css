@@ -1,0 +1,29 @@
+.cards-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+
+
+
+.card {
+    color: #F8F8F8;
+    border-radius: 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    flex-basis: calc((100% - 32px) / 3);
+    height: 287px;
+    width: 250px;
+}
+
+.heart-svg {
+    height: 10px;
+    width: 10px;
+}
+
+.rating-and-btn {
+    display: flex;
+}
+

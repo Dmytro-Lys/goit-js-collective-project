@@ -1,17 +1,42 @@
-const ellipseIcon = document.querySelector('.ellipse-icon');
-const rectangleIcon = document.querySelector('.rectangle-icon');
-const buttonRange = document.querySelector('.btn-range');
+const buttonRange = document.querySelectorAll('.btn-range');
 
-buttonRange.addEventListener('click', moveRange);
+const isMovedRight = localStorage.getItem('isMovedRight') === 'true';
+setRangeState(isMovedRight);
 
-function moveRange() {
-  const isMovedRight = ellipseIcon.classList.contains('move-right');
+for (const button of buttonRange) {
+  button.addEventListener('click', toggleRangeState);
+}
 
-  if (isMovedRight) {
-    ellipseIcon.classList.remove('move-right');
-    ellipseIcon.classList.add('move-left');
-  } else {
-    ellipseIcon.classList.remove('move-left');
-    ellipseIcon.classList.add('move-right');
+const currentTheme = localStorage.getItem('theme');
+setTheme(currentTheme);
+
+function toggleRangeState() {
+  const isMovedRight = localStorage.getItem('isMovedRight') === 'true';
+  const newRangeState = !isMovedRight;
+  localStorage.setItem('isMovedRight', newRangeState);
+  setRangeState(newRangeState);
+  setTheme(newRangeState ? 'dark' : 'light');
+}
+
+function setRangeState(isMovedRight) {
+  const ellipseIcons = document.querySelectorAll('.ellipse-icon');
+  for (const ellipseIcon of ellipseIcons) {
+    isMovedRight
+      ? ellipseIcon.classList.add('move-right')
+      : ellipseIcon.classList.remove('move-right');
   }
 }
+
+function setTheme(theme) {
+  if (theme === 'dark') {
+    localStorage.setItem('theme', 'dark');
+    document.body.classList.add('dark-theme');
+  } else {
+    localStorage.setItem('theme', 'light');
+    document.body.classList.remove('dark-theme');
+  }
+}
+
+localStorage.getItem('isMovedRight') ||
+  localStorage.setItem('isMovedRight', 'false');
+localStorage.getItem('theme') || localStorage.setItem('theme', 'light');
