@@ -1,120 +1,131 @@
 .cards-list {
-    display: flex;
-    flex-wrap: wrap;
-    
-    row-gap: 24px;
-    justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 335px;
+  row-gap: 24px;
+  justify-content: center;
 }
 
+@media screen and (min-width: 768px) {
+  .cards-list {
+    max-width: 496px;
+    gap: 16px;
+  }
+}
 
-
+@media screen and (min-width: 1280px) {
+  .cards-list {
+    max-width: 782px;
+    row-gap: 32px;
+    column-gap: 16px;
+  }
+}
 
 .card {
-    color: #F8F8F8;
-    border-radius: 15px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 335px;
-    width: 335px;
+  color: #f8f8f8;
+  border-radius: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 335px;
+  width: 335px;
 }
 .card-info {
-    height: 335px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 16px;
-    /* padding-top: auto; */
+  height: 335px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+  /* padding-top: auto; */
 }
 .heart-svg {
-    display: flex;
-    margin-left: auto;
-    height: 22px;
-    width: 22px;
-    /* margin-bottom: 176px; */
+  display: flex;
+  margin-left: auto;
+  height: 22px;
+  width: 22px;
+  /* margin-bottom: 176px; */
 }
 
 .rating-and-btn {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 .stars-icons {
-    display: flex;
+  display: flex;
 }
 
 .see-recipe-btn {
-    background-color: var(--lt-green);
-    border: 1px solid #9BB537;
-    border-radius: 8px;
-    color: var(--back-cl);
-    padding: 8px 14px;
-    font-weight: 500;
-    font-size: 12px;
-    transition: var(--trans-hv);
+  background-color: var(--lt-green);
+  border: 1px solid #9bb537;
+  border-radius: 8px;
+  color: var(--back-cl);
+  padding: 8px 14px;
+  font-weight: 500;
+  font-size: 12px;
+  transition: var(--trans-hv);
 }
 .see-recipe-btn:hover {
-    background-color: #1E1E1E;
+  background-color: #1e1e1e;
 }
 
 .rating-section {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .card-title {
-    /* display: flex; */
-    margin-bottom: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 18px;
-    text-transform: uppercase;
-    /* overflow: hidden;
+  /* display: flex; */
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 18px;
+  text-transform: uppercase;
+  /* overflow: hidden;
         color: #F8F8F8;
         text-overflow: ellipsis;
         whitespace: nowrap; */
 }
 .card-text {
-    margin-bottom: 16px;
-    height: 32px;
-    overflow: hidden;
-        color: #F8F8F8;
-        text-overflow: ellipsis;
-        whitespace: nowrap;
-        font-size: 12px;
-        line-height: 16px;
-
+  margin-bottom: 16px;
+  height: 32px;
+  overflow: hidden;
+  color: #f8f8f8;
+  text-overflow: ellipsis;
+  whitespace: nowrap;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .xzxzxz {
 }
 
-
 @media screen and (min-width: 768px) {
-    .cards-list {
-        gap: 16px;
-        row-gap: 16px;
-    }
-    .card {
-         width: 240px;
-        height: 264px; 
-        /* flex-basis: calc((100% - 16px) / 2); */
-    }
-    .card-info {
-        height: 264px;
-    }
+  .cards-list {
+    gap: 16px;
+    row-gap: 16px;
+  }
+  .card {
+    width: 240px;
+    height: 264px;
+    /* flex-basis: calc((100% - 16px) / 2); */
+  }
+  .card-info {
+    height: 264px;
+  }
 }
 
-
-@media screen and (min-width:1280px ) {
-    .cards-list {
-        row-gap: 32px;
-    }
-    .card {
-        width: 250px;
-        /* flex-basis: calc((100% - 32px) / 3); */
-        height: 287px;
-    }
-    .card-info {
-        height: 287px;
-    }
+@media screen and (min-width: 1280px) {
+  .cards-list {
+    row-gap: 32px;
+  }
+  .card {
+    width: 250px;
+    /* flex-basis: calc((100% - 32px) / 3); */
+    height: 287px;
+  }
+  .card-info {
+    height: 287px;
+  }
 }

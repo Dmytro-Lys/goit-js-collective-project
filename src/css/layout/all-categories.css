@@ -39,6 +39,7 @@
 }
 
 .dishes {
+  display: block;
   border: none;
   background-color: transparent;
   color: rgba(5, 5, 5, 0.3);
@@ -56,31 +57,32 @@
 }
 
 .all-categories {
+  display: block;
   width: 272px;
   margin-top: 30px;
   margin-bottom: 64px;
-  margin-left: 20px;
-  margin-right: 20px;
+  /* margin-left: 20px;
+  margin-right: 20px; */
   padding-left: 0px;
 }
 
 @media screen and (min-width: 768px) {
   .all-categories {
     width: 82px;
-    margin-left: 32px;
-    margin-right: 32px;
+    /* margin-left: 32px;
+    margin-right: 32px; */
     padding-left: 0px;
-    padding-right: 58px;
+    /* padding-right: 58px; */
   }
 }
 
 @media screen and (min-width: 1280px) {
   .all-categories {
-    width: 141px;
-    margin-left: 100px;
-    margin-right: 32px;
+    width: 416px;
+    /* margin-left: 100px; */
+    /* margin-right: 32px; */
     padding-left: 0px;
-    padding-right: 117px;
+    /* padding-right: 117px; */
   }
 }
 
@@ -113,7 +115,8 @@
   align-items: flex-start;
   gap: 24px;
   margin-top: 30px;
-  padding-right: 150px;
+  width: 235px;
+  /* padding-right: 150px; */
 }
 
 @media screen and (min-width: 768px) {

@@ -1,6 +1,7 @@
 /* Container */
 
 .container-search-general {
+  /* position: relative; */
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
@@ -35,17 +36,17 @@
 
 @media screen and (min-width: 768px) {
   .container-search {
-    position: absolute;
+    /* position: absolute;
     top: 1000px;
-    left: 300px;
+    left: 300px; */
   }
 }
 @media screen and (min-width: 1200px) {
   .container-search {
     /* position: static; */
-    position: absolute;
+    /* position: absolute;
     top: 668px;
-    left: 416px;
+    left: 416px; */
   }
 }
 

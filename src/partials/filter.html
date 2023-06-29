@@ -1,38 +1,37 @@
 <section>
-  <ul class="container container-search-general"> 
+  <div class="container">
+    <ul class="container-search-general">
+      <li class="container-search">
+        <p class="paragraph-search">Search</p>
+        <input
+          id="search-input"
+          class="search-input"
+          type="text"
+          placeholder="Enter Text"
+        />
+        <svg class="svg-input" width="18" height="18">
+          <use href="./favicon/favicon.svg#icon-search"></use>
+        </svg>
+      </li>
 
+      <li class="container-time invisible">
+        <p class="paragraph-time">Time</p>
+        <select class="select-time" name="time" id="time"></select>
+      </li>
 
+      <li class="container-area invisible">
+        <p class="paragraph-area">Area</p>
+        <select class="select-area" name="area" id="area"></select>
+      </li>
 
-    <li class="container-search">
-      <p class="paragraph-search">
-        Search
-      </p>
-      <input id="search-input" class="search-input" type="text" placeholder="Enter Text">
-      <svg class="svg-input" width="18" height="18">
-        <use href="./favicon/favicon.svg#icon-search"></use>
-      </svg>
-    </li>
-
-   <li class="container-time invisible">
-     <p class="paragraph-time">
-       Time
-      </p>
-      <select class="select-time" name="time" id="time"></select>
-    </li>
-
-   <li class="container-area invisible">
-    <p class="paragraph-area">
-       Area
-      </p>
-      <select class="select-area" name="area" id="area"></select>
-    </li>
-
-    <li class="container-ingredients invisible">
-       <p class="paragraph-ingredients">
-        Ingredients
-      </p>
-      <select class="select-ingredients" name="ingredients" id="ingredients"></select>
-    </li>
-
-</ul>
+      <li class="container-ingredients invisible">
+        <p class="paragraph-ingredients">Ingredients</p>
+        <select
+          class="select-ingredients"
+          name="ingredients"
+          id="ingredients"
+        ></select>
+      </li>
+    </ul>
+  </div>
 </section>
