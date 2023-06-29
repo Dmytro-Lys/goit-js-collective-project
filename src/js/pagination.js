@@ -1,6 +1,6 @@
 import { event } from "jquery"
 import { getAllData, getFilterRecipes, getRecipe, setRecipeRating, createOrder } from './service/api'
-import { renderCards } from "./recipes";
+import { paintStarts, renderCards } from "./recipes";
 const _ = require('lodash');
 
 
@@ -15,7 +15,8 @@ const refs = {
     bigRightBtn: document.querySelector('.big-rigth-skip'),
     midBtns: document.querySelector('.mid-btns'),
     leftBtns: document.querySelector('.left-btns'),
-    rightBtns: document.querySelector('.right-btns')
+    rightBtns: document.querySelector('.right-btns'),
+    pagination: document.querySelector('.pagination')
 }
 
 const OPTIONS = {
@@ -186,17 +187,17 @@ function blockLeftClear() {
 
 function checkResol() {
     if (screen.width >= 1280) {
-        console.log('1280')
+        // console.log('1280')
         OPTIONS.limit = 9;
         return
     }
     if (screen.width >= 768 && screen.width < 1280) {
-        console.log('800')
+        // console.log('800')
         OPTIONS.limit = 8;
         return
     }
     if (screen.width >= 375 && screen.width < 768) {
-        console.log('400')
+        // console.log('400')
         OPTIONS.limit = 6;
         return
     }
@@ -206,13 +207,20 @@ function allCategoriesSearch({category, title}) {
     OPTIONS.category = category;
     OPTIONS.title = title;
     refs.currentPage.textContent = '1';
-    setOptions()
     getFilterRecipes(OPTIONS).then(respone => {
     // console.log(respone)
     maxPages = respone.totalPages;
-    renderCards(respone.results)
-})
+        renderCards(respone.results)
+        if (respone.totalPages == 1) {
+            refs.pagination.style.display = 'none';
+            return
+        }
+    })
+    refs.pagination.style.display = 'flex';
+    setOptions()
 }
+
+
 
 
 
@@ -223,6 +231,7 @@ getFilterRecipes({
     // console.log(respone)
     maxPages = respone.totalPages;
     renderCards(respone.results)
+    // paintStarts(5)
 })
 
 export {allCategoriesSearch}
