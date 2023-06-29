@@ -1,3 +1,7 @@
+.render-population {
+  display: flex;
+  flex-direction: column;
+}
 .cards-list {
   margin-left: auto;
   margin-right: auto;
@@ -11,7 +15,13 @@
 @media screen and (min-width: 768px) {
   .cards-list {
     max-width: 496px;
-    gap: 16px;
+    gap: 8px;
+  }
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    width: 176px;
+    /* margin-right: 64px; */
   }
 }
 
@@ -20,9 +30,12 @@
     max-width: 782px;
     row-gap: 32px;
     column-gap: 16px;
+    margin-bottom: 64px;
   }
 }
-
+.left-side {
+  margin-right: 110px;
+}
 .card {
   color: #f8f8f8;
   border-radius: 15px;

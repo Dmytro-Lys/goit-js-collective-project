@@ -1,68 +1,67 @@
 .pagination {
-    display: flex;
-    justify-content: center;
-    gap: 14px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
 }
 
 .mid-btns {
-    display: flex;
-    gap: 8px;
+  display: flex;
+  gap: 8px;
 }
 .left-btns {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
 }
 .right-btns {
-    display: flex;
-    gap: 4px;
+  display: flex;
+  gap: 4px;
 }
 .last-option-page {
-    display: none;
+  display: none;
 }
 
 button.current-page {
-    border: 0px;
-    background-color: var(--lt-green);
+  border: 0px;
+  background-color: var(--lt-green);
 }
 .pagination-btn {
-    font-weight: 600;
-    height: 40px;
-    width: 40px;
-    border: 1px solid rgba(5, 5, 5, 0.3);
-    border-radius: 50%;
-    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+  height: 40px;
+  width: 40px;
+  border: 1px solid rgba(5, 5, 5, 0.3);
+  border-radius: 50%;
+  transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 .pagination-btn:hover {
-    background-color: #1E1E1E;
-    color: var(--back-cl);
-    
-
+  background-color: #1e1e1e;
+  color: var(--back-cl);
 }
 
 .side-btn:disabled {
-    pointer-events: none;
-    background-color: var(--main-cl);
-    color: rgba(248, 248, 248, 0.5);
+  pointer-events: none;
+  background-color: var(--main-cl);
+  color: rgba(248, 248, 248, 0.5);
 }
 
 @media screen and (min-width: 768px) {
-    .pagination {
-        gap: 24px;
-    }
-    .pagination-btn {
-        height: 44px;
-        width: 44px;
-    }
-    .last-option-page {
-        display: block;
-    }
-    .right-btns {
-        gap: 8px;
-    }
-    .mid-btns {
-        gap: 10px;
-    }
-    .left-btns {
-        gap: 8px;
-    }
+  .pagination {
+    gap: 24px;
+    padding-bottom: 100px;
+  }
+  .pagination-btn {
+    height: 44px;
+    width: 44px;
+  }
+  .last-option-page {
+    display: block;
+  }
+  .right-btns {
+    gap: 8px;
+  }
+  .mid-btns {
+    gap: 10px;
+  }
+  .left-btns {
+    gap: 8px;
+  }
 }
