@@ -1,5 +1,5 @@
 .dark-theme {
-  background-color: #161616;
+  background-color: var(--dark-theme-bgc);
   color: var(--white);
 }
 .dark-theme .logo {
@@ -9,7 +9,7 @@
   stroke: var(--white);
 }
 .dark-theme .icon-basket {
-  fill: #161616;
+  fill: var(--dark-theme-bgc);
   stroke: var(--white);
 }
 .dark-theme .menu {
@@ -32,13 +32,22 @@
   background-color: var(--main-cl);
 }
 .dark-theme .all-ctg-btn,
+.dark-theme .search-input::placeholder,
+.dark-theme .paragraph-search,
 .dark-theme .navigation-list-favorites,
 .dark-theme .ingredient-measure,
+.dark-theme .modal-form-field-desc,
 .dark-theme #rating,
 .dark-theme #time {
   color: #ffffff80;
 }
-.dark-theme .all-ctg-btn {
+
+.dark-theme .all-ctg-btn:hover,
+.dark-theme .all-ctg-btn:focus {
+  color: var(--back-cl);
+}
+.dark-theme .all-ctg-btn,
+.dark-theme .search-input {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 .dark-theme .tags-name {
@@ -59,9 +68,6 @@
   background-color: var(--main-cl);
 }
 
-.dark-theme .modal-form-field-desc {
-  color: #ffffff80;
-}
 .dark-theme .modal-form-input,
 .dark-theme .modal-form-comment {
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -72,7 +78,7 @@
   color: var(--white);
 }
 .dark-theme .hero-btn {
-  background-color: #161616;
+  background-color: var(--dark-theme-bgc);
   border-color: #9bb537;
   color: var(--white);
 }
@@ -91,7 +97,7 @@
 .dark-theme .current-page,
 .dark-theme .mid-skip,
 .dark-theme .next-page {
-  background-color: #161616;
+  background-color: var(--dark-theme-bgc);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--white);
 }
@@ -100,4 +106,28 @@
 .dark-theme .big-rigth-skip {
   background-color: var(--lt-green);
   color: var(--main-cl);
+}
+.dark-theme .order-modal-close-icon {
+  fill: var(--white);
+}
+.dark-theme .search-input {
+  background-color: var(--dark-theme-bgc);
+  outline: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+.dark-theme .svg-input {
+  stroke: #ffffff80;
+}
+.dark-theme .hero-btn:hover,
+.dark-theme .hero-btn:focus {
+  background-color: var(--lt-green);
+  color: var(--back-cl);
+}
+
+.dark-theme .search-input:hover + .svg-input {
+  stroke: var(--lt-green);
+}
+.dark-theme .masterclass,
+.dark-theme .cook-hero-div {
+  border: 1px solid var(--main-cl);
 }
