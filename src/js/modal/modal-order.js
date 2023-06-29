@@ -10,6 +10,13 @@
   
   function toggleModal(e) {
     e.preventDefault();
+    toggleBodyScroll();
       refs.modal.classList.toggle("is-hidden");
-    }
+  }
+  function toggleBodyScroll() {
+     if (document.body.style.overflow === "hidden")
+    { document.body.style.overflow = "visible" }
+    else { document.body.style.overflow = "hidden" };
+  }
   })();
+  
