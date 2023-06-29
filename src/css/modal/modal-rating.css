@@ -28,6 +28,20 @@
     text-align:left;
     margin-bottom: 5px;
   }
-  .rating-modal-form-icon {
+  /*.rating-modal-form-icon {
      fill: rgba(217, 217, 217, 1);
-  }
+  }*/
+  .rating-modal-form-icon {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.rating-modal-form-icon svg {
+    fill: rgba(217, 217, 217, 1);;
+    width: 18px;
+    height: 24px;
+}
+
+.rating-modal-form-icon.active svg {
+    fill: gold;
+}
