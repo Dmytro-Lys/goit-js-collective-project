@@ -2,7 +2,7 @@
   "name": "goit-js-collective-project",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://dmytro-lys.github.io/goit-js-collective-project",
+  "homepage": "https://Dmytro-Lys.github.io/goit-js-collective-project",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-js-collective-project/"
