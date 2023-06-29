@@ -1,4 +1,5 @@
-import { saveData, loadData,  addFavorit, loadFavorit, loadFavoritCategories, loadFavoritFilter } from './service/localstorage.js'
+const Pagination = require('tui-pagination');
+import { saveData, loadData, addFavorit, loadFavorit, loadFavoritCategories, loadFavoritFilter } from './service/localstorage.js'
 
 const categoryBtns = document.querySelectorAll('.category-btn');
 const heroImage = document.querySelector('.favorites-hero');
@@ -6,6 +7,7 @@ const categoriesDiv = document.querySelector('.categories');
 const favBtnList = document.querySelector('.categories-list');
 const noFavoritesEl = document.querySelector('.no-favorites');
 const favCardsList = document.querySelector('.favorites-cards');
+const pagination = document.querySelector('.pagination');
 
 
 window.addEventListener('DOMContentLoaded', hideCategories);
@@ -69,24 +71,85 @@ const cardData = loadFavorit();
 
 
 function cardsMarkup(card) {
-  const { title, description, preview, rating } = card;
-
-  return `
-    <li class="card_favorites" style="background-image: url(${preview});">
-      <svg class="heart-svg" width="22" height="22">
-        <use href="/src/images/svg-sprite.svg#card-heart"></use>
-      </svg>
-      <h2 class="card-title">${title}</h2>
-      <p class="card-text">${description}</p>
-      <div class="rating-and-btn">
-        <p class="rating">${rating}</p>
-        <button class="see-recipe-btn">See recipe</button>
-      </div>
-    </li>
-  `;
+  return `<li class="card" style="background-image: linear-gradient(
+    rgba(5, 5, 5, 0.6),
+    rgba(5, 5, 5, 0)
+    ),
+    url(${card.preview});">
+    <div class="card-info">
+        <svg class="heart-svg" width="22" height="22">
+            <use href="/src/images/svg-sprite.svg#card-heart"></use>
+        </svg>
+        <div class="xzxzxz"> 
+            <h2 class="card-title">${card.title}</h2>
+            <p class="card-text">${card.description}</p>
+            <div class="rating-and-btn">
+                <div class="rating-section">
+                    <p class="rating">${card.rating}</p>
+                    <div class="stars-icons">
+                        <svg class="star-svg" width="18" height="18">
+                            <use href="/src/images/svg-sprite.svg#card-heart"></use>
+                        </svg>
+            
+                        <svg class="star-svg" width="18" height="18">
+                            <use href="/src/images/svg-sprite.svg#card-heart"></use>
+                        </svg>
+            
+                        <svg class="star-svg" width="18" height="18">
+                            <use href="/src/images/svg-sprite.svg#card-heart"></use>
+                        </svg>
+            
+                        <svg class="star-svg" width="18" height="18">
+                            <use href="/src/images/svg-sprite.svg#card-heart"></use>
+                        </svg>
+            
+                        <svg class="star-svg" width="18" height="18">
+                            <use href="/src/images/svg-sprite.svg#card-heart"></use>
+                        </svg>
+                    </div>
+            
+                </div>
+                <button class="see-recipe-btn" data-id="${card._id}">See recipe</button>
+            </div>
+        </div>
+    </div>
+</li>`;
 }
-
+function checkResol() {
+  if (cardData.length < 9 || cardData.length < 12) {
+    cardRender(cardData.length)
+    pagination.style.display="none";
+    return;
+  }
+    if (screen.width >= 1280) {
+        // console.log('1280')
+      cardRender(12);
+      pagination.style.display="flex";
+        return
+    }
+    if (screen.width >= 768 && screen.width < 1280) {
+        // console.log('800')
+      cardRender(12);
+      pagination.style.display = "flex";
+        return
+    }
+    if (screen.width >= 375 && screen.width < 768) {
+        // console.log('400')
+      cardRender(9);
+      pagination.style.display = "flex";
+        return
+    }
+}
 // cardsMarkup();
+let acum = '';
+function cardRender(limit) {
+  for (let i = 0; i < limit; i++) {
+    acum += cardsMarkup(cardData[i]);
+    console.log(acum);
+  }
+  favCardsList.insertAdjacentHTML('beforeend', acum);
+  acum = '';
+}
+checkResol();
 
-const renderedCards = cardData.map(cardsMarkup).join('');
-favCardsList.insertAdjacentHTML('beforeend', renderedCards);
+
