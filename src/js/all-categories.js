@@ -1,6 +1,6 @@
 // // import { remove } from 'lodash';
 import { getAllData,getFilterRecipes } from './service/api.js';
-
+import { allCategoriesSearch } from './pagination.js';
 
 const refs = {
   container: document.getElementById('all-categories'),
@@ -42,7 +42,10 @@ function onCategory(e) {
         refs.toClearBtn.classList.remove("all-ctg-btn-active"); 
        const oldActive = refs.list.querySelector(".dishes-active");
        if (oldActive) oldActive.classList.remove("dishes-active");
-        e.target.classList.add("dishes-active");
+      e.target.classList.add("dishes-active");
+      allCategoriesSearch({
+        category: e.target.textContent
+      })
     }
 }
 
