@@ -96,10 +96,27 @@
 
 .dark-theme .current-page,
 .dark-theme .mid-skip,
-.dark-theme .next-page {
+.dark-theme .next-page,
+.dark-theme .last-option-page {
   background-color: var(--dark-theme-bgc);
   border: 1px solid rgba(255, 255, 255, 0.3);
   color: var(--white);
+}
+
+.dark-theme .side-btn:enabled {
+  background-color: var(--lt-green);
+}
+.dark-theme .lil-left-skip:hover {
+  background-color: var(--main-cl);
+  color: #f8f8f880;
+}
+.dark-theme .pagination-btn:hover {
+  background-color: var(--main-cl);
+  color: #f8f8f880;
+}
+
+.dark-theme .current-page {
+  background-color: var(--lt-green);
 }
 
 .dark-theme .lil-rigth-skip,
