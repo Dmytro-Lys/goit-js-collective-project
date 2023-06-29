@@ -1,5 +1,8 @@
 /* Container */
-
+.filter-section {
+  display: flex;
+  flex-direction: row;
+}
 .container-search-general {
   /* position: relative; */
   display: flex;
@@ -15,6 +18,7 @@
     align-items: flex-start;
     gap: 16px 47px;
     flex-wrap: wrap;
+
     /* top: 358px;
         left: 300px; */
   }

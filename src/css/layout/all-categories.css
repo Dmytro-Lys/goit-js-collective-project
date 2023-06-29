@@ -27,6 +27,11 @@
     height: 435px;
     padding-right: 0px;
   }
+  .all-categories {
+    display: flex;
+    flex-direction: row;
+    margin-right: 32px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
