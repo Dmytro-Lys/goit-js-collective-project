@@ -2,7 +2,7 @@
 outline: 1px solid tomato;
 
 min-width: 320px;
-    min-height: 586px;
+    height: auto;
     position: absolute;
     top: 50%; 
     left: 50%;
@@ -18,15 +18,17 @@ padding-right: 20px;
 @media screen and (min-width: 768px){
 .modal_reciepe{
 width: 685px;
-    height: auto;
-    padding-top: 32px;
-        padding-left: 32px;
-        padding-bottom: 32px;
-        padding-right: 32px;
+height: 681px;
+padding-top: 32px;
+padding-left: 32px;
+padding-bottom: 32px;
+padding-right: 32px;
 }
+
  .main-info{
     display: flex;
     margin-bottom: 24px;
+    height: 300px;
  }
 }
 
@@ -157,9 +159,9 @@ overflow-y: scroll;
 
 /* tags */
 .tags{
-    display: flex;
+    display:inline-flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 17px;
     padding-bottom: 24px;
     }
 
@@ -187,7 +189,10 @@ padding-bottom: 32px;
 
 .instructions{
     width: 295px;
+height: auto;
 
+
+    padding-right: 0px;
     color: rgba(5, 5, 5, 0.80);
     font-weight: 300;
         font-size: 14px;
@@ -195,10 +200,17 @@ padding-bottom: 32px;
 }
 @media screen and (min-width: 768px){
 .instructions{
-width: 621px;
+width: 625px;
+height: 162px;
 margin-bottom: 32px;
+
+    
+    padding-right: 0px;
+   
 }
 }
+
+    
 
 /* buttons */
 .modal-btn{
