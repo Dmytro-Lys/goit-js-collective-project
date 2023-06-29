@@ -9,7 +9,7 @@ body {
   flex-direction: column;
 }
 .hero-title {
-  padding-bottom: 14px;
+  margin-bottom: 14px;
   width: 335px;
   font-size: 26px;
   line-height: 18px;
@@ -27,7 +27,7 @@ body {
   font-size: 14px;
   line-height: 18px;
   width: 335px;
-  padding-bottom: 28px;
+  margin-bottom: 28px;
   font-family: 'Inter', sans-serif;
 }
 .hero-btn {
@@ -56,7 +56,7 @@ body {
   .hero-title {
     width: 446px;
     font-size: 36px;
-    padding-bottom: 16px;
+    margin-bottom: 16px;
   }
   .hero-txt {
     width: 408px;
@@ -83,6 +83,7 @@ body {
 /* SLIDER */
 .hero-slider-item {
   gap: 8px;
+  overflow: hidden;
 }
 .masterclass {
   position: relative;
@@ -143,13 +144,13 @@ body {
   background: #050505;
 }
 .cook-image-hero {
-  width: 457px;
+  max-width: auto;
   height: 436px;
   object-fit: cover;
 }
 /* for slick */
 .draggable {
-  width: 496px;
+  width: 100%;
   height: 302px;
 }
 @media screen and (min-width: 768px) {
@@ -159,6 +160,7 @@ body {
   }
   .hero-slider-item {
     gap: 16px;
+    overflow: hidden;
   }
   .hero-image {
     width: 182px;
@@ -171,12 +173,14 @@ body {
 }
 @media screen and (max-width: 767px) {
   .hero-slider-item {
-    width: 122px;
+    width: 100%;
     height: 305px;
   }
   .cook-hero-div {
-    /* width: 200px; */
+    display: block;
+    width: 200px;
     height: 302px;
+    overflow: hidden;
   }
   .topic-name-hero {
     font-size: 10px;
