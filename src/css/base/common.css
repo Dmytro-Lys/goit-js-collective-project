@@ -15,7 +15,6 @@
   --star-cl: #eea10c;
   --trans-hv: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   --white: #ffffff;
-  --dark-theme-bgc: #161616;
 }
 
 /* Reset styles */
@@ -69,7 +68,7 @@ body {
 /* container */
 .container {
   min-width: 320px;
-  max-width: 480px;
+  max-width: 375px;
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;

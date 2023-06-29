@@ -18,6 +18,7 @@ const refs = {
   instructions: document.getElementById('instructions'),
   closeModalBtn: document.querySelector('[data-modal-close-btn]'),
   addButton: document.getElementById('add-favorite'),
+  rateButton: document.getElementById('rate'),
   list: document.querySelector('.cards-list'),
 };
 
@@ -36,7 +37,6 @@ async function getReciepeById(id) {
   refs.tags.innerHTML = createTagList(reciepe.tags);
   refs.instructions.textContent = reciepe.instructions;
   toggleModal();
-  console.log(reciepe);
 }
 
 function createIngredientList(ingredientsArray) {
@@ -69,8 +69,9 @@ function createIngredientMedia(youtubeLink, imageLink, alt) {
     )}"></iframe>`;
   }
 }
-const keyDown = e => {
-  if (e.key === 'Escape') {
+
+function keyDown  (e) {
+  if (e.key === 'Escape' && e.target !== refs.rateButton) {
     document.removeEventListener('keydown', keyDown);
     toggleModal();
   }
@@ -100,7 +101,6 @@ async function fetchRecipes() {
     const reciepe = await getRecipe(id);
     const recipeData = getDataRecipe(reciepe);
     addFavorit(recipeData);
-    console.log(loadFavorit());
   } catch (err) {
     console.log(err);
   }
@@ -118,6 +118,7 @@ function toggleBodyScroll() {
     document.body.style.overflow = 'hidden';
   }
 }
+
 function closeModal(event) {
   if (event.target.classList.contains('backdrop')) {
     event.target.removeEventListener('click', closeModal);
@@ -133,6 +134,7 @@ function checkFavorit(id) {
     refs.addButton.textContent = 'Add to favorite';
   }
 }
+
 function onFavorit() {
   if (refs.addButton.textContent === 'Add to favorite') {
     fetchRecipes();
