@@ -37,15 +37,20 @@ hideHeroImageLess768();
 window.addEventListener("load", hideHeroImageLess768);
 window.addEventListener("resize", hideHeroImageLess768);
 
-function categoriesMarkup() {
-    const favCategories = loadFavoritCategories();
-    
-    favCategories.forEach(function(name) {
+async function categoriesMarkup() {
+  try {
+    const favCategories = await loadFavoritCategories();
+    if (favCategories) {
+      favCategories.forEach(name => {
         const buttonEls = '<li><button class="category-btn"> ' + name + '</button></li>';
-      favBtnList.insertAdjacentHTML('beforeend', buttonEls);
-    }); 
+        favBtnList.insertAdjacentHTML('beforeend', buttonEls);
+      });
+    }
+  } catch (error) {
+    console.error(error.message);
+  }
 }
-
+// console.log(loadFavoritCategories())
 categoriesMarkup();
 
 function hideDefaultPageContent() {
@@ -57,6 +62,7 @@ function hideDefaultPageContent() {
         noFavoritesEl.style.display = "flex" 
     }
 }
+
 hideDefaultPageContent();
 
 const cardData = loadFavorit();
@@ -80,7 +86,7 @@ function cardsMarkup(card) {
   `;
 }
 
-cardsMarkup();
+// cardsMarkup();
 
 const renderedCards = cardData.map(cardsMarkup).join('');
 favCardsList.insertAdjacentHTML('beforeend', renderedCards);
