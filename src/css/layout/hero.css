@@ -3,10 +3,11 @@ body {
 }
 /* LEFT SIDE */
 .hero-section {
-  margin-top: 20px;
+  padding-top: 20px;
   font-family: 'Inter', sans-serif;
   display: flex;
   flex-direction: column;
+  padding-bottom: 80px;
 }
 .hero-title {
   margin-bottom: 14px;

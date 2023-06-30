@@ -6,9 +6,11 @@
   width: 335px;
   height: 500px;
 }
+
 .filter-section {
   position: relative;
 }
+
 .div-population {
   position: absolute;
   bottom: 0;
@@ -19,9 +21,10 @@
   display: flex;
   flex-direction: column;
 }
+
 .container-search-general {
   /* position: relative; */
-  display: flex;
+  /* display: flex; */
   gap: 14px;
   flex-wrap: wrap;
   margin-bottom: 24px;
@@ -32,7 +35,7 @@
   .container-search-general {
     /* position: absolute; */
     min-width: 419px;
-    display: inline-flex;
+    /* display: inline-flex; */
     align-items: flex-start;
     /* gap: 16px 47px; */
 
@@ -42,21 +45,27 @@
     /* top: 358px;
         left: 300px; */
   }
+
   .filter-section {
     flex-direction: row;
   }
+
   .box {
     display: none;
   }
+
   .cards-list {
     display: flex;
   }
+
   .card {
     flex-basis: calc((100% - 16px) / 2);
   }
+
   .pagination {
     padding-top: 64px;
   }
+
   .div-population {
     position: static;
   }
@@ -64,7 +73,7 @@
 
 @media screen and (min-width: 1280px) {
   .container-search-general {
-    display: flex;
+    /* display: flex; */
     gap: 32px 16px;
     padding-bottom: 32px;
     /* position: absolute;
@@ -73,6 +82,7 @@
     flex-wrap: nowrap;
     /* margin-top: 52px; */
   }
+
   .card {
     flex-basis: calc((100% - 16px) / 3);
   }
@@ -87,6 +97,7 @@
     left: 300px; */
   }
 }
+
 @media screen and (min-width: 1200px) {
   .container-search {
     /* position: static; */
@@ -117,6 +128,12 @@
 }
 
 @media screen and (min-width: 768px) {
+  .search-input {
+    width: 278px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
   .search-input {
     width: 278px;
   }
@@ -173,11 +190,13 @@
     top: -1px;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .container-time {
     position: static;
   }
 }
+
 .paragraph-time {
   color: var(--inactive-el-cl);
   font-size: 14px;
@@ -216,6 +235,7 @@
     left: 31px;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .container-area {
     position: static;
@@ -261,6 +281,7 @@
     left: 190px;
   }
 }
+
 @media screen and (min-width: 1200px) {
   .container-ingredients {
     position: static;
