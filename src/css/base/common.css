@@ -75,7 +75,7 @@ body {
   margin-left: auto;
   margin-right: auto;
 
-  /* outline: 1px solid tomato; */
+  outline: 1px solid tomato;
 }
 @media screen and (min-width: 768px) {
   .container {
