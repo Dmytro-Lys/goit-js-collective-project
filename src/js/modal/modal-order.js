@@ -46,19 +46,27 @@ const refs = {
   }
 };
   
-async function sendForm(e) {
-  try {
-    e.preventDefault();
+// async function sendForm(e) {
+//   try {
+//     e.preventDefault();
 
-    const result = await createOrder(getArgs(e.currentTarget.elements))
-    if (!result) return Notiflix.Notify.failure("Send order failure");
-    Notiflix.Notify.success("Thank you for your rating");
+//     const result = await createOrder(getArgs(e.currentTarget.elements))
+//     if (!result) return Notiflix.Notify.failure("Send order failure");
+//     Notiflix.Notify.success("Thank you for your order");
+//     refs.form.removeEventListener("submit", sendForm)
+//     refs.form.reset();
+//     toggleModal();
+//    } catch (err) {
+//     onError(err);
+//   }
+// }
+
+function sendForm(e) {
+    e.preventDefault();
+    Notiflix.Notify.success("Thank you for your order");
     refs.form.removeEventListener("submit", sendForm)
     refs.form.reset();
     toggleModal();
-   } catch (err) {
-    onError(err);
-  }
 }
 
 function getArgs({ user_name, user_phone_number, user_email, user_comments }) {

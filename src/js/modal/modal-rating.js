@@ -51,9 +51,9 @@ function clearRating() {
     const id = refs.idButton.getAttribute('data-recipe-id');
     console.log(id);
     const result = await setRecipeRating(id, getArgs(e.currentTarget.elements))
-    console.log(result);
+    // console.log(result);
     if (!result) return Notiflix.Notify.failure("Send rating failure");
-    Notiflix.Notify.success(result);
+    Notiflix.Notify.success("Thank you for your rating");
     refs.form.removeEventListener("submit", sendForm)
     clearRating()
     refs.form.reset();
