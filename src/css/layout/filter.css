@@ -1,13 +1,15 @@
 /* Container */
 .filter-section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 }
 .container-search-general {
   /* position: relative; */
   display: flex;
   gap: 14px;
   flex-wrap: wrap;
+  margin-bottom: 24px;
+  justify-content: center;
 }
 
 @media screen and (min-width: 768px) {
@@ -18,9 +20,12 @@
     align-items: flex-start;
     gap: 16px 47px;
     flex-wrap: wrap;
-
+    margin-top: 75px;
     /* top: 358px;
         left: 300px; */
+  }
+  .filter-section {
+    flex-direction: row;
   }
 }
 
@@ -33,6 +38,7 @@
         top: 367px;
         left: 300px; */
     flex-wrap: nowrap;
+    /* margin-top: 52px; */
   }
 }
 
