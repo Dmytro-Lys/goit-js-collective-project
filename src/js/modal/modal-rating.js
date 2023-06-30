@@ -27,7 +27,11 @@ refs.form.addEventListener("submit", sendForm)
     toggleModal();
   }
   }
-
+  
+function clearRating() {
+  const ratingIcons = document.querySelectorAll('.rating-modal-form-icon');
+  ratingIcons.forEach(icon => icon.classList.remove('active'));
+}
   function toggleModal() {
       refs.modal.classList.toggle("is-hidden");
   }
@@ -37,7 +41,7 @@ refs.form.addEventListener("submit", sendForm)
      if (e.key === 'Escape') {
        document.removeEventListener('keydown', keyDownRate);
        e.target.blur(); 
-    toggleModal();
+       if (!refs.modal.classList.contains("is-hidden"))  refs.modal.classList.add("is-hidden");
      }
   };
   
@@ -51,6 +55,7 @@ refs.form.addEventListener("submit", sendForm)
     if (!result) return Notiflix.Notify.failure("Send rating failure");
     Notiflix.Notify.success(result);
     refs.form.removeEventListener("submit", sendForm)
+    clearRating()
     refs.form.reset();
     toggleModal();
    } catch (err) {
