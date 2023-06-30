@@ -20,12 +20,17 @@ const refs = {
   addButton: document.getElementById('add-favorite'),
   rateButton: document.getElementById('rate'),
   list: document.querySelector('.cards-list'),
+  stars: document.querySelectorAll('.icon-star')
 };
 
 async function getReciepeById(id) {
   const reciepe = await getRecipe(id);
   refs.addButton.setAttribute('data-recipe-id', id);
   refs.name.textContent = reciepe.title;
+  if (reciepe.rating > 5) {
+    reciepe.rating = 5;
+  }
+  
   refs.rating.textContent = reciepe.rating;
   refs.time.textContent = `${reciepe.time} min`;
   refs.media.innerHTML = createIngredientMedia(
@@ -37,6 +42,7 @@ async function getReciepeById(id) {
   refs.tags.innerHTML = createTagList(reciepe.tags);
   refs.instructions.textContent = reciepe.instructions;
   toggleModal();
+  goldStars(reciepe)
 }
 
 function createIngredientList(ingredientsArray) {
@@ -144,5 +150,16 @@ function onFavorit() {
     removeFromFavorite(id);
     console.log(loadFavorit());
     refs.addButton.textContent = 'Add to favorite';
+  }
+}
+
+
+function goldStars(recipe) {
+  for (let i = 0; i < 5; i++) {
+    if (i < recipe.rating) {
+      refs.stars[i].classList.add('gold-star')
+    } else {
+      refs.stars[i].classList.remove('gold-star')
+    }
   }
 }

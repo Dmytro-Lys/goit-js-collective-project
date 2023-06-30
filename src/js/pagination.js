@@ -238,13 +238,13 @@ function pageChange(page) {
     limit: OPTIONS.limit
 }).then(respone => {
     // console.log(respone)
-    respone.results.map(res => {
-        if (res.rating > 5) {
-            res.rating = 5;
-        } else {
-            res.rating = Math.round(res.rating);
-        }
-    })
+    // respone.results.map(res => {
+    //     if (res.rating > 5) {
+    //         res.rating = 5;
+    //     } else {
+    //         res.rating = Math.round(res.rating);
+    //     }
+    // })
     renderCards(respone.results)
 })
 }
@@ -257,11 +257,11 @@ getFilterRecipes({
     limit: OPTIONS.limit
 }).then(respone => {
     // console.log(respone)
-    respone.results.map(res => {
-        if (res.rating > 5) {
-            res.rating = 5;
-        }
-    })
+    // respone.results.map(res => {
+    //     if (res.rating > 5) {
+    //         res.rating = 5;
+    //     }
+    // })
     maxPages = respone.totalPages;
     renderCards(respone.results)
 })
