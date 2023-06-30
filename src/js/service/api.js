@@ -41,7 +41,7 @@ async function setRecipeRating(recipeId, data) {
 }
 
 async function createOrder(data) {
-    const url = `https://tasty-treats-backend.p.goit.global/api/orders/add`
+  const url = `https://tasty-treats-backend.p.goit.global/api/orders/add`
    
     // example data
 
