@@ -110,7 +110,9 @@
   }
 }
 
-
+/* .current {
+  color: var(--lt-green);
+} */
 
 .header-link {
   position: relative;
