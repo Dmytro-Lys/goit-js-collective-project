@@ -11,16 +11,16 @@ const refs = {
   modal: document.querySelector('[data-modal-reciepe]'),
   name: document.getElementById('name-reciepe'),
   rating: document.getElementById('rating'),
-  time: document.getElementById('time'),
+  time: document.getElementById('modal-time'),
   media: document.getElementById('media'),
-  ingredients: document.getElementById('ingredients'),
+  ingredients: document.getElementById('modal-ingredients'),
   tags: document.getElementById('tags'),
   instructions: document.getElementById('instructions'),
   closeModalBtn: document.querySelector('[data-modal-close-btn]'),
   addButton: document.getElementById('add-favorite'),
   rateButton: document.getElementById('rate'),
   list: document.querySelector('.cards-list'),
-  stars: document.querySelectorAll('.icon-star')
+  stars: document.querySelectorAll('.icon-star'),
 };
 
 async function getReciepeById(id) {
@@ -30,7 +30,7 @@ async function getReciepeById(id) {
   if (reciepe.rating > 5) {
     reciepe.rating = 5;
   }
-  
+
   refs.rating.textContent = reciepe.rating;
   refs.time.textContent = `${reciepe.time} min`;
   refs.media.innerHTML = createIngredientMedia(
@@ -42,7 +42,7 @@ async function getReciepeById(id) {
   refs.tags.innerHTML = createTagList(reciepe.tags);
   refs.instructions.textContent = reciepe.instructions;
   toggleModal();
-  goldStars(reciepe)
+  goldStars(reciepe);
 }
 
 function createIngredientList(ingredientsArray) {
@@ -153,13 +153,12 @@ function onFavorit() {
   }
 }
 
-
 function goldStars(recipe) {
   for (let i = 0; i < 5; i++) {
     if (i < recipe.rating) {
-      refs.stars[i].classList.add('gold-star')
+      refs.stars[i].classList.add('gold-star');
     } else {
-      refs.stars[i].classList.remove('gold-star')
+      refs.stars[i].classList.remove('gold-star');
     }
   }
 }

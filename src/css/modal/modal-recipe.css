@@ -2,7 +2,7 @@
 outline: 1px solid tomato;
 
 min-width: 320px;
-    height: auto;
+    height: 1171px;
     position: absolute;
     top: 50%; 
     left: 50%;
@@ -18,7 +18,7 @@ padding-right: 20px;
 @media screen and (min-width: 768px){
 .modal_reciepe{
 width: 685px;
-height: 681px;
+height: auto;
 padding-top: 32px;
 padding-left: 32px;
 padding-bottom: 32px;
@@ -90,6 +90,7 @@ width: 295px;
 }
 @media screen and (min-width: 768px){
 .name-reciepe{
+    width: 238px;
 padding-bottom: 16px;
 }
 }
@@ -117,15 +118,18 @@ align-items: center;
 
 /* ingredients */
 .ingredients{
-padding-bottom: 40px;
-
+margin-bottom: 40px;
+width: 295px;
+height: 224px;
+overflow-x: hidden;
+    overflow-y: scroll;
+padding-right: 0px;
 }
  @media screen and (min-width: 768px){
 .ingredients{
-overflow-x: hidden;
-overflow-y: scroll;
+    width: 258px;
     height: 204px;
-    padding-right: 0px; 
+
    
  }
 }  
@@ -204,7 +208,7 @@ overflow-y: scroll;
 }
 @media screen and (min-width: 768px){
 .instructions{
-max-width: 625px;
+width: 625px;
 height: 162px;
 margin-bottom: 32px;   
 }
