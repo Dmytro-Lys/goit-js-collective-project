@@ -1,5 +1,12 @@
 const Pagination = require('tui-pagination');
-import { saveData, loadData, addFavorit, loadFavorit, loadFavoritCategories, loadFavoritFilter } from './service/localstorage.js'
+import {
+  saveData,
+  loadData,
+  addFavorit,
+  loadFavorit,
+  loadFavoritCategories,
+  loadFavoritFilter,
+} from './service/localstorage.js';
 
 const categoryBtns = document.querySelectorAll('.category-btn');
 const heroImage = document.querySelector('.favorites-hero');
@@ -12,35 +19,33 @@ const noFavorits = document.querySelector(".no-favorites")
 const btnAllCatagory = document.querySelector(".btn-all-categories")
 
 
-
 window.addEventListener('DOMContentLoaded', hideCategories);
 
 function hideCategories() {
-    if (localStorage.length !== 0) {
-        return;
-    }
-    else {
-        categoryBtns.forEach(btn => {
-            btn.classList.add('invisible');
-        });
-    }
+  if (localStorage.length !== 0) {
+    return;
+  } else {
+    categoryBtns.forEach(btn => {
+      btn.classList.add('invisible');
+    });
+  }
 }
-// функция сверху не работает 
+// функция сверху не работает
 
 function hideHeroImageLess768() {
-    const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-    if (viewportWidth < 768) {
-        heroImage.classList.add('invisible');
-    }
-    else {
-        heroImage.classList.remove('invisible');
-    }
+  const viewportWidth =
+    window.innerWidth || document.documentElement.clientWidth;
+  if (viewportWidth < 768) {
+    heroImage.classList.add('invisible');
+  } else {
+    heroImage.classList.remove('invisible');
+  }
 }
 hideCategories();
 hideHeroImageLess768();
 
-window.addEventListener("load", hideHeroImageLess768);
-window.addEventListener("resize", hideHeroImageLess768);
+window.addEventListener('load', hideHeroImageLess768);
+window.addEventListener('resize', hideHeroImageLess768);
 
 async function categoriesMarkup() {
   try {
@@ -49,7 +54,8 @@ async function categoriesMarkup() {
       btnAllCatagory.classList.toggle("invisible");
       noFavorits.classList.toggle("invisible");
       favCategories.forEach(name => {
-        const buttonEls = '<li><button class="category-btn"> ' + name + '</button></li>';
+        const buttonEls =
+          '<li><button class="category-btn"> ' + name + '</button></li>';
         favBtnList.insertAdjacentHTML('beforeend', buttonEls);
       });
     }
@@ -61,19 +67,17 @@ async function categoriesMarkup() {
 categoriesMarkup();
 
 function hideDefaultPageContent() {
-    const savedData = loadData();
-    if (savedData) {
-           noFavoritesEl.style.display = "none" 
-    }
-    else {
-        noFavoritesEl.style.display = "flex" 
-    }
+  const savedData = loadData();
+  if (savedData) {
+    noFavoritesEl.style.display = 'none';
+  } else {
+    noFavoritesEl.style.display = 'flex';
+  }
 }
 
 hideDefaultPageContent();
 
 const cardData = loadFavorit();
-
 
 function cardsMarkup(card) {
   return `<li class="card" style="background-image: linear-gradient(
@@ -122,28 +126,28 @@ function cardsMarkup(card) {
 }
 function checkResol() {
   if (cardData.length < 9 || cardData.length < 12) {
-    cardRender(cardData.length)
-    pagination.style.display="none";
+    cardRender(cardData.length);
+    pagination.style.display = 'none';
     return;
   }
-    if (screen.width >= 1280) {
-        // console.log('1280')
-      cardRender(12);
-      pagination.style.display="flex";
-        return
-    }
-    if (screen.width >= 768 && screen.width < 1280) {
-        // console.log('800')
-      cardRender(12);
-      pagination.style.display = "flex";
-        return
-    }
-    if (screen.width >= 375 && screen.width < 768) {
-        // console.log('400')
-      cardRender(9);
-      pagination.style.display = "flex";
-        return
-    }
+  if (screen.width >= 1280) {
+    // console.log('1280')
+    cardRender(12);
+    pagination.style.display = 'flex';
+    return;
+  }
+  if (screen.width >= 768 && screen.width < 1280) {
+    // console.log('800')
+    cardRender(12);
+    pagination.style.display = 'flex';
+    return;
+  }
+  if (screen.width >= 375 && screen.width < 768) {
+    // console.log('400')
+    cardRender(9);
+    pagination.style.display = 'flex';
+    return;
+  }
 }
 // cardsMarkup();
 let acum = '';
@@ -156,5 +160,3 @@ function cardRender(limit) {
   acum = '';
 }
 // checkResol();
-
-
