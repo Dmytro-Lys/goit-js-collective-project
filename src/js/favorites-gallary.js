@@ -1,4 +1,4 @@
-const Pagination = require('tui-pagination');
+// const Pagination = require('tui-pagination');
 import {
   saveData,
   loadData,
@@ -19,17 +19,17 @@ const noFavorits = document.querySelector(".no-favorites")
 const btnAllCatagory = document.querySelector(".btn-all-categories")
 
 
-window.addEventListener('DOMContentLoaded', hideCategories);
+// window.addEventListener('DOMContentLoaded', hideCategories);
 
-function hideCategories() {
-  if (localStorage.length !== 0) {
-    return;
-  } else {
-    categoryBtns.forEach(btn => {
-      btn.classList.add('invisible');
-    });
-  }
-}
+// function hideCategories() {
+//   if (localStorage.length !== 0) {
+//     return;
+//   } else {
+//     categoryBtns.forEach(btn => {
+//       btn.classList.add('invisible');
+//     });
+//   }
+// }
 // функция сверху не работает
 
 function hideHeroImageLess768() {
@@ -41,23 +41,28 @@ function hideHeroImageLess768() {
     heroImage.classList.remove('invisible');
   }
 }
-hideCategories();
-hideHeroImageLess768();
+// hideCategories();
+// hideHeroImageLess768();
 
-window.addEventListener('load', hideHeroImageLess768);
-window.addEventListener('resize', hideHeroImageLess768);
+// window.addEventListener('load', hideHeroImageLess768);
+// window.addEventListener('resize', hideHeroImageLess768);
 
 async function categoriesMarkup() {
   try {
     const favCategories = await loadFavoritCategories();
-    if (favCategories) {
-      btnAllCatagory.classList.toggle("invisible");
+    if (favCategories.length > 0) {
+      btnAllCatagory.classList.remove("invisible");
       noFavorits.style.display = "none";
       favCategories.forEach(name => {
         const buttonEls =
           '<li><button class="category-btn"> ' + name + '</button></li>';
         favBtnList.insertAdjacentHTML('beforeend', buttonEls);
       });
+    } else {
+      noFavorits.style.display = "flex";
+      favBtnList.innerHTML = "";
+      btnAllCatagory.style.display = "none";
+      pagination.style.display = "none";
     }
   } catch (error) {
     console.error(error.message);
@@ -75,7 +80,7 @@ function hideDefaultPageContent() {
   }
 }
 
-hideDefaultPageContent();
+// hideDefaultPageContent();
 
 const cardData = loadFavorit();
 
