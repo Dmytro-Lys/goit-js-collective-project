@@ -1,6 +1,7 @@
 .navigation {
   display: none;
 }
+
 .btn-range.header-range {
   display: none;
 }
@@ -13,9 +14,11 @@
   line-height: calc(18 / 16);
   letter-spacing: -0.64px;
 }
+
 .first-part-logo {
   color: var(--lt-green);
 }
+
 .btn-basket {
   width: 24px;
   height: 24px;
@@ -23,12 +26,14 @@
   background-color: transparent;
   padding: 0;
 }
+
 .icon-basket {
   width: 100%;
   height: 100%;
   fill: #ffffff;
   stroke: #050505;
 }
+
 .burger-btn {
   width: 32px;
   height: 32px;
@@ -37,6 +42,7 @@
   background-color: transparent;
   padding: 0;
 }
+
 .mobile-menu-open-icon {
   width: 100%;
   height: 100%;
@@ -49,6 +55,7 @@
   padding-top: 20px;
   padding-bottom: 44px;
 }
+
 .heder-icons-wrap {
   display: flex;
   align-items: center;
@@ -59,6 +66,7 @@
   .navigation {
     display: block;
   }
+
   .btn-range.header-range {
     display: block;
   }
@@ -71,6 +79,7 @@
     padding-top: 28px;
     padding-bottom: 44px;
   }
+
   .navigation-list {
     display: flex;
     gap: 16px;
@@ -81,6 +90,7 @@
     font-size: 12px;
     font-weight: 500;
   }
+
   .navigation-list-favorites {
     color: var(--main-cl);
     font-size: 12px;
@@ -92,9 +102,45 @@
     letter-spacing: -0.72px;
   }
 }
+
 @media screen and (min-width: 1280px) {
   .header-box {
     padding-top: 40px;
     padding-bottom: 40px;
   }
+}
+
+
+
+.header-link {
+  position: relative;
+  display: block;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: calc(16 / 12);
+  letter-spacing: 0.1em;
+  color: var(--main-cl);
+  transition: color 400ms ease-in;
+}
+
+.header-link:hover,
+.header-link:focus {
+  color: var(--lt-green);
+}
+
+.header-link.current {
+  color: var(--lt-green);
+}
+
+.header-link.current::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 4px;
+  border-radius: 4px;
+  background-color: var(--lt-green);
 }
