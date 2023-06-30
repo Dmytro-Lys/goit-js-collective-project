@@ -70,12 +70,12 @@ function createIngredientMedia(youtubeLink, imageLink, alt) {
   }
 }
 
-function keyDown  (e) {
+function keyDown(e) {
   if (e.key === 'Escape' && e.target !== refs.rateButton) {
     document.removeEventListener('keydown', keyDown);
     toggleModal();
   }
-};
+}
 
 refs.list.addEventListener('click', openModal);
 function openModal(event) {

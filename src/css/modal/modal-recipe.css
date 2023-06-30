@@ -189,10 +189,11 @@ padding-bottom: 32px;
 
 .instructions{
     width: 295px;
-height: auto;
-
-
-    padding-right: 0px;
+height: 288px;
+padding-right: 0px;
+overflow-x: hidden;
+overflow-y: scroll;
+   
     color: rgba(5, 5, 5, 0.80);
     font-weight: 300;
         font-size: 14px;
@@ -202,14 +203,20 @@ height: auto;
 .instructions{
 width: 625px;
 height: 162px;
-margin-bottom: 32px;
-
-    
-    padding-right: 0px;
-   
+margin-bottom: 32px;   
 }
 }
-
+::-webkit-scrollbar{
+    width: 3px;
+}
+::-webkit-scrollbar-track{
+    background-color: #0505051A;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #9BB537;
+    border-radius: 8px;
+border: 1px solid #9BB537;
+}
     
 
 /* buttons */
