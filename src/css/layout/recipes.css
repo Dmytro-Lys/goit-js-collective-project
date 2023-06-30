@@ -6,6 +6,7 @@
   margin-left: auto;
   margin-right: auto;
   display: flex;
+
   flex-wrap: wrap;
   max-width: 335px;
   row-gap: 24px;
@@ -29,7 +30,7 @@
   .cards-list {
     max-width: 782px;
     row-gap: 32px;
-    column-gap: 16px;
+    /* column-gap: 16px; */
     margin-bottom: 64px;
   }
 }
@@ -130,7 +131,7 @@
 
 @media screen and (min-width: 768px) {
   .cards-list {
-    gap: 16px;
+    /* column-gap: 16px; */
     row-gap: 16px;
   }
   .card {

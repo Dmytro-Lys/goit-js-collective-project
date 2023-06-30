@@ -1,3 +1,11 @@
+.dark-theme .link-favorites {
+  color: var(--white);
+}
+
+.dark-theme .header-link:hover,
+.dark-theme .header-link:focus {
+  color: var(--lt-green);
+}
 .dark-theme {
   background-color: var(--dark-theme-bgc);
   color: var(--white);
