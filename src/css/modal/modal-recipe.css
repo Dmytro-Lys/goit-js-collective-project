@@ -1,6 +1,4 @@
 .modal_reciepe{
-outline: 1px solid tomato;
-
 min-width: 320px;
     height: 1171px;
     position: absolute;
@@ -43,10 +41,10 @@ padding-right: 32px;
         border: none;
         cursor: pointer;
         padding: 0;
-        stroke: #050505;
+        stroke: var(--main-cl);
 }
 .modal_x{
-   stroke: #050505;
+   stroke:var(--main-cl);
 }
 
 
@@ -60,10 +58,10 @@ margin-bottom: 20px;
     }
 @media screen and (min-width: 768px){
 .media{
-    margin-right: 32px;
     width: 332px;
         height: 300px;
-        margin-bottom: 0;
+    margin-right: 32px;
+   margin-bottom: 0;
 }
 }
 .video{
@@ -100,7 +98,7 @@ padding-bottom: 16px;
     display: flex;
     gap: 16px;
     padding-bottom: 33px;
-    color: rgba(5, 5, 5, 0.50);
+    color: var(--back-cl);
 align-items: center;
        font-weight: 500;
 }
@@ -140,16 +138,15 @@ padding-right: 0px;
 }
 
 .ingredient-name{
-    color: #050505;
+    color: var(--main-cl);
         font-size: 14px;
        line-height: 1.28;
 }
 
 .ingredient-measure{
-    color: rgba(5, 5, 5, 0.50);
+    color: var(--inactive-el-cl);
         font-size: 14px;
-      
-        line-height: 1.28;
+      line-height: 1.28;
 }
 
 .ingredient-list{
@@ -174,6 +171,7 @@ padding-right: 0px;
 
 @media screen and (min-width: 768px){
 .tags{
+    width: 625px;
 padding-bottom: 32px;
 }
 }

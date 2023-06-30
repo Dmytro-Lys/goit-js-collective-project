@@ -32,6 +32,7 @@
 .categories-list {
   display: flex;
   flex-wrap: wrap;
+  gap: 16px;
   /* align-items: center;
   justify-content: center; */
   /* gap: 12px; */
@@ -98,7 +99,15 @@
   .categories {
     margin-bottom: 32px;
   }
-
+.btn-all-categories{
+  color: rgba(5, 5, 5, 0.30);
+    font-size: 16px;
+  font-style: normal;
+    font-weight: 500;
+    border-radius: 15px;
+      border: 1px solid rgba(5, 5, 5, 0.20);
+    
+}
   .category-btn {
     font-size: 16px;
     line-height: 1.25;
