@@ -1,7 +1,9 @@
 .dark-theme .link-favorites {
   color: var(--white);
 }
-
+.dark-theme .link-home {
+  color: var(--white);
+}
 .dark-theme .header-link:hover,
 .dark-theme .header-link:focus {
   color: var(--lt-green);
