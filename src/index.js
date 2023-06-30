@@ -1,3 +1,4 @@
+import './js/service/checkActivePage';
 import './js/modal/modal-mobile-menu';
 import './js/slider';
 import './js/recipes';
@@ -9,5 +10,5 @@ import './js/modal/modal-rating';
 import './js/modal/modal-order';
 import './js/jquery/backToTapBtn';
 import './js/service/move-btn-range';
-import './js/filter'
-import './js/modal/rating-stars'
+import './js/filter';
+import './js/modal/rating-stars';
