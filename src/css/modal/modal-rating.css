@@ -28,9 +28,24 @@
     text-align:left;
     margin-bottom: 5px;
   }
-  /*.rating-modal-form-icon {
-     fill: rgba(217, 217, 217, 1);
-  }*/
+
+  .rating-modal-form-field {
+    display: flex;
+    margin-bottom: 8px;
+  }
+  
+  .rating-result {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: calc(24 / 16);
+    color: var(--main-cl);
+    border: none;
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    
+  }
+   
   .rating-modal-form-icon {
     display: inline-block;
     cursor: pointer;
