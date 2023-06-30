@@ -158,3 +158,36 @@
 .dark-theme .cook-hero-div {
   border: 1px solid var(--main-cl);
 }
+.dark-theme .modal-form-input,
+.dark-theme .modal-form-comment {
+  color: var(--white);
+}
+.dark-theme .modal_reciepe,
+.dark-theme .rating-modal {
+  background-color: var(--main-cl);
+}
+.dark-theme .modal_x {
+  stroke: var(--white);
+}
+.dark-theme #modal-time {
+  color: #ffffff80;
+}
+.dark-theme .rating-modal-form-title {
+  color: var(--white);
+}
+.dark-theme .rating-result {
+  color: var(--white);
+}
+.dark-theme .order-modal-close-icon {
+  fill: var(--white);
+}
+.dark-theme .rating-modal-star {
+  fill: #3c3b3b;
+}
+.dark-theme .modal-form-comment,
+.dark-theme .modal-form-input {
+  color: #ffffffcc;
+}
+.dark-theme .modal-form-input::placeholder {
+  color: #ffffff80;
+}
