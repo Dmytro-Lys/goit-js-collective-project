@@ -12,6 +12,11 @@ const refs = {
 let stars = '';
 function renderCards(recipesArray) {
     
+    recipesArray.map(res => {
+        if (res.rating >= 5) {
+            res.rating = 5;
+        }
+    })
     refs.list.innerHTML = "";
     // console.log(recipesArray)
     refs.list.insertAdjacentHTML('beforeend', cardTpl(recipesArray))
@@ -43,6 +48,8 @@ function paintStarts(recipes) {
     })
 
 }
+
+
 
 
 
