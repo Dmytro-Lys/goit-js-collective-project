@@ -1,6 +1,6 @@
 import { event } from "jquery"
 import { getAllData, getFilterRecipes, getRecipe, setRecipeRating, createOrder } from './service/api'
-import { paintStarts, renderCards } from "./recipes";
+import { renderCards, paintStarts } from "./recipes";
 const _ = require('lodash');
 
 
@@ -16,7 +16,8 @@ const refs = {
     midBtns: document.querySelector('.mid-btns'),
     leftBtns: document.querySelector('.left-btns'),
     rightBtns: document.querySelector('.right-btns'),
-    pagination: document.querySelector('.pagination')
+    pagination: document.querySelector('.pagination'),
+    stars: document.querySelectorAll('.star-svg')
 }
 
 const OPTIONS = {
@@ -36,19 +37,22 @@ refs.rightBtns.addEventListener('click', switchToNextPage)
 let maxPages = null;
 
 function pageIncrease(event) {
+    if (event.target.classList.contains('mid-btn') === false) {
+        return
+    }
     if (event.target.textContent == refs.currentPage.textContent || event.target.textContent === '...' || event.target.textContent === ' ') {
         return
     }
     refs.currentPage.textContent = event.target.textContent;
 
-
-    getFilterRecipes({
-        page: Number.parseInt(`${refs.currentPage.textContent}`),
-        limit: OPTIONS.limit
-    }).then(respone => {
-        // console.log(respone)
-        renderCards(respone.results)
-    })
+    pageChange(Number.parseInt(`${refs.currentPage.textContent}`))
+    // getFilterRecipes({
+    //     page: Number.parseInt(`${refs.currentPage.textContent}`),
+    //     limit: OPTIONS.limit
+    // }).then(respone => {
+    //     // console.log(respone)
+    //     renderCards(respone.results)
+    // })
     if (refs.currentPage.textContent == maxPages) {
         blockRightBtns()
     }
@@ -60,14 +64,15 @@ function pageIncrease(event) {
 function returnToStart(event) {
     if (event.target.getAttribute('data-skip') === 'big') {
         refs.currentPage.textContent = 1;
+        pageChange(refs.currentPage.textContent)
 
-        getFilterRecipes({
-            page: '1',
-            limit: OPTIONS.limit
-        }).then(respone => {
-            // console.log(respone)
-            renderCards(respone.results)
-        })
+        // getFilterRecipes({
+        //     page: '1',
+        //     limit: OPTIONS.limit
+        // }).then(respone => {
+        //     // console.log(respone)
+        //     renderCards(respone.results)
+        // })
 
         blockLeftBtns();
         blockRightClear()
@@ -77,14 +82,15 @@ function returnToStart(event) {
     if (event.target.getAttribute('data-skip') === 'lil') {
         if (refs.currentPage.textContent !== '1') {
             refs.currentPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) - 1;
+            pageChange(Number.parseInt(`${refs.currentPage.textContent}`))
 
-            getFilterRecipes({
-                page: Number.parseInt(`${refs.currentPage.textContent}`),
-                limit: OPTIONS.limit
-            }).then(respone => {
-                // console.log(respone)
-                renderCards(respone.results)
-            })
+            // getFilterRecipes({
+            //     page: Number.parseInt(`${refs.currentPage.textContent}`),
+            //     limit: OPTIONS.limit
+            // }).then(respone => {
+            //     // console.log(respone)
+            //     renderCards(respone.results)
+            // })
 
             if (refs.currentPage.textContent === '1') {
                 setOptions();
@@ -103,14 +109,15 @@ function returnToStart(event) {
 function switchToNextPage(event) {
     if (event.target.getAttribute('data-skip') === 'big') {
         refs.currentPage.textContent = maxPages;
+        pageChange(maxPages)
 
-        getFilterRecipes({
-            page: maxPages,
-            limit: OPTIONS.limit
-        }).then(respone => {
-            // console.log(respone)
-            renderCards(respone.results)
-        })
+        // getFilterRecipes({
+        //     page: maxPages,
+        //     limit: OPTIONS.limit
+        // }).then(respone => {
+        //     // console.log(respone)
+        //     renderCards(respone.results)
+        // })
 
         blockRightBtns();
         setOptions();
@@ -121,13 +128,14 @@ function switchToNextPage(event) {
         if (refs.currentPage.textContent < maxPages) {
             refs.currentPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) + 1;
             blockLeftClear()
-            getFilterRecipes({
-                page: Number.parseInt(`${refs.currentPage.textContent}`),
-                limit: OPTIONS.limit
-            }).then(respone => {
-                // console.log(respone)
-                renderCards(respone.results)
-            })
+            pageChange(Number.parseInt(`${refs.currentPage.textContent}`))
+            // getFilterRecipes({
+            //     page: Number.parseInt(`${refs.currentPage.textContent}`),
+            //     limit: OPTIONS.limit
+            // }).then(respone => {
+            //     // console.log(respone)
+            //     renderCards(respone.results)
+            // })
             if (refs.currentPage.textContent == maxPages) {
                 blockRightBtns()
             }
@@ -211,7 +219,7 @@ function allCategoriesSearch({category, title}) {
     // console.log(respone)
     maxPages = respone.totalPages;
         renderCards(respone.results)
-        if (respone.totalPages == 1) {
+        if (respone.totalPages == 1 || !respone.totalPages) {
             refs.pagination.style.display = 'none';
             return
         }
@@ -219,7 +227,32 @@ function allCategoriesSearch({category, title}) {
     refs.pagination.style.display = 'flex';
     setOptions()
 }
+// console.log(refs.stars)
 
+// function paintStarts(rating) {
+//     for (let i = 0; i < rating; i++) {
+//         const nigga = refs.stars;
+//         console.log(nigga);
+        
+//     }
+// }
+
+function pageChange(page) {
+    getFilterRecipes({
+    page: page,
+    limit: OPTIONS.limit
+}).then(respone => {
+    // console.log(respone)
+    respone.results.map(res => {
+        if (res.rating > 5) {
+            res.rating = 5;
+        } else {
+            res.rating = Math.round(res.rating);
+        }
+    })
+    renderCards(respone.results)
+})
+}
 
 
 
@@ -229,9 +262,13 @@ getFilterRecipes({
     limit: OPTIONS.limit
 }).then(respone => {
     // console.log(respone)
+    respone.results.map(res => {
+        if (res.rating > 5) {
+            res.rating = 5;
+        }
+    })
     maxPages = respone.totalPages;
     renderCards(respone.results)
-    // paintStarts(5)
 })
 
 export {allCategoriesSearch}
