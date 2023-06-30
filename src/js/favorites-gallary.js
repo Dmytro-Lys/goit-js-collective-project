@@ -8,6 +8,9 @@ const favBtnList = document.querySelector('.categories-list');
 const noFavoritesEl = document.querySelector('.no-favorites');
 const favCardsList = document.querySelector('.favorites-cards');
 const pagination = document.querySelector('.pagination');
+const noFavorits = document.querySelector(".no-favorites")
+const btnAllCatagory = document.querySelector(".btn-all-categories")
+
 
 
 window.addEventListener('DOMContentLoaded', hideCategories);
@@ -43,6 +46,8 @@ async function categoriesMarkup() {
   try {
     const favCategories = await loadFavoritCategories();
     if (favCategories) {
+      btnAllCatagory.classList.toggle("invisible");
+      noFavorits.classList.toggle("invisible");
       favCategories.forEach(name => {
         const buttonEls = '<li><button class="category-btn"> ' + name + '</button></li>';
         favBtnList.insertAdjacentHTML('beforeend', buttonEls);
