@@ -67,7 +67,7 @@ function createTagList(tagsArray) {
 
 function createIngredientMedia(youtubeLink, imageLink, alt) {
   if (!youtubeLink) {
-    return `<img class="image" src="${imageLink}" alt="${alt}">`;
+    return `<img class="image" src="${imageLink}" alt="${alt}" width="295" height="295">`;
   } else {
     return `<iframe class="video" src="${youtubeLink.replace(
       'watch?v=',
