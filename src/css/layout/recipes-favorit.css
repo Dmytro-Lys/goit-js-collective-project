@@ -1,0 +1,15 @@
+.cards-list-favorit {
+  max-width: 335px;
+}
+
+@media screen and (min-width: 768px) {
+  .cards-list-favorit {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .cards-list-favorit {
+    max-width: 1080px;
+  }
+}
