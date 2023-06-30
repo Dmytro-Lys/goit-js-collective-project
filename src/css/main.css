@@ -6,10 +6,11 @@
 @import url('./layout/all-categories.css');
 @import url('./layout/filter.css');
 @import url('./layout/recipes.css');
+@import url('./layout/recipes-favorit.css');
 @import url('./layout/pagination.css');
 @import url('./layout/popular.css');
 @import url('./layout/favorites-hero.css');
-@import url("./layout/to-top-btn.css");
+@import url('./layout/to-top-btn.css');
 @import url('./layout/favorites-gallary.css');
 /* modal window styles */
 @import url('./modal/modal-mob-menu.css');

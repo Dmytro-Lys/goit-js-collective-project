@@ -20,7 +20,7 @@
   font-size: 14px;
   line-height: 1.29;
 }
-
+/* 
 .categories {
   display: flex;
   flex-wrap: wrap;
@@ -28,6 +28,14 @@
   justify-content: center;
   gap: 12px;
   margin-bottom: 24px;
+} */
+.categories-list {
+  display: flex;
+  flex-wrap: wrap;
+  /* align-items: center;
+  justify-content: center; */
+  /* gap: 12px; */
+  /* margin-bottom: 24px; */
 }
 
 .category-btn {

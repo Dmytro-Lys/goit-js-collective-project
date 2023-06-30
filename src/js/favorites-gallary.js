@@ -150,6 +150,6 @@ function cardRender(limit) {
   favCardsList.insertAdjacentHTML('beforeend', acum);
   acum = '';
 }
-checkResol();
+// checkResol();
 
 

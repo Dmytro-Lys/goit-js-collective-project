@@ -57,22 +57,22 @@ async function loadFavoritCategories() {
   }
 }
 
-async function loadFavoritFilter({ category, page = 1, limit = 6 }) {
+async function loadFavoritFilter({ category, page = 1, limit = 9 }) {
   try {
-    let result = await loadFavorit();
-    if (result && category)
-      result = await result.filter(item => item.category === category);
-    const totalResult = result.length;
+    let results = await loadFavorit();
+    if (results && category)
+      results = await results.filter(item => item.category === category);
+    const totalResult = results.length;
     const totalPages = Math.ceil(totalResult / limit);
     if (page > totalPages) page = totalPages || 1;
-    if (result)
-      result = result.filter(
+    if (results)
+      results = results.filter(
         (item, index) => index < page * limit && index > (page - 1) * limit - 1
       );
     return {
       page: String(page),
       perPage: String(limit),
-      result,
+      results,
       totalPages,
     };
   } catch (err) {
