@@ -52,7 +52,7 @@ async function categoriesMarkup() {
     const favCategories = await loadFavoritCategories();
     if (favCategories) {
       btnAllCatagory.classList.toggle("invisible");
-      noFavorits.classList.toggle("invisible");
+      noFavorits.style.display = "none";
       favCategories.forEach(name => {
         const buttonEls =
           '<li><button class="category-btn"> ' + name + '</button></li>';
