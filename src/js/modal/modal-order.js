@@ -34,7 +34,7 @@ const refs = {
 
   function toggleBodyScroll() {
      if (document.body.style.overflow === "hidden")
-    { document.body.style.overflow = "visible" }
+    { document.body.style.overflow = "" }
     else { document.body.style.overflow = "hidden" };
   }
 

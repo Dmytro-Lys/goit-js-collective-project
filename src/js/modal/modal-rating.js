@@ -58,10 +58,10 @@ refs.form.addEventListener("submit", sendForm)
   }
 }
 
-function getArgs({ user_email, user_comments }) {
-  if (user_email.value.trim() === "") return Notiflix.Notify.failure('Please fill in all the fields!');
+function getArgs({ user_email, ratingValue }) {
+  if (user_email.value.trim() === "" || ratingValue.value < 1) return Notiflix.Notify.failure('Please fill in all the fields!');
   return {
-        rate: 5,
+        rate: ratingValue.value,
        email: user_email.value
   }
 }

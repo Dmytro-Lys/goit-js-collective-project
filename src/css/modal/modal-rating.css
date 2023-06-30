@@ -1,62 +1,62 @@
 .rating-modal {
-    width: 424px;
-    height: 364px;
-    border-radius: 15px;
-    background-color: var(--back-cl);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 32px 32px 32px;
+  width: 424px;
+  height: 364px;
+  border-radius: 15px;
+  background-color: var(--back-cl);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 32px 32px 32px;
+}
+@media screen and (max-width: 400px) {
+  .rating-modal {
+    width: 90%;
   }
-  @media screen and (max-width: 400px) {
-    .rating-modal {
-      width: 90%;
-    }
+}
+@media screen and (min-width: 768px) {
+  .rating-modal {
+    width: 408px;
   }
-  @media screen and (min-width: 768px) {
-    .rating-modal {
-      width: 408px;
-    }
-  }
+}
 
-  .rating-modal-form-title {
-    display: block;
-    font-size: 16px;
-    line-height: calc(24 / 16);
-    color: rgba(46, 47, 66, 1);
-    text-align:left;
-    margin-bottom: 5px;
-  }
+.rating-modal-form-title {
+  display: block;
+  font-size: 16px;
+  line-height: calc(24 / 16);
+  color: rgba(46, 47, 66, 1);
+  text-align: left;
+  margin-bottom: 5px;
+}
 
-  .rating-modal-form-field {
-    display: flex;
-    margin-bottom: 8px;
-  }
-  
-  .rating-result {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: calc(24 / 16);
-    color: var(--main-cl);
-    border: none;
-    width: 24px;
-    height: 24px;
-    background-color: transparent;
-    
-  }
-   
-  .rating-modal-form-icon {
-    display: inline-block;
-    cursor: pointer;
+.rating-modal-form-field {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.rating-result {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: calc(24 / 16);
+  color: var(--main-cl);
+  border: none;
+  outline: none;
+  width: 24px;
+  height: 24px;
+  background-color: transparent;
+}
+
+.rating-modal-form-icon {
+  display: inline-block;
+  cursor: pointer;
 }
 
 .rating-modal-form-icon svg {
-    fill: rgba(217, 217, 217, 1);;
-    width: 18px;
-    height: 24px;
+  fill: rgba(217, 217, 217, 1);
+  width: 18px;
+  height: 24px;
 }
 
 .rating-modal-form-icon.active svg {
-    fill: gold;
+  fill: gold;
 }

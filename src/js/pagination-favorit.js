@@ -6,18 +6,18 @@ const _ = require('lodash');
 
 
 const refs = {
-    lilLeftBtn: document.querySelector('.lil-left-skip'),
-    bigLeftBtn: document.querySelector('.big-left-skip'),
-    currentPage: document.querySelector('.current-page'),
-    nextPage: document.querySelector('.next-page'),
-    lastOptionPage: document.querySelector('.last-option-page'),
-    midSkip: document.querySelector('.mid-skip'),
-    lilRightBtn: document.querySelector('.lil-rigth-skip'),
-    bigRightBtn: document.querySelector('.big-rigth-skip'),
-    midBtns: document.querySelector('.mid-btns'),
-    leftBtns: document.querySelector('.left-btns'),
-    rightBtns: document.querySelector('.right-btns'),
-    pagination: document.querySelector('.pagination'),
+    lilLeftBtn: document.querySelector('.lil-left-skip-fav'),
+    bigLeftBtn: document.querySelector('.big-left-skip-fav'),
+    currentPage: document.querySelector('.current-page-fav'),
+    nextPage: document.querySelector('.next-page-fav'),
+    lastOptionPage: document.querySelector('.last-option-page-fav'),
+    midSkip: document.querySelector('.mid-skip-fav'),
+    lilRightBtn: document.querySelector('.lil-rigth-skip-fav'),
+    bigRightBtn: document.querySelector('.big-rigth-skip-fav'),
+    midBtns: document.querySelector('.mid-btns-fav'),
+    leftBtns: document.querySelector('.left-btns-fav'),
+    rightBtns: document.querySelector('.right-btns-fav'),
+    pagination: document.querySelector('.pagination-fav'),
     stars: document.querySelectorAll('.star-svg')
 }
 
@@ -244,17 +244,26 @@ function pageChange(page) {
     limit: OPTIONS.limit
 }).then(respone => {
     // console.log(respone)
-    respone.results.map(res => {
-        if (res.rating > 5) {
-            res.rating = 5;
-        } else {
-            res.rating = Math.round(res.rating);
-        }
-    })
-    renderCards(respone.results)
+    // respone.results.map(res => {
+    //     if (res.rating > 5) {
+    //         res.rating = 5;
+    //     } else {
+    //         res.rating = Math.round(res.rating);
+    //     }
+    // })
+    renderCards(respone.results);
+    addClassFavorit()
 })
 }
 
+function addClassFavorit() {
+    const card = document.querySelectorAll(".card");
+    const cardInfo = document.querySelectorAll(".card-info");
+    const heart = document.querySelectorAll(".heart-svg");
+    card.forEach(card => card.classList.add("card-favorit"));
+    cardInfo.forEach(card => card.classList.add("card-info-favorit"));
+    heart.forEach(card => card.classList.add("heart-svg-fav"));
+}
 
 
 
@@ -263,13 +272,14 @@ loadFavoritFilter({
     limit: OPTIONS.limit
 }).then(respone => {
     // console.log(respone)
-    respone.results.map(res => {
-        if (res.rating > 5) {
-            res.rating = 5;
-        }
-    })
+    // respone.results.map(res => {
+    //     if (res.rating > 5) {
+    //         res.rating = 5;
+    //     }
+    // })
     maxPages = respone.totalPages;
-    renderCards(respone.results)
+    renderCards(respone.results);
+    addClassFavorit();
 })
 
 export {allCategoriesSearch}

@@ -4,13 +4,23 @@
 
 @media screen and (min-width: 768px) {
   .cards-list-favorit {
-    max-width: 768px;
+    max-width: 704px;
     justify-content: start;
+  }
+  .card-favorit {
+    width: 224px;
+    height: 244px;
+  }
+  .card-info-favorit {
+    height: 244px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   .cards-list-favorit {
     max-width: 1080px;
+  }
+  .card-favorit {
+    width: 258px;
   }
 }

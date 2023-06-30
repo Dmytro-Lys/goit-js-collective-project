@@ -1,4 +1,6 @@
 .pagination {
+  padding-top: 64px;
+
   display: flex;
   justify-content: center;
   gap: 14px;
