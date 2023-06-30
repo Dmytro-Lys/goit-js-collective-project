@@ -37,6 +37,7 @@ refs.rightBtns.addEventListener('click', switchToNextPage)
 let maxPages = null;
 
 function pageIncrease(event) {
+    // console.log(event.target.classList.contains('mid-btn'))
     if (event.target.classList.contains('mid-btn') === false) {
         return
     }
@@ -50,7 +51,7 @@ function pageIncrease(event) {
     //     page: Number.parseInt(`${refs.currentPage.textContent}`),
     //     limit: OPTIONS.limit
     // }).then(respone => {
-    //     // console.log(respone)
+    //     console.log(respone)
     //     renderCards(respone.results)
     // })
     if (refs.currentPage.textContent == maxPages) {
@@ -229,13 +230,7 @@ function allCategoriesSearch({category, title}) {
 }
 // console.log(refs.stars)
 
-// function paintStarts(rating) {
-//     for (let i = 0; i < rating; i++) {
-//         const nigga = refs.stars;
-//         console.log(nigga);
-        
-//     }
-// }
+
 
 function pageChange(page) {
     getFilterRecipes({
