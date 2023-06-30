@@ -73,6 +73,7 @@
 .rating-section {
   display: flex;
   align-items: center;
+  gap: 4px;
 }
 
 .card-title {
@@ -99,6 +100,15 @@
 }
 
 .xzxzxz {
+}
+
+.star-svg {
+  fill: #F8F8F8; 
+  fill-opacity: 0.1;
+}
+.gold-star {
+  fill: rgba(238, 161, 12, 1);
+  fill-opacity: 1;
 }
 
 @media screen and (min-width: 768px) {

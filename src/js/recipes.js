@@ -8,10 +8,16 @@ const refs = {
     li: document.querySelector('.card-info'),
     stars: document.querySelectorAll('.star-svg')
 }
+
+let stars = '';
 function renderCards(recipesArray) {
     
     refs.list.innerHTML = "";
+    // console.log(recipesArray)
     refs.list.insertAdjacentHTML('beforeend', cardTpl(recipesArray))
+    stars = document.querySelectorAll('.star-svg')
+    // console.log(stars)
+    paintStarts(recipesArray)
 }
 
 // function paintStarts(rating) {
@@ -20,6 +26,25 @@ function renderCards(recipesArray) {
         
 //     }
 // }
+// console.log(refs.stars)
+
+
+
+function paintStarts(recipes) {
+    let counter = 0;
+    recipes.map(recipe => {
+        for (let i = 0; i < 5; i++) {
+            if (i < recipe.rating) {
+                // console.log(counter)
+                stars[counter].classList.add('gold-star')
+            }
+            counter += 1;
+        }
+    })
+
+}
+
+
 
 // getFilterRecipes({
 //     page: '1',
@@ -29,7 +54,7 @@ function renderCards(recipesArray) {
 //     renderCards(respone.results)
 // })
 
-export { renderCards};
+export { renderCards, paintStarts};
 
 // window.alert("Your screen resolution is: " + screen.height + 'x' + screen.width);
 
