@@ -11,37 +11,43 @@ import 'notiflix/src/notiflix.css';
     };
   
    refs.openModalBtn.forEach(btn => btn.addEventListener("click", openModal));
-  refs.closeModalBtn.addEventListener("click", toggleModal);
+  refs.closeModalBtn.addEventListener("click", closeModal);
 refs.form.addEventListener("submit", sendForm)
   
   function openModal(e) {
     e.preventDefault();
     document.addEventListener('keydown', keyDownRate);
-    toggleModal()
-    refs.modal.addEventListener('click', closeModal);
+    refs.modal.classList.remove("is-hidden");
+    refs.modal.addEventListener('click', closeBackdrop);
   }
 
-   function closeModal(event) {
-  if (event.target.classList.contains('backdrop')) {
-    event.target.removeEventListener('click', closeModal);
-    toggleModal();
+function closeModal() {
+     document.removeEventListener('keydown', keyDownRate);
+     refs.modal.removeEventListener('click', closeBackdrop);
+     refs.modal.classList.add("is-hidden");
   }
-  }
+  
+  function closeBackdrop(e) {
+  if (e.target === refs.modal) {
+     closeModal()
+   }
+}
   
 function clearRating() {
   const ratingIcons = document.querySelectorAll('.rating-modal-form-icon');
   ratingIcons.forEach(icon => icon.classList.remove('active'));
 }
-  function toggleModal() {
+  
+function toggleModal() {
       refs.modal.classList.toggle("is-hidden");
   }
 
 
    function keyDownRate  (e) {
      if (e.key === 'Escape') {
-       document.removeEventListener('keydown', keyDownRate);
+       closeModal();
        e.target.blur(); 
-       if (!refs.modal.classList.contains("is-hidden"))  refs.modal.classList.add("is-hidden");
+
      }
   };
   
@@ -49,12 +55,9 @@ function clearRating() {
   try {
     e.preventDefault();
     const id = refs.idButton.getAttribute('data-recipe-id');
-    console.log(id);
     const result = await setRecipeRating(id, getArgs(e.currentTarget.elements))
-    // console.log(result);
     if (!result) return Notiflix.Notify.failure("Send rating failure");
     Notiflix.Notify.success("Thank you for your rating");
-    refs.form.removeEventListener("submit", sendForm)
     clearRating()
     refs.form.reset();
     toggleModal();
@@ -66,7 +69,7 @@ function clearRating() {
 function getArgs({ user_email, ratingValue }) {
   if (user_email.value.trim() === "" || ratingValue.value < 1) return Notiflix.Notify.failure('Please fill in all the fields!');
   return {
-        rate: ratingValue.value,
+        rate: Number(ratingValue.value),
        email: user_email.value
   }
 }

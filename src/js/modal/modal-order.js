@@ -24,7 +24,8 @@ function closeModal() {
     document.removeEventListener('keydown', keyDown);
     refs.modal.removeEventListener('click', closeBackdrop);
     toggleModal();
-  }
+}
+  
 function closeBackdrop(e) {
   if (e.target === refs.modal) {
      closeModal()
@@ -54,8 +55,10 @@ async function sendForm(e) {
   try {
     e.preventDefault();
     // console.log(getArgs(e.currentTarget.elements))
-    const result = await createOrder(getArgs(e.currentTarget.elements))
-    console.log(result);
+    const data = getArgs(e.currentTarget.elements);
+    if (!data) return;
+    const result = await createOrder(data);
+    // console.log(result);
     if (!result) return Notiflix.Notify.failure("Send order failure");
     Notiflix.Notify.success("Thank you for your order");
     refs.form.reset();
@@ -65,18 +68,12 @@ async function sendForm(e) {
   }
 }
 
-// function sendForm(e) {
-//     e.preventDefault();
-//     Notiflix.Notify.success("Thank you for your order");
-//     refs.form.removeEventListener("submit", sendForm)
-//     refs.form.reset();
-//     toggleModal();
-// }
 
 function getArgs({ user_name, user_phone_number, user_email, user_comments }) {
   if (user_name.value.trim() === "" ||
     user_phone_number.value.trim() === "" ||
     user_email.value.trim() === "") return Notiflix.Notify.failure('Please fill in all the fields!');
+  if (user_phone_number.value.length !== 10) return Notiflix.Notify.failure('Phone number must contain 10 digits!')
  return {
         name: user_name.value,
         phone: '+38'+ user_phone_number.value,

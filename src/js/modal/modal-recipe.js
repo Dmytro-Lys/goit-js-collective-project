@@ -6,9 +6,12 @@ import {
   removeFromFavorite,
   findFavorit,
 } from '../service/localstorage';
+import Notiflix from 'notiflix';
+import 'notiflix/src/notiflix.css';
 
 const refs = {
   modal: document.querySelector('[data-modal-reciepe]'),
+  ratingForm: document.querySelector("#ratingForm"),
   name: document.getElementById('name-reciepe'),
   rating: document.getElementById('rating'),
   time: document.getElementById('modal-time'),
@@ -23,26 +26,33 @@ const refs = {
   stars: document.querySelectorAll('.icon-star'),
 };
 
-async function getReciepeById(id) {
-  const reciepe = await getRecipe(id);
-  refs.addButton.setAttribute('data-recipe-id', id);
-  refs.name.textContent = reciepe.title;
-  if (reciepe.rating > 5) {
-    reciepe.rating = 5;
-  }
+refs.addButton.addEventListener('click', onFavorit);
+refs.list.addEventListener('click', openModal);
 
-  refs.rating.textContent = reciepe.rating;
-  refs.time.textContent = `${reciepe.time} min`;
-  refs.media.innerHTML = createIngredientMedia(
-    reciepe.youtube,
-    reciepe.thumb,
-    reciepe.title
-  );
-  refs.ingredients.innerHTML = createIngredientList(reciepe.ingredients);
-  refs.tags.innerHTML = createTagList(reciepe.tags);
-  refs.instructions.textContent = reciepe.instructions;
-  toggleModal();
-  goldStars(reciepe);
+async function getReciepeById(id) {
+  try {
+    const reciepe = await getRecipe(id);
+    refs.addButton.setAttribute('data-recipe-id', id);
+    refs.name.textContent = reciepe.title;
+    if (reciepe.rating > 5) {
+      reciepe.rating = 5;
+    }
+    refs.rating.textContent = reciepe.rating;
+    refs.time.textContent = `${reciepe.time} min`;
+    refs.media.innerHTML = createIngredientMedia(
+      reciepe.youtube,
+      reciepe.thumb,
+      reciepe.title
+    );
+    refs.ingredients.innerHTML = createIngredientList(reciepe.ingredients);
+    refs.tags.innerHTML = createTagList(reciepe.tags);
+    refs.instructions.textContent = reciepe.instructions;
+    goldStars(reciepe);
+     toggleBodyScroll();
+    refs.modal.classList.remove("is-hidden");
+  } catch (err) {
+    onError(err)
+  }
 }
 
 function createIngredientList(ingredientsArray) {
@@ -77,30 +87,31 @@ function createIngredientMedia(youtubeLink, imageLink, alt) {
 }
 
 function keyDown(e) {
-  if (e.key === 'Escape' && e.target !== refs.rateButton) {
-    document.removeEventListener('keydown', keyDown);
-    toggleModal();
+  if (e.key === 'Escape' && e.target !== refs.rateButton
+  && e.target.parentNode.parentNode !== refs.ratingForm) {
+    closeModal();
+     e.target.blur();
   }
 }
 
-refs.list.addEventListener('click', openModal);
+
 function openModal(event) {
   if (event.target.hasAttribute('data-id')) {
     document.addEventListener('keydown', keyDown);
-
     getReciepeById(event.target.getAttribute('data-id'));
     checkFavorit(event.target.getAttribute('data-id'));
-    refs.modal.addEventListener('click', closeModal);
+    refs.modal.addEventListener('click', closeBackdrop);
   }
 }
 
-refs.closeModalBtn.addEventListener('click', toggleModal);
+refs.closeModalBtn.addEventListener('click', closeModal);
+
+
 function toggleModal() {
   toggleBodyScroll();
   refs.modal.classList.toggle('is-hidden');
 }
 
-refs.addButton.addEventListener('click', onFavorit);
 async function fetchRecipes() {
   try {
     const id = refs.addButton.getAttribute('data-recipe-id');
@@ -108,7 +119,7 @@ async function fetchRecipes() {
     const recipeData = getDataRecipe(reciepe);
     addFavorit(recipeData);
   } catch (err) {
-    console.log(err);
+     onError(err);
   }
 }
 
@@ -125,15 +136,21 @@ function toggleBodyScroll() {
   }
 }
 
-function closeModal(event) {
-  if (event.target.classList.contains('backdrop')) {
-    event.target.removeEventListener('click', closeModal);
-    toggleModal();
-  }
+function closeModal() {
+    document.removeEventListener('keydown', keyDown);
+    refs.modal.removeEventListener('click', closeBackdrop);
+    toggleBodyScroll();
+    refs.modal.classList.add("is-hidden");
+}
+
+function closeBackdrop(e) {
+  if (e.target === refs.modal) {
+     closeModal()
+   }
 }
 
 function checkFavorit(id) {
-  console.log(findFavorit(id));
+  // console.log(findFavorit(id));
   if (findFavorit(id)) {
     refs.addButton.textContent = 'Remove from favorite';
   } else {
@@ -148,7 +165,7 @@ function onFavorit() {
   } else {
     const id = refs.addButton.getAttribute('data-recipe-id');
     removeFromFavorite(id);
-    console.log(loadFavorit());
+    // console.log(loadFavorit());
     refs.addButton.textContent = 'Add to favorite';
   }
 }
@@ -161,4 +178,8 @@ function goldStars(recipe) {
       refs.stars[i].classList.remove('gold-star');
     }
   }
+}
+
+function onError(error) {
+  Notiflix.Notify.failure(error.message);
 }

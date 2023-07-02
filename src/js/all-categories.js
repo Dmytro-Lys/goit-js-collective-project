@@ -1,4 +1,5 @@
-// // import { remove } from 'lodash';
+import Notiflix from 'notiflix';
+import 'notiflix/src/notiflix.css';
 import { getAllData,getFilterRecipes } from './service/api.js';
 import { allCategoriesSearch } from './pagination.js';
 
@@ -54,4 +55,8 @@ function onAllCategories() {
     if (oldActive) oldActive.classList.remove("dishes-active");
   refs.toClearBtn.classList.add("all-ctg-btn-active");
   allCategoriesSearch({});
+}
+
+function onError(error) {
+  Notiflix.Notify.failure(error.message);
 }

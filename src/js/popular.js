@@ -1,4 +1,6 @@
 import { getAllData } from "./service/api";
+import Notiflix from 'notiflix';
+import 'notiflix/src/notiflix.css';
 
 const ulPopulation = document.querySelector('.ul-population');
 
@@ -6,11 +8,10 @@ const ulPopulation = document.querySelector('.ul-population');
   getAllData('recipes/popular')
     .then(response => {
       const recipes = response;
-      console.log(recipes);
       renderPopularRecipes(recipes);
     })
     .catch(error => {
-      console.error('Помилка:', error);
+      onError(error);
     });
 
 
@@ -35,3 +36,6 @@ function renderPopularRecipes(recipes) {
   ulPopulation.innerHTML = recipeHTML;
 }
 
+function onError(error) {
+  Notiflix.Notify.failure(error.message);
+}
