@@ -10,22 +10,26 @@ const refs = {
     };
   
     refs.openModalBtn.forEach(btn => btn.addEventListener("click", openModal));
-  refs.closeModalBtn.addEventListener("click", toggleModal);
+  refs.closeModalBtn.addEventListener("click", closeModal);
   refs.form.addEventListener("submit", sendForm);
 
   function openModal(e) {
     e.preventDefault();
     document.addEventListener('keydown', keyDown);
     toggleModal()
-    refs.modal.addEventListener('click', closeModal);
+    refs.modal.addEventListener('click', closeBackdrop);
   }
   
-  function closeModal(event) {
-  if (event.target.classList.contains('backdrop')) {
-    event.target.removeEventListener('click', closeModal);
+function closeModal() {
+    document.removeEventListener('keydown', keyDown);
+    refs.modal.removeEventListener('click', closeBackdrop);
     toggleModal();
   }
-  }
+function closeBackdrop(e) {
+  if (e.target === refs.modal) {
+     closeModal()
+   }
+}
   
   function toggleModal() {
     toggleBodyScroll();
@@ -41,33 +45,33 @@ const refs = {
 
   function keyDown  (e) {
   if (e.key === 'Escape') {
-    document.removeEventListener('keydown', keyDown);
-    toggleModal();
+    closeModal();
+    e.target.blur();
   }
 };
   
-// async function sendForm(e) {
-//   try {
-//     e.preventDefault();
+async function sendForm(e) {
+  try {
+    e.preventDefault();
+    // console.log(getArgs(e.currentTarget.elements))
+    const result = await createOrder(getArgs(e.currentTarget.elements))
+    console.log(result);
+    if (!result) return Notiflix.Notify.failure("Send order failure");
+    Notiflix.Notify.success("Thank you for your order");
+    refs.form.reset();
+    closeModal();
+   } catch (err) {
+    onError(err);
+  }
+}
 
-//     const result = await createOrder(getArgs(e.currentTarget.elements))
-//     if (!result) return Notiflix.Notify.failure("Send order failure");
+// function sendForm(e) {
+//     e.preventDefault();
 //     Notiflix.Notify.success("Thank you for your order");
 //     refs.form.removeEventListener("submit", sendForm)
 //     refs.form.reset();
 //     toggleModal();
-//    } catch (err) {
-//     onError(err);
-//   }
 // }
-
-function sendForm(e) {
-    e.preventDefault();
-    Notiflix.Notify.success("Thank you for your order");
-    refs.form.removeEventListener("submit", sendForm)
-    refs.form.reset();
-    toggleModal();
-}
 
 function getArgs({ user_name, user_phone_number, user_email, user_comments }) {
   if (user_name.value.trim() === "" ||
@@ -75,9 +79,9 @@ function getArgs({ user_name, user_phone_number, user_email, user_comments }) {
     user_email.value.trim() === "") return Notiflix.Notify.failure('Please fill in all the fields!');
  return {
         name: user_name.value,
-        phone: user_phone_number.value,
+        phone: '+38'+ user_phone_number.value,
         email: user_email.value,
-        comment: user_comments.value||""
+        comment: user_comments.value||" "
     }
 }
 
