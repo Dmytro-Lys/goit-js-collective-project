@@ -3,9 +3,9 @@
   background-color: var(--lt-green);
   position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  left: calc(100vw - 200px);
+  width: 200px;
+  height: 100vh;
   z-index: 999;
   overflow-y: auto;
   transform: translateX(100%);
