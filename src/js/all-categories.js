@@ -54,7 +54,7 @@ function onAllCategories() {
     const oldActive = refs.list.querySelector(".dishes-active");
     if (oldActive) oldActive.classList.remove("dishes-active");
   refs.toClearBtn.classList.add("all-ctg-btn-active");
-  allCategoriesSearch({});
+  allCategoriesSearch({category: ""});
 }
 
 function onError(error) {

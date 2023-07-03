@@ -1,6 +1,7 @@
 import { event } from "jquery"
 import { getAllData, getFilterRecipes, getRecipe, setRecipeRating, createOrder } from './service/api'
 import { renderCards, paintStarts } from "./recipes";
+import { loadFilterRecipes, saveFilterRecipes } from "./service/localstorage"
 const _ = require('lodash');
 
 
@@ -20,12 +21,10 @@ const refs = {
     stars: document.querySelectorAll('.star-svg')
 }
 
-const OPTIONS = {
-    category: null,
-    title: null,
-    page: 1,
-    limit: 9
-}
+let limit = 0;
+let maxPages = null;
+
+
 checkResol()
 blockLeftBtns();
 
@@ -33,8 +32,6 @@ blockLeftBtns();
 refs.midBtns.addEventListener('click', _.throttle(pageIncrease, 500))
 refs.leftBtns.addEventListener('click', returnToStart)
 refs.rightBtns.addEventListener('click', switchToNextPage)
-
-let maxPages = null;
 
 function pageIncrease(event) {
     // console.log(event.target.classList.contains('mid-btn'))
@@ -197,33 +194,29 @@ function blockLeftClear() {
 function checkResol() {
     if (screen.width >= 1280) {
         // console.log('1280')
-        OPTIONS.limit = 9;
+        limit = 9;
         return
     }
     if (screen.width >= 768 && screen.width < 1280) {
         // console.log('800')
-        OPTIONS.limit = 8;
+        limit = 8;
         return
     }
     if (screen.width >= 375 && screen.width < 768) {
         // console.log('400')
-        OPTIONS.limit = 6;
+        limit = 6;
         return
     }
 }
 
-function allCategoriesSearch({category, title}) {
-    OPTIONS.category = category;
-    OPTIONS.title = title;
+function allCategoriesSearch(filter) {
+    saveFilterRecipes({...loadFilterRecipes(), ...filter, limit});
     refs.currentPage.textContent = '1';
-    getFilterRecipes(OPTIONS).then(respone => {
-    // console.log(respone)
-    maxPages = respone.totalPages;
+    blockLeftBtns();
+    getFilterRecipes(loadFilterRecipes()).then(respone => {
+        maxPages = respone.totalPages;
         renderCards(respone.results)
-        if (respone.totalPages == 1 || !respone.totalPages) {
-            refs.pagination.style.display = 'none';
-            return
-        }
+        if (maxPages == 1 || !maxPages) return refs.pagination.style.display = 'none';
     })
     refs.pagination.style.display = 'flex';
     setOptions()
@@ -233,18 +226,11 @@ function allCategoriesSearch({category, title}) {
 
 
 function pageChange(page) {
-    getFilterRecipes({
-    page: page,
-    limit: OPTIONS.limit
+    getFilterRecipes({ ...loadFilterRecipes(),
+     page,
+    limit
 }).then(respone => {
-    // console.log(respone)
-    // respone.results.map(res => {
-    //     if (res.rating > 5) {
-    //         res.rating = 5;
-    //     } else {
-    //         res.rating = Math.round(res.rating);
-    //     }
-    // })
+  
     renderCards(respone.results)
 })
 }
@@ -254,14 +240,8 @@ function pageChange(page) {
 
 getFilterRecipes({
     page: '1',
-    limit: OPTIONS.limit
+    limit
 }).then(respone => {
-    // console.log(respone)
-    // respone.results.map(res => {
-    //     if (res.rating > 5) {
-    //         res.rating = 5;
-    //     }
-    // })
     maxPages = respone.totalPages;
     renderCards(respone.results)
 })

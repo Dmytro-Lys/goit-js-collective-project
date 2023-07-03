@@ -52,15 +52,14 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 16px;
-  /* padding-top: auto; */
 }
+
 .heart-svg {
   display: flex;
   margin-left: auto;
   height: 22px;
   width: 22px;
   cursor: pointer;
-  /* margin-bottom: 176px; */
 }
 
 .heart-svg-fav {
@@ -96,17 +95,13 @@
 }
 
 .card-title {
-  /* display: flex; */
   margin-bottom: 8px;
   font-size: 14px;
   font-weight: 600;
   line-height: 18px;
   text-transform: uppercase;
-  /* overflow: hidden;
-        color: #F8F8F8;
-        text-overflow: ellipsis;
-        whitespace: nowrap; */
 }
+
 .card-text {
   margin-bottom: 16px;
   height: 32px;
@@ -132,14 +127,13 @@
 
 @media screen and (min-width: 768px) {
   .cards-list {
-    /* column-gap: 16px; */
     row-gap: 16px;
   }
   .card {
     width: 240px;
     height: 264px;
-    /* flex-basis: calc((100% - 16px) / 2); */
   }
+
   .card-info {
     height: 264px;
   }
@@ -149,9 +143,9 @@
   .cards-list {
     row-gap: 32px;
   }
+
   .card {
     width: 250px;
-    /* flex-basis: calc((100% - 32px) / 3); */
     height: 287px;
   }
   .card-info {

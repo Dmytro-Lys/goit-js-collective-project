@@ -1,8 +1,6 @@
 import { getRecipe } from '../service/api.js';
-// import { addFavorit, loadFavorit } from '../service/localstorage';
 import {
   addFavorit,
-  loadFavorit,
   removeFromFavorite,
   findFavorit,
 } from '../service/localstorage';

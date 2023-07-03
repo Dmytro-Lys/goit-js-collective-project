@@ -2,6 +2,10 @@ import Notiflix from 'notiflix';
 import 'notiflix/src/notiflix.css';
 
 const FAVORIT_KEY = 'favorit-recipes';
+const FILTER_KEY = 'filter-recipes';
+const FILTER_FAVORIT_KEY = 'filter-favorit-recipes';
+const DEF_FILTER = { page: 1, limit: 6 }
+const DEF_FAVORIT_FILTER = { page: 1, limit: 9 }
 
 const saveData = (key, value) => {
   try {
@@ -80,9 +84,20 @@ async function loadFavoritFilter({ category, page = 1, limit = 9 }) {
   }
 }
 
+const loadFilterRecipes = () => loadData(FILTER_KEY) || DEF_FILTER;
+
+const saveFilterRecipes = filter => saveData(FILTER_KEY, {...DEF_FAVORIT_FILTER, ...filter });
+
+const loadFilterFavoritRecipes = () => loadData(FILTER_FAVORIT_KEY) || DEF_FAVORIT_FILTER;
+
+const saveFilterFavoritRecipes = filter => saveData(FILTER_FAVORIT_KEY, { ...DEF_FAVORIT_FILTER, ...filter });
+
+
 function onError(error) {
   Notiflix.Notify.failure(error.message);
 }
+
+
 export {
   saveData,
   loadData,
@@ -92,4 +107,8 @@ export {
   loadFavoritFilter,
   removeFromFavorite,
   findFavorit,
+  loadFilterRecipes,
+  saveFilterRecipes,
+  loadFilterFavoritRecipes,
+  saveFilterFavoritRecipes
 };
