@@ -1,6 +1,8 @@
 import { getAllData, getFilterRecipes, getRecipe, setRecipeRating, createOrder } from './service/api'
 import cardTpl from '../partials/tpls/recipes-card.hbs'
-
+import {
+   findFavorit
+} from './service/localstorage';
 
 
 const refs = {
@@ -23,6 +25,7 @@ function renderCards(recipesArray) {
     stars = document.querySelectorAll('.star-svg')
     // console.log(stars)
     paintStarts(recipesArray)
+    paintHearts(recipesArray)
 }
 
 // function paintStarts(rating) {
@@ -49,6 +52,12 @@ function paintStarts(recipes) {
 
 }
 
+function paintHearts(reciepes) {
+    const hearts = document.querySelectorAll(".heart-svg")
+    reciepes.map((recipe, index) => {
+        if (findFavorit(recipe._id)) hearts[index].classList.add("heart-svg-fav");
+    })
+}
 
 
 

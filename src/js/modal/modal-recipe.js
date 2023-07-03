@@ -1,5 +1,5 @@
 import { getRecipe } from '../service/api.js';
-import { addFavorit, loadFavorit } from '../service/localstorage';
+// import { addFavorit, loadFavorit } from '../service/localstorage';
 import {
   addFavorit,
   loadFavorit,
@@ -27,7 +27,8 @@ const refs = {
 };
 
 refs.addButton.addEventListener('click', onFavorit);
-refs.list.addEventListener('click', openModal);
+refs.list.addEventListener('click', onList);
+refs.closeModalBtn.addEventListener('click', closeModal);
 
 async function getReciepeById(id) {
   try {
@@ -94,27 +95,31 @@ function keyDown(e) {
   }
 }
 
+function onList(e) {
+  if (e.target.hasAttribute('data-id')) openModal(e.target);
+  if (e.target.parentNode.classList.contains("heart-svg")) onHeart(e.target.parentNode);
+  if (e.target.classList.contains("heart-svg")) onHeart(e.target);
+}
 
-function openModal(event) {
-  if (event.target.hasAttribute('data-id')) {
+function openModal(target) {
     document.addEventListener('keydown', keyDown);
-    getReciepeById(event.target.getAttribute('data-id'));
-    checkFavorit(event.target.getAttribute('data-id'));
+    getReciepeById(target.getAttribute('data-id'));
+    checkFavorit(target.getAttribute('data-id'));
     refs.modal.addEventListener('click', closeBackdrop);
+ }
+
+function onHeart(target) {
+  const id = target.getAttribute('data-id-heart');
+  if (target.classList.contains("heart-svg-fav")) {
+    removeFromFavorite(id);
+  } else {
+    fetchRecipes(id);
   }
+  target.classList.toggle("heart-svg-fav");
 }
 
-refs.closeModalBtn.addEventListener('click', closeModal);
-
-
-function toggleModal() {
-  toggleBodyScroll();
-  refs.modal.classList.toggle('is-hidden');
-}
-
-async function fetchRecipes() {
+async function fetchRecipes(id) {
   try {
-    const id = refs.addButton.getAttribute('data-recipe-id');
     const reciepe = await getRecipe(id);
     const recipeData = getDataRecipe(reciepe);
     addFavorit(recipeData);
@@ -159,15 +164,20 @@ function checkFavorit(id) {
 }
 
 function onFavorit() {
+  const id = refs.addButton.getAttribute('data-recipe-id');
   if (refs.addButton.textContent === 'Add to favorite') {
-    fetchRecipes();
+    fetchRecipes(id);
     refs.addButton.textContent = 'Remove from favorite';
   } else {
-    const id = refs.addButton.getAttribute('data-recipe-id');
     removeFromFavorite(id);
-    // console.log(loadFavorit());
     refs.addButton.textContent = 'Add to favorite';
   }
+   toggleHeart(id);
+}
+
+function toggleHeart(id) {
+  const heart = document.querySelector(`[data-id-heart = "${id}"]`);
+  if (heart) heart.classList.toggle("heart-svg-fav");
 }
 
 function goldStars(recipe) {
