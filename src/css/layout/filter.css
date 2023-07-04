@@ -54,13 +54,13 @@
     display: none;
   }
 
-  .cards-list {
+  /* .cards-list {
     display: flex;
-  }
-
+  } */
+  /* 
   .card {
     flex-basis: calc((100% - 16px) / 2);
-  }
+  } */
 
   .pagination {
     padding-top: 64px;
@@ -75,7 +75,7 @@
   .container-search-general {
     /* display: flex; */
     gap: 32px 16px;
-    padding-bottom: 32px;
+    /* padding-bottom: 32px; */
     /* position: absolute;
         top: 367px;
         left: 300px; */
@@ -83,13 +83,15 @@
     /* margin-top: 52px; */
   }
 
-  .card {
+  /* .card {
     flex-basis: calc((100% - 16px) / 3);
-  }
+  } */
 }
 
 /* Input */
-
+.container-search {
+  position: relative;
+}
 @media screen and (min-width: 768px) {
   .container-search {
     /* position: absolute;
@@ -140,14 +142,16 @@
 }
 
 .svg-input {
-  position: relative;
+  position: absolute;
+  top: 55%;
+  left: 15px;
   z-index: 100;
-  top: 3px;
-  left: -265px;
+  /* top: 3px;
+  left: -265px; */
   color: var(--inactive-el-cl);
 }
 
-@media screen and (max-width: 767px) {
+/* @media screen and (max-width: 767px) {
   .svg-input {
     left: -323px;
   }
@@ -172,7 +176,7 @@
     top: 2px;
     left: -269px;
   }
-}
+} */
 
 ::placeholder {
   color: var(--inactive-el-cl);

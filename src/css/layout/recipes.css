@@ -16,13 +16,13 @@
 @media screen and (min-width: 768px) {
   .cards-list {
     max-width: 496px;
-    gap: 8px;
+    gap: 16px;
   }
   .left-side {
     display: flex;
     flex-direction: column;
     width: 176px;
-    /* margin-right: 64px; */
+    margin-right: 32px;
   }
 }
 
@@ -30,13 +30,15 @@
   .cards-list {
     max-width: 782px;
     row-gap: 32px;
-    /* column-gap: 16px; */
+    column-gap: 15px;
     margin-bottom: 64px;
   }
+  .left-side {
+    width: 235px;
+    margin-right: 64px;
+  }
 }
-.left-side {
-  margin-right: 110px;
-}
+
 .card {
   color: #f8f8f8;
   border-radius: 15px;
@@ -126,9 +128,6 @@
 }
 
 @media screen and (min-width: 768px) {
-  .cards-list {
-    row-gap: 16px;
-  }
   .card {
     width: 240px;
     height: 264px;

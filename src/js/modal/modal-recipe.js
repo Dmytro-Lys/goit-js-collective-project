@@ -4,6 +4,7 @@ import {
   removeFromFavorite,
   findFavorit,
 } from '../service/localstorage';
+import { renderFavoritCards } from '../pagination-favorit.js';
 import Notiflix from 'notiflix';
 import 'notiflix/src/notiflix.css';
 
@@ -23,7 +24,7 @@ const refs = {
   list: document.querySelector('.cards-list'),
   stars: document.querySelectorAll('.icon-star'),
 };
-
+const isFavorit = refs.list.classList.contains('cards-list-favorit');
 refs.addButton.addEventListener('click', onFavorit);
 refs.list.addEventListener('click', onList);
 refs.closeModalBtn.addEventListener('click', closeModal);
@@ -109,7 +110,8 @@ function openModal(target) {
 function onHeart(target) {
   const id = target.getAttribute('data-id-heart');
   if (target.classList.contains("heart-svg-fav")) {
-    removeFromFavorite(id);
+    removeFromFavorite(id); 
+    if (isFavorit) renderFavoritCards();
   } else {
     fetchRecipes(id);
   }
@@ -121,6 +123,7 @@ async function fetchRecipes(id) {
     const reciepe = await getRecipe(id);
     const recipeData = getDataRecipe(reciepe);
     addFavorit(recipeData);
+    if (isFavorit) renderFavoritCards();
   } catch (err) {
      onError(err);
   }
@@ -168,6 +171,7 @@ function onFavorit() {
     refs.addButton.textContent = 'Remove from favorite';
   } else {
     removeFromFavorite(id);
+    if (isFavorit) renderFavoritCards();
     refs.addButton.textContent = 'Add to favorite';
   }
    toggleHeart(id);

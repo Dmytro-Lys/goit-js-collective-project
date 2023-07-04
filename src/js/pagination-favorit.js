@@ -1,32 +1,37 @@
 import { event } from "jquery"
 import { getAllData, getFilterRecipes, getRecipe, setRecipeRating, createOrder } from './service/api'
-import { loadFavoritFilter } from './service/localstorage'
-import { renderCards, paintStarts } from "./recipes";
+import { renderCards } from "./recipes";
+import {
+    loadFilterFavoritRecipes,
+    saveFilterFavoritRecipes,
+    addFavorit,
+    loadFavorit,
+    loadFavoritCategories,
+    loadFavoritFilter
+} from "./service/localstorage"
 const _ = require('lodash');
 
 
 const refs = {
-    lilLeftBtn: document.querySelector('.lil-left-skip-fav'),
-    bigLeftBtn: document.querySelector('.big-left-skip-fav'),
-    currentPage: document.querySelector('.current-page-fav'),
-    nextPage: document.querySelector('.next-page-fav'),
-    lastOptionPage: document.querySelector('.last-option-page-fav'),
-    midSkip: document.querySelector('.mid-skip-fav'),
-    lilRightBtn: document.querySelector('.lil-rigth-skip-fav'),
-    bigRightBtn: document.querySelector('.big-rigth-skip-fav'),
-    midBtns: document.querySelector('.mid-btns-fav'),
-    leftBtns: document.querySelector('.left-btns-fav'),
-    rightBtns: document.querySelector('.right-btns-fav'),
-    pagination: document.querySelector('.pagination-fav'),
+    lilLeftBtn: document.querySelector('.lil-left-skip'),
+    bigLeftBtn: document.querySelector('.big-left-skip'),
+    currentPage: document.querySelector('.current-page'),
+    nextPage: document.querySelector('.next-page'),
+    lastOptionPage: document.querySelector('.last-option-page'),
+    midSkip: document.querySelector('.mid-skip'),
+    lilRightBtn: document.querySelector('.lil-rigth-skip'),
+    bigRightBtn: document.querySelector('.big-rigth-skip'),
+    midBtns: document.querySelector('.mid-btns'),
+    leftBtns: document.querySelector('.left-btns'),
+    rightBtns: document.querySelector('.right-btns'),
+    pagination: document.querySelector('.pagination'),
     stars: document.querySelectorAll('.star-svg')
 }
 
-const OPTIONS = {
-    category: null,
-    title: null,
-    page: 1,
-    limit: 9
-}
+let limit = 0;
+let maxPages = null;
+
+
 checkResol()
 blockLeftBtns();
 
@@ -35,9 +40,8 @@ refs.midBtns.addEventListener('click', _.throttle(pageIncrease, 500))
 refs.leftBtns.addEventListener('click', returnToStart)
 refs.rightBtns.addEventListener('click', switchToNextPage)
 
-let maxPages = null;
-
 function pageIncrease(event) {
+    // console.log(event.target.classList.contains('mid-btn'))
     if (event.target.classList.contains('mid-btn') === false) {
         return
     }
@@ -47,13 +51,6 @@ function pageIncrease(event) {
     refs.currentPage.textContent = event.target.textContent;
 
     pageChange(Number.parseInt(`${refs.currentPage.textContent}`))
-    // getFilterRecipes({
-    //     page: Number.parseInt(`${refs.currentPage.textContent}`),
-    //     limit: OPTIONS.limit
-    // }).then(respone => {
-    //     // console.log(respone)
-    //     renderCards(respone.results)
-    // })
     if (refs.currentPage.textContent == maxPages) {
         blockRightBtns()
     }
@@ -66,15 +63,6 @@ function returnToStart(event) {
     if (event.target.getAttribute('data-skip') === 'big') {
         refs.currentPage.textContent = 1;
         pageChange(refs.currentPage.textContent)
-
-        // getFilterRecipes({
-        //     page: '1',
-        //     limit: OPTIONS.limit
-        // }).then(respone => {
-        //     // console.log(respone)
-        //     renderCards(respone.results)
-        // })
-
         blockLeftBtns();
         blockRightClear()
         setOptions();
@@ -85,15 +73,7 @@ function returnToStart(event) {
             refs.currentPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) - 1;
             pageChange(Number.parseInt(`${refs.currentPage.textContent}`))
 
-            // getFilterRecipes({
-            //     page: Number.parseInt(`${refs.currentPage.textContent}`),
-            //     limit: OPTIONS.limit
-            // }).then(respone => {
-            //     // console.log(respone)
-            //     renderCards(respone.results)
-            // })
-
-            if (refs.currentPage.textContent === '1') {
+             if (refs.currentPage.textContent === '1') {
                 setOptions();
                 blockLeftBtns();
                 return
@@ -112,15 +92,7 @@ function switchToNextPage(event) {
         refs.currentPage.textContent = maxPages;
         pageChange(maxPages)
 
-        // getFilterRecipes({
-        //     page: maxPages,
-        //     limit: OPTIONS.limit
-        // }).then(respone => {
-        //     // console.log(respone)
-        //     renderCards(respone.results)
-        // })
-
-        blockRightBtns();
+         blockRightBtns();
         setOptions();
         checkMaxPage();
         return
@@ -130,14 +102,7 @@ function switchToNextPage(event) {
             refs.currentPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) + 1;
             blockLeftClear()
             pageChange(Number.parseInt(`${refs.currentPage.textContent}`))
-            // getFilterRecipes({
-            //     page: Number.parseInt(`${refs.currentPage.textContent}`),
-            //     limit: OPTIONS.limit
-            // }).then(respone => {
-            //     // console.log(respone)
-            //     renderCards(respone.results)
-            // })
-            if (refs.currentPage.textContent == maxPages) {
+             if (refs.currentPage.textContent == maxPages) {
                 blockRightBtns()
             }
             setOptions()
@@ -197,64 +162,58 @@ function blockLeftClear() {
 function checkResol() {
     if (screen.width >= 1280) {
         // console.log('1280')
-        OPTIONS.limit = 12;
+        limit = 12;
         return
     }
     if (screen.width >= 768 && screen.width < 1280) {
         // console.log('800')
-        OPTIONS.limit = 12;
+        limit = 12;
         return
     }
     if (screen.width >= 375 && screen.width < 768) {
         // console.log('400')
-        OPTIONS.limit = 9;
+        limit = 9;
         return
     }
 }
 
-function allCategoriesSearch({category}) {
-    OPTIONS.category = category;
-    // OPTIONS.title = title;
+function allCategoriesSearch(filter) {
+    saveFilterFavoritRecipes({...loadFilterFavoritRecipes(), ...filter, limit});
     refs.currentPage.textContent = '1';
-    loadFavoritFilter(OPTIONS).then(respone => {
-    // console.log(respone)
-    maxPages = respone.totalPages;
-        renderCards(respone.results)
-        if (respone.totalPages == 1 || !respone.totalPages) {
-            refs.pagination.style.display = 'none';
-            return
-        }
+    blockLeftBtns();
+    loadFavoritFilter(loadFilterFavoritRecipes()).then(respone => {
+        maxPages = respone.totalPages;
+        renderCards(respone.results);
+        addClassFavorit();
+        if (maxPages == 1 || !maxPages) return refs.pagination.style.display = 'none';
     })
     refs.pagination.style.display = 'flex';
-    setOptions()
+    setOptions();
+}
+
+async function renderFavoritCards() {
+    const respone = await loadFavoritFilter(loadFilterFavoritRecipes())
+        renderCards(respone.results);
+        // .then(respone => {
+        // renderCards(respone.results);
+        addClassFavorit();
+    //  })
 }
 // console.log(refs.stars)
 
-// function paintStarts(rating) {
-//     for (let i = 0; i < rating; i++) {
-//         const nigga = refs.stars;
-//         console.log(nigga);
-        
-//     }
-// }
+
 
 function pageChange(page) {
-    loadFavoritFilter({
-    page: page,
-    limit: OPTIONS.limit
+    loadFavoritFilter({ ...loadFilterFavoritRecipes(),
+     page,
+    limit
 }).then(respone => {
-    // console.log(respone)
-    // respone.results.map(res => {
-    //     if (res.rating > 5) {
-    //         res.rating = 5;
-    //     } else {
-    //         res.rating = Math.round(res.rating);
-    //     }
-    // })
-    renderCards(respone.results);
-    addClassFavorit()
+  
+    renderCards(respone.results)
+    addClassFavorit();  
 })
 }
+
 
 function addClassFavorit() {
     const card = document.querySelectorAll(".card");
@@ -265,21 +224,16 @@ function addClassFavorit() {
     heart.forEach(card => card.classList.add("heart-svg-fav"));
 }
 
-
-
 loadFavoritFilter({
     page: '1',
-    limit: OPTIONS.limit
+    limit
 }).then(respone => {
-    // console.log(respone)
-    // respone.results.map(res => {
-    //     if (res.rating > 5) {
-    //         res.rating = 5;
-    //     }
-    // })
     maxPages = respone.totalPages;
     renderCards(respone.results);
     addClassFavorit();
+    if (maxPages == 1 || !maxPages) return refs.pagination.style.display = 'none';
+    refs.pagination.style.display = 'flex';
+    setOptions();
 })
 
-export {allCategoriesSearch}
+export {allCategoriesSearch, renderFavoritCards}
