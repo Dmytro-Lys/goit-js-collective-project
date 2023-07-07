@@ -174,7 +174,7 @@ function allFavCategoriesSearch(filter) {
     loadFavoritFilter(loadFilterFavoritRecipes()).then(respone => {
         maxPages = respone.totalPages;
         renderCards(respone.results);
-        addClassFavorit();
+        if (respone.results.length > 0) addClassFavorit();
         if (maxPages == 1 || !maxPages) return refs.pagination.style.display = 'none';
         refs.pagination.style.display = 'flex';
         setOptions();
@@ -187,6 +187,11 @@ async function renderFavoritCards() {
         await categoriesMarkup();
         // console.log("renderFavoritCards on home")
         const respone = await loadFavoritFilter(loadFilterFavoritRecipes())
+
+        if (respone.results.length === 0) {
+              refs.btnAllCatagory.classList.add("category-btn-active");
+              return   allFavCategoriesSearch({ category: "" });
+        }
          maxPages = respone.totalPages;
          renderCards(respone.results);
         if (respone.results.length > 0) addClassFavorit();
@@ -202,10 +207,11 @@ async function renderFavoritCards() {
 
 
 function pageChange(page) {
-    loadFavoritFilter({ ...loadFilterFavoritRecipes(),
+    saveFilterFavoritRecipes({ ...loadFilterFavoritRecipes(),
      page,
     limit
-}).then(respone => {
+})
+    loadFavoritFilter(loadFilterFavoritRecipes()).then(respone => {
   
     renderCards(respone.results)
     addClassFavorit();  
