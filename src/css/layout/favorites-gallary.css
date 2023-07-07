@@ -33,10 +33,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  /* align-items: center;
-  justify-content: center; */
-  /* gap: 12px; */
-  /* margin-bottom: 24px; */
 }
 
 .category-btn {
@@ -52,7 +48,8 @@
 }
 
 .category-btn:hover,
-.category-btn:focus {
+.category-btn:focus,
+.category-btn-active {
   color: #f8f8f8;
   background: #9bb537;
   border: none;
@@ -73,15 +70,17 @@
     rgba(5, 5, 5, 0) 100%
   );
 } */
-.btn-all-categories {
+/* .btn-all-categories {
   color: rgba(5, 5, 5, 0.3);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
   border-radius: 15px;
   border: 1px solid rgba(5, 5, 5, 0.2);
-}
+} */
 .categories {
+  display: flex;
+  gap: 16px;
   margin-bottom: 32px;
 }
 

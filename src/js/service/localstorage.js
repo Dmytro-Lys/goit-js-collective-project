@@ -65,7 +65,7 @@ async function loadFavoritFilter({ category, page = 1, limit = 9 }) {
   try {
     let results = await loadFavorit();
     if (results && category)
-      results = await results.filter(item => item.category === category);
+      results = results.filter(item => item.category === category);
     const totalResult = results.length;
     const totalPages = Math.ceil(totalResult / limit);
     if (page > totalPages) page = totalPages || 1;

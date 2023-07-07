@@ -1,5 +1,6 @@
+
 import { event } from "jquery"
-import { getAllData, getFilterRecipes, getRecipe, setRecipeRating, createOrder } from './service/api'
+// import { loadFavoritCategories} from './service/api'
 import { renderCards } from "./recipes";
 import {
     loadFilterFavoritRecipes,
@@ -8,7 +9,9 @@ import {
     loadFavorit,
     loadFavoritCategories,
     loadFavoritFilter
-} from "./service/localstorage"
+} from "./service/localstorage";
+import Notiflix from 'notiflix';
+import 'notiflix/src/notiflix.css';
 const _ = require('lodash');
 
 
@@ -25,20 +28,26 @@ const refs = {
     leftBtns: document.querySelector('.left-btns'),
     rightBtns: document.querySelector('.right-btns'),
     pagination: document.querySelector('.pagination'),
-    stars: document.querySelectorAll('.star-svg')
+    stars: document.querySelectorAll('.star-svg'),
+    noFavorits: document.querySelector(".no-favorites"),
+    btnAllCatagory: document.querySelector(".btn-all-categories"),
+    favBtnList: document.querySelector('.categories-list'),
+    categories: document.querySelector('.categories'),
+    list: document.querySelector('.cards-list')
+    
 }
 
 let limit = 0;
 let maxPages = null;
+const isFavorit = refs.list.classList.contains('cards-list-favorit');
 
-
-checkResol()
-blockLeftBtns();
-
-
-refs.midBtns.addEventListener('click', _.throttle(pageIncrease, 500))
-refs.leftBtns.addEventListener('click', returnToStart)
-refs.rightBtns.addEventListener('click', switchToNextPage)
+if (isFavorit) {
+    refs.midBtns.addEventListener('click', _.throttle(pageIncrease, 500))
+    refs.leftBtns.addEventListener('click', returnToStart)
+    refs.rightBtns.addEventListener('click', switchToNextPage)
+}
+ 
+if (refs.categories) refs.categories.addEventListener("click", onFavCategory);
 
 function pageIncrease(event) {
     // console.log(event.target.classList.contains('mid-btn'))
@@ -56,7 +65,7 @@ function pageIncrease(event) {
     }
     blockLeftClear();
     setOptions();
-    checkMaxPage();
+    // checkMaxPage();
 }
 
 function returnToStart(event) {
@@ -80,7 +89,7 @@ function returnToStart(event) {
             } 
             blockRightClear()
             setOptions();
-            checkMaxPage();
+            // checkMaxPage();
             return
         }
     }
@@ -88,14 +97,13 @@ function returnToStart(event) {
 }
 
 function switchToNextPage(event) {
-    if (event.target.getAttribute('data-skip') === 'big') {
+     if (event.target.getAttribute('data-skip') === 'big') {
         refs.currentPage.textContent = maxPages;
         pageChange(maxPages)
 
          blockRightBtns();
         setOptions();
-        checkMaxPage();
-        return
+         return
     }
     if (event.target.getAttribute('data-skip') === 'lil') {
         if (refs.currentPage.textContent < maxPages) {
@@ -106,32 +114,16 @@ function switchToNextPage(event) {
                 blockRightBtns()
             }
             setOptions()
-            checkMaxPage()
         }
     }
 }
 
-function checkMaxPage() {
-    if (refs.currentPage.textContent >= (maxPages - 1)) {
-        refs.lastOptionPage.textContent = ' ';
-    }
-    if (refs.currentPage.textContent == maxPages) {
-        refs.nextPage.textContent = ' ';
-    }
-    
-}
-
-
 
 function setOptions() {
-    refs.nextPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) + 1;
-    refs.lastOptionPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) + 2;
+    const currPage = Number.parseInt(refs.currentPage.textContent);
+    refs.nextPage.textContent = currPage < maxPages ? `${currPage + 1}` : " ";
+    refs.lastOptionPage.textContent = currPage < maxPages - 1 ? `${currPage + 2}` : " ";
 }
-
-
-
-
-
 
 function blockLeftBtns() {
     refs.bigLeftBtn.setAttribute('disabled', true)
@@ -157,8 +149,6 @@ function blockLeftClear() {
     refs.lilLeftBtn.removeAttribute("disabled"); 
 }
  
-
-
 function checkResol() {
     if (screen.width >= 1280) {
         // console.log('1280')
@@ -177,7 +167,7 @@ function checkResol() {
     }
 }
 
-function allCategoriesSearch(filter) {
+function allFavCategoriesSearch(filter) {
     saveFilterFavoritRecipes({...loadFilterFavoritRecipes(), ...filter, limit});
     refs.currentPage.textContent = '1';
     blockLeftBtns();
@@ -186,20 +176,28 @@ function allCategoriesSearch(filter) {
         renderCards(respone.results);
         addClassFavorit();
         if (maxPages == 1 || !maxPages) return refs.pagination.style.display = 'none';
+        refs.pagination.style.display = 'flex';
+        setOptions();
     })
-    refs.pagination.style.display = 'flex';
-    setOptions();
 }
 
 async function renderFavoritCards() {
-    const respone = await loadFavoritFilter(loadFilterFavoritRecipes())
-        renderCards(respone.results);
-        // .then(respone => {
-        // renderCards(respone.results);
-        addClassFavorit();
-    //  })
-}
-// console.log(refs.stars)
+    try {
+        // if (!isFavorit) return;
+        await categoriesMarkup();
+        // console.log("renderFavoritCards on home")
+        const respone = await loadFavoritFilter(loadFilterFavoritRecipes())
+         maxPages = respone.totalPages;
+         renderCards(respone.results);
+        if (respone.results.length > 0) addClassFavorit();
+        if (maxPages == 1 || !maxPages) return refs.pagination.style.display = 'none';
+        refs.pagination.style.display = 'flex';
+        setOptions();
+        
+    } catch (err) {
+        onError(err)
+    }
+ }
 
 
 
@@ -224,16 +222,52 @@ function addClassFavorit() {
     heart.forEach(card => card.classList.add("heart-svg-fav"));
 }
 
-loadFavoritFilter({
-    page: '1',
-    limit
-}).then(respone => {
-    maxPages = respone.totalPages;
-    renderCards(respone.results);
-    addClassFavorit();
-    if (maxPages == 1 || !maxPages) return refs.pagination.style.display = 'none';
-    refs.pagination.style.display = 'flex';
-    setOptions();
-})
+// categories
+async function categoriesMarkup() {
+  try {
+      const favCategories = await loadFavoritCategories();
+    if (favCategories.length > 0) {
+        refs.btnAllCatagory.classList.remove("invisible");
+        
+        refs.noFavorits.style.display = "none";
+        refs.favBtnList.innerHTML = "";
+        const { category } = loadFilterFavoritRecipes()
+      favCategories.forEach(name => {
+        const buttonEls =
+          `<li><button class="category-btn${category === name ? " category-btn-active" : ""}">${name}</button></li>`;
+          refs.favBtnList.insertAdjacentHTML('beforeend', buttonEls);
+      });
+       if (category !== undefined && !category) refs.btnAllCatagory.classList.add("category-btn-active");
+    } else {
+      refs.noFavorits.style.display = "flex";
+      refs.favBtnList.innerHTML = "";
+      refs.btnAllCatagory.classList.add("invisible");
+    }
+  } catch (error) {
+   onError(error)
+  }
+}
 
-export {allCategoriesSearch, renderFavoritCards}
+function onFavCategory(e) {
+    if (e.target.classList.contains("category-btn")) {
+       const oldActive = refs.categories.querySelector(".category-btn-active");
+       if (oldActive) oldActive.classList.remove("category-btn-active");
+       e.target.classList.add("category-btn-active");
+      allFavCategoriesSearch({
+        category: !e.target.classList.contains("btn-all-categories") ? e.target.textContent : ""
+      })
+    }
+}
+
+if (isFavorit) {
+    checkResol()
+    blockLeftBtns();
+    saveFilterFavoritRecipes({ limit });
+    renderFavoritCards();
+}
+
+function onError(error) {
+  Notiflix.Notify.failure(error.message);
+}
+
+ export {renderFavoritCards}

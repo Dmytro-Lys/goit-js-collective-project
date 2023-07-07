@@ -61,15 +61,16 @@ async function categoriesMarkup() {
     } else {
       noFavorits.style.display = "flex";
       favBtnList.innerHTML = "";
-      btnAllCatagory.style.display = "none";
-      pagination.style.display = "none";
+      btnAllCatagory.classList.add("invisible");
+      // btnAllCatagory.style.display = "none";
+      // pagination.style.display = "none";
     }
   } catch (error) {
     console.error(error.message);
   }
 }
 // console.log(loadFavoritCategories())
-categoriesMarkup();
+// categoriesMarkup();
 
 function hideDefaultPageContent() {
   const savedData = loadData();

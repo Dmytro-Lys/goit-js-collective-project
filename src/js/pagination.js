@@ -34,7 +34,6 @@ refs.leftBtns.addEventListener('click', returnToStart)
 refs.rightBtns.addEventListener('click', switchToNextPage)
 
 function pageIncrease(event) {
-    // console.log(event.target.classList.contains('mid-btn'))
     if (event.target.classList.contains('mid-btn') === false) {
         return
     }
@@ -44,34 +43,18 @@ function pageIncrease(event) {
     refs.currentPage.textContent = event.target.textContent;
 
     pageChange(Number.parseInt(`${refs.currentPage.textContent}`))
-    // getFilterRecipes({
-    //     page: Number.parseInt(`${refs.currentPage.textContent}`),
-    //     limit: OPTIONS.limit
-    // }).then(respone => {
-    //     console.log(respone)
-    //     renderCards(respone.results)
-    // })
+  
     if (refs.currentPage.textContent == maxPages) {
         blockRightBtns()
     }
     blockLeftClear();
     setOptions();
-    checkMaxPage();
-}
+ }
 
 function returnToStart(event) {
     if (event.target.getAttribute('data-skip') === 'big') {
         refs.currentPage.textContent = 1;
         pageChange(refs.currentPage.textContent)
-
-        // getFilterRecipes({
-        //     page: '1',
-        //     limit: OPTIONS.limit
-        // }).then(respone => {
-        //     // console.log(respone)
-        //     renderCards(respone.results)
-        // })
-
         blockLeftBtns();
         blockRightClear()
         setOptions();
@@ -82,22 +65,13 @@ function returnToStart(event) {
             refs.currentPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) - 1;
             pageChange(Number.parseInt(`${refs.currentPage.textContent}`))
 
-            // getFilterRecipes({
-            //     page: Number.parseInt(`${refs.currentPage.textContent}`),
-            //     limit: OPTIONS.limit
-            // }).then(respone => {
-            //     // console.log(respone)
-            //     renderCards(respone.results)
-            // })
-
-            if (refs.currentPage.textContent === '1') {
+             if (refs.currentPage.textContent === '1') {
                 setOptions();
                 blockLeftBtns();
                 return
             } 
             blockRightClear()
             setOptions();
-            checkMaxPage();
             return
         }
     }
@@ -108,61 +82,29 @@ function switchToNextPage(event) {
     if (event.target.getAttribute('data-skip') === 'big') {
         refs.currentPage.textContent = maxPages;
         pageChange(maxPages)
-
-        // getFilterRecipes({
-        //     page: maxPages,
-        //     limit: OPTIONS.limit
-        // }).then(respone => {
-        //     // console.log(respone)
-        //     renderCards(respone.results)
-        // })
-
         blockRightBtns();
         setOptions();
-        checkMaxPage();
-        return
+         return
     }
     if (event.target.getAttribute('data-skip') === 'lil') {
         if (refs.currentPage.textContent < maxPages) {
             refs.currentPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) + 1;
             blockLeftClear()
             pageChange(Number.parseInt(`${refs.currentPage.textContent}`))
-            // getFilterRecipes({
-            //     page: Number.parseInt(`${refs.currentPage.textContent}`),
-            //     limit: OPTIONS.limit
-            // }).then(respone => {
-            //     // console.log(respone)
-            //     renderCards(respone.results)
-            // })
             if (refs.currentPage.textContent == maxPages) {
                 blockRightBtns()
             }
             setOptions()
-            checkMaxPage()
         }
     }
 }
 
-function checkMaxPage() {
-    if (refs.currentPage.textContent >= (maxPages - 1)) {
-        refs.lastOptionPage.textContent = ' ';
-    }
-    if (refs.currentPage.textContent == maxPages) {
-        refs.nextPage.textContent = ' ';
-    }
-    
-}
-
-
 
 function setOptions() {
-    refs.nextPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) + 1;
-    refs.lastOptionPage.textContent = Number.parseInt(`${refs.currentPage.textContent}`) + 2;
+      const currPage = Number.parseInt(refs.currentPage.textContent);
+    refs.nextPage.textContent = currPage < maxPages ? `${currPage + 1}` : " ";
+    refs.lastOptionPage.textContent = currPage < maxPages - 1 ? `${currPage + 2}` : " ";
 }
-
-
-
-
 
 
 function blockLeftBtns() {
@@ -193,17 +135,14 @@ function blockLeftClear() {
 
 function checkResol() {
     if (screen.width >= 1280) {
-        // console.log('1280')
         limit = 9;
         return
     }
     if (screen.width >= 768 && screen.width < 1280) {
-        // console.log('800')
         limit = 8;
         return
     }
     if (screen.width >= 375 && screen.width < 768) {
-        // console.log('400')
         limit = 6;
         return
     }
@@ -217,13 +156,11 @@ function allCategoriesSearch(filter) {
         maxPages = respone.totalPages;
         renderCards(respone.results)
         if (maxPages == 1 || !maxPages) return refs.pagination.style.display = 'none';
+        refs.pagination.style.display = 'flex';
+        setOptions()
     })
-    refs.pagination.style.display = 'flex';
-    setOptions()
+   
 }
-// console.log(refs.stars)
-
-
 
 function pageChange(page) {
     getFilterRecipes({ ...loadFilterRecipes(),
@@ -235,15 +172,15 @@ function pageChange(page) {
 })
 }
 
-
-
-
 getFilterRecipes({
     page: '1',
     limit
 }).then(respone => {
     maxPages = respone.totalPages;
     renderCards(respone.results)
+    if (maxPages == 1 || !maxPages) return refs.pagination.style.display = 'none';
+    refs.pagination.style.display = 'flex';
+    setOptions()
 })
 
 export {allCategoriesSearch}

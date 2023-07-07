@@ -1,6 +1,6 @@
 import Notiflix from 'notiflix';
 import 'notiflix/src/notiflix.css';
-import { getAllData,getFilterRecipes } from './service/api.js';
+import { getAllData, getFilterRecipes } from './service/api.js';
 import { allCategoriesSearch } from './pagination.js';
 
 const refs = {
@@ -17,7 +17,7 @@ async function fetchCategories() {
   try {
       const data = await getAllData("categories");
       const markup = await generateCategoryItems(data);
-      await renderCategory(markup);
+      renderCategory(markup);
       refs.list.addEventListener("click", onCategory);
   } catch (err) {
     onError(err);

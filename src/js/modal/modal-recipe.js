@@ -25,6 +25,7 @@ const refs = {
   stars: document.querySelectorAll('.icon-star'),
 };
 const isFavorit = refs.list.classList.contains('cards-list-favorit');
+
 refs.addButton.addEventListener('click', onFavorit);
 refs.list.addEventListener('click', onList);
 refs.closeModalBtn.addEventListener('click', closeModal);

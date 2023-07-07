@@ -14,27 +14,19 @@ const refs = {
 let stars = '';
 function renderCards(recipesArray) {
     
-    recipesArray.map(res => {
-        if (res.rating >= 5) {
-            res.rating = 5;
-        }
-    })
     refs.list.innerHTML = "";
-    // console.log(recipesArray)
-    refs.list.insertAdjacentHTML('beforeend', cardTpl(recipesArray))
-    stars = document.querySelectorAll('.star-svg')
-    // console.log(stars)
-    paintStarts(recipesArray)
-    paintHearts(recipesArray)
+    if (recipesArray.length > 0) {
+        recipesArray.map(res => {
+            if (res.rating >= 5) {
+                res.rating = 5;
+            }
+        })
+        refs.list.insertAdjacentHTML('beforeend', cardTpl(recipesArray))
+        stars = document.querySelectorAll('.star-svg')
+        paintStarts(recipesArray)
+        paintHearts(recipesArray)
+    }
 }
-
-// function paintStarts(rating) {
-//     for (let i = 0; i < rating ; index++) {
-//         console.log(refs.stars[i])
-        
-//     }
-// }
-// console.log(refs.stars)
 
 
 
